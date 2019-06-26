@@ -7,7 +7,7 @@
   </head>
   <body>
   	<h1>Summary Queries</h1>
-  	<p>We have seen functions at work in MySQL, functions like concat, date_format, and round functions. But these functions were all scalar; functions which worked with one single value but now we are going to look at functions that work with a series of values and return one summary value; they are called aggregate functions. When a query contains one or more of these aggregate functions the query is called a summary query.</p>
+  	<p>We have seen functions at work in MySQL, functions like CONCAT, DATE_FORMAT, and ROUND functions. But these functions were all scalar; functions which worked with one single value but now we are going to look at functions that work with a series of values and return one summary value; they are called aggregate functions. When a query contains one or more of these aggregate functions the query is called a summary query.</p>
     <h2>Aggregate Functions</h2>
     <p>When you use the column name with these aggregate functions, it’s not referring to each and every row’s column value but the column as a whole and all the values within that column.</p>
     <p>For example, if you ran the ROUND function in a query, it would take every value individually in each row and round that number. You still have the same number of rows in the result set, the item_price of each row is just rounded.</p>
