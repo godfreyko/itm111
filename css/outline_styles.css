@@ -1,0 +1,58 @@
+body {
+	padding: 15px;
+	background-color: #FEE8D6; /* desert sand */
+}
+main {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+h1 {
+	font-family: Georgia, sans-serif;
+	font-size: 3em;
+}
+h2{
+	font-family: Georgia, sans-serif;
+	font-size: 2em;
+	margin-top: 35px;
+}
+h3{
+	font-family: Georgia, sans-serif;
+	font-size: 1.1em;
+	margin: 0;
+	padding: 5px;
+	margin-left: 20px;
+}
+
+.results {
+	background-color: oldlace;
+	margin-left: 100px;
+
+}
+.results th, .results td {
+	text-align: left;
+	padding: 8px;
+	font-size: 1.2em;
+}
+.results th + th, .results td + td{
+	border-left: 1px solid #ddd;
+	
+}
+.results th {
+	border-bottom: 1px solid black;
+}
+.results td {
+  	border-bottom: 1px solid #ddd;
+}
+p, code {
+	/*font-family: Georgia, serif;*/
+	font-size: 1.5em;
+	
+}
+p {
+	line-height: 1.5em;
+}
+pre {
+	background-color: oldlace;
+	max-width: 1000px;
+	overflow: auto;
+}
