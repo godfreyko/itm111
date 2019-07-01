@@ -38,6 +38,8 @@
 		    <td><h3>Returns the number of rows in a column</h3></td> 
 		  </tr>
 		</table>
+		<h3>The AVG() Function Syntax</h3>
+		<h3>AVG( [ALL| DISTINCT] expression)</h3>
 		<code>
 			<pre>
 
@@ -53,6 +55,8 @@
 				<td>64238.8072</td>
 			</tr>
 		</table> 
+		<h3>THE SUM() Function Syntax</h3>
+		<h3>SUM( [ALL| DISTINCT] expression)</h3>	
 		<code>
 			<pre>
 
@@ -68,6 +72,10 @@
 				<td>609497803</td>
 			</tr>
 		</table> 
+		<h3>The MAX() Function Syntax</h3>
+		<h3>MAX( [ALL| DISTINCT] expression)</h3>
+		<h3>THE MIN() Function Syntax</h3>
+		<h3>MIN( [ALL| DISTINCT] expression)</h3>
 		<code>
 			<pre>
 
@@ -85,6 +93,8 @@
 				<td>39264</td>
 			</tr>
 		</table> 
+		<h3>THE COUNT() Function Syntax</h3>
+		<h3>COUNT( [ALL| DISTINCT] expression)</h3>
 		<code>
 			<pre>
 
@@ -135,6 +145,17 @@
 		<p>
 			We will use the GROUP BY clause to do this. The GROUP BY clause is used when you have an aggregate function that you want to use on the grouped data.
 		</p>
+		<h3>SELECT statement with GROUP BY and HAVING clause syntax</h3>
+		<h3>
+		   <pre>
+			SELECT select_list
+			FROM table_source
+			[WHERE search_condition]
+			[GROUP BY group-by_list]
+			[HAVING search_condition]
+			[ORDER BY order_by_list]
+		   </pre>
+		</h3>
 		<code>
 			<pre>
 
@@ -146,6 +167,7 @@
 		<p>
 			The GROUP BY clause sorts the data and groups by vendors, then the COUNT function is used to count the number of products for each vendor. So you’d have a count once per vendor rather than for the entire table.
 		</p>
+		<h3>
 		<table class="results">
 			<tr>
 				<th>vendor_id</th>
