@@ -22,7 +22,9 @@ h3{
 	padding: 5px;
 	margin-left: 20px;
 }
-
+table + h3 {
+	margin-top: 15px;
+}
 .results {
 	background-color: oldlace;
 	margin-left: 75px;
