@@ -146,7 +146,7 @@
 			We will use the GROUP BY clause to do this. The GROUP BY clause is used when you have an aggregate function that you want to use on the grouped data.
 		</p>
 		<h2>SELECT statement with GROUP BY and HAVING clause syntax:</h2>
-		<h2>
+		<h3>
 		   <pre class="syntax">
 SELECT select_list
 FROM table_source
@@ -155,7 +155,7 @@ FROM table_source
 [HAVING search_condition]
 [ORDER BY order_by_list]
 		   </pre>
-		</h2>
+		</h3>
 		<code>
 			<pre>
 
@@ -223,14 +223,11 @@ FROM table_source
 		</p>
 		<code>
 			<pre>
-			   <h3>
-
  SELECT vendor_id, COUNT(*) AS ‘Number of Products’
  FROM products
  WHERE product_price > 10
  GROUP BY vendor_id
  HAVING COUNT(*)  > 20
- 			   </h3>
 			</pre>
 		</code>
 		<table class="results">
