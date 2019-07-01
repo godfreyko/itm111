@@ -223,12 +223,14 @@ FROM table_source
 		</p>
 		<code>
 			<pre>
+			   <h3>
 
  SELECT vendor_id, COUNT(*) AS ‘Number of Products’
  FROM products
  WHERE product_price > 10
  GROUP BY vendor_id
  HAVING COUNT(*)  > 20
+ 			   </h3>
 			</pre>
 		</code>
 		<table class="results">
