@@ -60,5 +60,6 @@ pre {
 }
 .syntax {
 	background-color: transparent;
-	
+	margin-top: 15px;
+	border-top: 1px solid #ddd;
 }
