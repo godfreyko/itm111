@@ -9,7 +9,7 @@
 
 <body>
     <main>
-        <h1>Summary Queries</h1>
+        <h1>A Summary Queries</h1>
         <p>
             Summary queries are queries that contain one or more aggregate functions.
         </p>
@@ -22,10 +22,8 @@
             <tr>
                 <td>
                     <h3>AVG()</h3>
-                    </th>
                     <td>
                         <h3>Returns a column’s average value</h3>
-                        </th>
             </tr>
             <tr>
                 <td>
@@ -61,14 +59,12 @@
             </tr>
         </table>
         <h3>The AVG() Function Syntax:</h3>
-        <h3 class="syntax">AVG( [ALL| DISTINCT] expression)</h3>
-        <code>
-			<pre>
+        <h3 class="syntax">AVG([ALL| DISTINCT] expression)</h3>
+        <pre>
 
  SELECT AVG(salary) AS ‘Average Salary’
  FROM salaries
 			</pre>
-		</code>
         <table class="results">
             <tr>
                 <th>Average Salary</th>
@@ -78,14 +74,14 @@
             </tr>
         </table>
         <h3>THE SUM() Function Syntax:</h3>
-        <h3 class="syntax">SUM( [ALL| DISTINCT] expression)</h3>
-        <code>
-			<pre>
+        <h3 class="syntax">SUM([ALL| DISTINCT] expression)</h3>
+
+        <pre>
 
  SELECT SUM(salary) AS ‘Total of all Salaries’
  FROM salaries
 			</pre>
-		</code>
+
         <table class="results">
             <tr>
                 <th>Total of all Salaries</th>
@@ -95,16 +91,16 @@
             </tr>
         </table>
         <h3>The MAX() Function Syntax:</h3>
-        <h3 class="syntax">MAX( [ALL| DISTINCT] expression)</h3><br><br>
+        <h3 class="syntax">MAX([ALL| DISTINCT] expression)</h3><br><br>
         <h3>THE MIN() Function Syntax:</h3>
-        <h3 class="syntax">MIN( [ALL| DISTINCT] expression)</h3>
-        <code>
-			<pre>
+        <h3 class="syntax">MIN([ALL| DISTINCT] expression)</h3>
+
+        <pre>
 
  SELECT MAX(salary) AS ‘Highest Salary’, MIN(salary) As ‘Lowest Salary’
  FROM salaries
 			</pre>
-		</code>
+
         <table class="results">
             <tr>
                 <th>Highest Salary</th>
@@ -116,14 +112,14 @@
             </tr>
         </table>
         <h3>THE COUNT() Function Syntax:</h3>
-        <h3 class="syntax">COUNT( [ALL| DISTINCT] expression)</h3>
-        <code>
-			<pre>
+        <h3 class="syntax">COUNT([ALL| DISTINCT] expression)</h3>
+
+        <pre>
 
  SELECT COUNT(*) AS ‘Number of Employees’
  FROM employees
 			</pre>
-		</code>
+
         <table class="results">
             <tr>
                 <th>Number of Employees</th>
@@ -135,26 +131,26 @@
         <p>
             The ALL keyword is assumed with aggregate functions. You don’t have to include it. This means all rows are included in the aggregate function, which is the default.
         </p>
-        <code>
-			<pre>
+
+        <pre>
 
  SELECT AVG(ALL prod_price) AS ‘Average Price’
  FROM products
 			</pre>
-		</code>
+
         <p>
             All product prices are included in the average calculation.
         </p>
         <p>
             You can use the DISTINCT keyword instead to include only unique values.
         </p>
-        <code>
-			<pre>
+
+        <pre>
 
  SELECT AVG(DISTINCT prod_price) AS ‘Average Price’
  FROM products
 			</pre>
-		</code>
+
         <p>
             So if there are multiple products with the same price, that price will only be included once in the average calculation.
         </p>
@@ -168,24 +164,17 @@
             We will use the GROUP BY clause to do this. The GROUP BY clause is used when you have an aggregate function that you want to use on the grouped data.
         </p><br>
         <h3>SELECT statement with GROUP BY and HAVING clause syntax:</h3>
-        <h3>
-            <pre class="syntax">
-SELECT select_list
-FROM table_source
-[WHERE search_condition]
-[GROUP BY group-by_list]
-[HAVING search_condition]
-[ORDER BY order_by_list]
-		   </pre>
+        <h3 class="syntax">
+            SELECT select_list <br> FROM table_source <br> [WHERE search_condition] <br> [GROUP BY group-by_list] <br> [HAVING search_condition] <br> [ORDER BY order_by_list] <br>
         </h3>
-        <code>
-			<pre>
+
+        <pre>
 
  SELECT vendor_id, COUNT(*) AS ‘Number of Products’
  FROM products 
  GROUP BY vendor_id
 			</pre>
-		</code>
+
         <p>
             The GROUP BY clause sorts the data and groups by vendors, then the COUNT function is used to count the number of products for each vendor. So you’d have a count once per vendor rather than for the entire table.
         </p>
@@ -214,15 +203,15 @@ FROM table_source
             The HAVING clause also works with aggregate functions and allows you to filter the groups (or in other words specify which groups to include or not include). It works a lot like the WHERE clause but the WHERE clause filters rows and the HAVING clause
             filters groups.
         </p>
-        <code>
-			<pre>
+
+        <pre>
 
  SELECT vendor_id, COUNT(*) AS ‘Number of Products’
  FROM products
  GROUP BY vendor_id
  HAVING COUNT(*) > 20
 			</pre>
-		</code>
+
         <table class="results">
             <tr>
                 <th>vendor_id</th>
@@ -243,15 +232,15 @@ FROM table_source
         <p>
             You can use WHERE and HAVING together. If you want to only include product prices greater than $10 and then show the number of products that result grouped by vendors for those vendors who have more than 20 products.
         </p>
-        <code>
-			<pre>
+
+        <pre>
  SELECT vendor_id, COUNT(*) AS ‘Number of Products’
  FROM products
  WHERE product_price > 10
  GROUP BY vendor_id
  HAVING COUNT(*)  > 20
 			</pre>
-		</code>
+
         <table class="results">
             <tr>
                 <th>vendor_id</th>
@@ -265,15 +254,15 @@ FROM table_source
         <p>
             The ROLLUP operator can be used with grouping and aggregates allowing you to add one or more summary rows to your results. A summary row will show up for every group you have.
         </p>
-        <code>
-			<pre>
+
+        <pre>
 
  SELECT vendor_id, SUM(product_price) AS ‘Total of Product Prices’
  FROM products
- WHERE vendor_id < 15
+ WHERE vendor_id &lt; 15
  GROUP BY vendor_id WITH ROLLUP
 			</pre>
-		</code>
+
         <table class="results">
             <tr>
                 <th>vendor_id</th>
