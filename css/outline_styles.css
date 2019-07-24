@@ -1,66 +1,103 @@
 body {
-	padding: 15px;
-	background-color: #FEE8D6; /* desert sand */
+    padding: 15px;
+    background-color: #FEE8D6;
+    /* desert sand */
 }
-main {
-	max-width: 900px;
-	margin: 0 auto;
-}
-h1 {
-	font-family: Georgia, sans-serif;
-	font-size: 3em;
-}
-h2{
-	font-family: Georgia, sans-serif;
-	font-size: 2em;
-	margin-top: 35px;
-}
-h3{
-	font-family: Georgia, sans-serif;
-	font-size: 1.1em;
-	margin: 0;
-	padding: 5px;
-	margin-left: 20px;
-}
-table + h3 {
-	margin-top: 20px;
-}
-.results {
-	background-color: oldlace;
-	margin-left: 75px;
 
+main {
+    max-width: 900px;
+    margin: 0 auto;
 }
-.results th, .results td {
-	text-align: left;
-	padding: 8px;
-	font-size: 1.2em;
+
+h1 {
+    font-family: Georgia, sans-serif;
+    font-size: 3em;
 }
-.results th + th, .results td + td{
-	border-left: 1px solid #ddd;
-	
+
+h2 {
+    font-family: Georgia, sans-serif;
+    font-size: 2em;
+    margin-top: 35px;
 }
-.results th {
-	border-bottom: 1px solid black;
+
+h3 {
+    font-family: Georgia, sans-serif;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 5px;
+    margin-left: 20px;
 }
+
+table+h3 {
+    margin-top: 20px;
+}
+
+.results {
+    background-color: oldlace;
+    margin-left: 75px;
+}
+
+.results th,
 .results td {
-  	border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 1.2em;
 }
-p, code {
-	/*font-family: Georgia, serif;*/
-	font-size: 1.5em;
-	
+
+.results th+th,
+.results td+td {
+    border-left: 1px solid #ddd;
 }
+
+.results th {
+    border-bottom: 1px solid black;
+}
+
+.results td {
+    border-bottom: 1px solid #ddd;
+}
+
+p,
+code {
+    /*font-family: Georgia, serif;*/
+    font-size: 1.5em;
+}
+
 p {
-	line-height: 1.5em;
+    line-height: 1.5em;
 }
+
 pre {
-	background-color: oldlace;
-	max-width: 1000px;
-	overflow: auto;
+    background-color: oldlace;
+    max-width: 1000px;
+    overflow: auto;
 }
+
 .syntax {
-	background-color: transparent;
-	margin-top: 15px;
-	border-top: 1px solid #ddd;
-	font-family: Arial, sans-serif;
+    background-color: transparent;
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+}
+
+.question-form p {
+    display: flex;
+}
+
+.question {
+    margin: 3px;
+}
+
+.question p {
+    margin: 0;
+}
+
+.question-form p input {
+    padding: 8px;
+    display: inline-block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 3em;
+    height: 1em;
+    align-self: center;
 }
