@@ -71,13 +71,15 @@ pre {
     background-color: oldlace;
     max-width: 1000px;
     overflow: auto;
+    font-size: 1.5em;
 }
 
 .syntax {
     background-color: transparent;
     margin-top: 15px;
     border-top: 1px solid #ddd;
-    font-family: Arial, sans-serif;
+    font-family: monospace, Arial, sans-serif;
+    font-weight: bold;
 }
 
 .question-form p {
