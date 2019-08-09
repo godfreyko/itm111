@@ -5,7 +5,7 @@ body {
 }
 
 main {
-    max-width: 900px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -106,30 +106,34 @@ pre {
 
 .erd-data {
     display: grid;
-    grid-template-rows: 200px 200px 200px;
-    grid-template-columns: 40% 40%;
+    grid-template-rows: 400px 600px 400px;
+    grid-template-columns: 50% 50%;
     grid-gap: 25px;
-}
-
-.img-holder {
-    grid-row: 2, 3;
-    height: 200px;
+    font-size: 1.5em;
 }
 
 .erd-data image {
     max-height: 100%;
 }
 
+.img-holder {
+    grid-column: 2/3;
+    grid-row: 1/4;
+}
+
 #table-1 {
-    grid-row: 1, 2;
+    grid-column: 1/2;
+    grid-row: 1/2;
 }
 
 #table-2 {
-    grid-row: 1, 2;
+    grid-column: 1/2;
+    grid-row: 2/3;
 }
 
 #table-3 {
-    grid-row: 1, 2;
+    grid-column: 1/2;
+    grid-row: 3/4;
 }
 
 .multi-table {
