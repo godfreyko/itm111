@@ -29,16 +29,16 @@
         </p>
 
         <ol>
-            <li>History</li>
+            <li><h3>History</h3></li>
             <p>Here is where you will find out why they need the database system in the first place. What is the current system like or perhaps they may not even have a current digital system and they need one. How did they come up with their current system? What problems is that current system causing? What are its limitations? At this points it helpful to realize you need to be prepared with helpful questions you can ask to get the users to focus on the important aspects they need. Make sure to do a lot of listening so you can understand exactly what is needed. Keep your preconceived notions of what you think out of the discussion.
             </p>
-            <li>Scope</li>
+            <li><h3>Scope</h3></li>
             <p>Basically scope is a description of what needs to be done. It is a general statement of the requirements and expectations of the project. It does not go into detailed about how exactly this will be done but the overall description. This may also include general constraints such as time and budget constraints. What software and hardware will be needed and who will do the work?
             </p>
-            <li>Purpose</li>
+            <li><h3>Purpose</h3></li>
             <p>The objective element of the statement of work involves the purpose of the project; what it is intended to achieve? This does not include specifics about each of the elements of the database, but what the database is supposed to achieve. What outputs will be produced by the system? Remember, users know what they need to do a good job. You will listen to them, look at their current outputs, screen views, reports, forms etc. and get an idea of what information your database will need to produce. 
             </p>
-            <li>Timeline</li>
+            <li><h3>Timeline</h3></li>
             <p>So the statement of work can be the beginning point to see what will be going into the database design. We will not get into too many details of this process for this introductory course; many of the databases we use with come with assumptions that we have already been through this process. However, it is not something you want to skip in a real world situation. It is a mistake to think you know how to begin the design process before you have studied it out thoroughly with those who will be using the system.
             </p>
         </ol>
@@ -106,7 +106,7 @@
         <p>Each book is listed with the title, author, and publisher. For relational databases, one table in the database will represent one entity in the real world with each row being one instance of that entity and one column storing an attribute associated with that entity.</p>
 
         <ul>
-            <li><h2>Step 1 - Each table should be only one real-world entity.</h2></li>
+            <li><h3>Step 1 - Each table should be only one real-world entity.</h3></li>
             <p>Right now we have 3 different entities all in one table. We have books, authors and publishers. We can see that not only are authors repeating, but so are publishers. Remember we want to eliminate redundancy. </p>
 
             <p>The first two columns go with the real world entity of books. The next two columns go with the entity of author and the last two columns go with the entity of publisher. Now we can eliminate the redundancy and have Sue Smith only listed once and Acme Publishing only listed once.</p>
@@ -186,7 +186,7 @@
 
             <p>Differentiating between entities and attributes within those entities, can be tricky sometimes. For example maybe we find that we want to keep track of the author’s home address and their work address. Then all of the sudden those attributes of the author’s table would become a separate table called Author Address with a foreign key that relates to the author’s primary key. You will ultimately make these decisions based on what output is needed from the database. For now we will leave the entities as they are. </p>
 
-            <li><h2>Step 2 - Identify primary and foreign keys.</h2></li>
+            <li><h3>Step 2 - Identify primary and foreign keys.</h3></li>
 
             <p>The book entity already has a great natural key that uniquely identifies each book; the ISBN number. But there is a possibility of two different authors having the same name or even publishing companies having the same name, so we need a unique primary key for each of those tables. Here they have been assigned surrogate keys for the primary keys. Surrogate key are keys that the system is automatically assigning to each row to make them unique. </p>
 
@@ -407,7 +407,7 @@
             <br><br>
             <img class='narrowimg' src="images/author_erd.png" alt="photo of the erd for the author schema">
 
-            <li><h2>Step 3 - Make sure the data is normalized.</h2></li>
+            <li><h3>Step 3 - Make sure the data is normalized.</h3></li>
 
             <p>We will go over normalization next week.  But just breaking the data down into real-world entities is part of normalizing the data.</p>
         </ul>
