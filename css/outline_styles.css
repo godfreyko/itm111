@@ -160,3 +160,7 @@ pre {
 .multi-table td {
     border-bottom: 1px solid #ddd;
 }
+
+.narrowimg {
+    width: 40%;
+}
