@@ -163,4 +163,6 @@ pre {
 
 .narrowimg {
     width: 40%;
+    display: block;
+    margin: 0 auto;
 }
