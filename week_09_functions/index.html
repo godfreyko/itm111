@@ -347,49 +347,207 @@ FROM magazine
                 <th>CEILING(magPrice)</th>
             </tr>
             <tr>
+                <td>13.95</td>
+                <td>13</td>
                 <td>14</td>
-                <td>14.0</td>
             </tr>
             <tr>
+                <td>15.45</td>
                 <td>15</td>
-                <td>15.5</td>
+                <td>16</td>
             </tr>
             <tr>
+                <td>17.50</td>
+                <td>17</td>
                 <td>18</td>
-                <td>17.5</td>
             </tr>
             <tr>
+                <td>18.00</td>
                 <td>18</td>
-                <td>18.0</td>
+                <td>18</td>
             </tr>
             <tr>
+                <td>25.00</td>
                 <td>25</td>
-                <td>25.0</td>
+                <td>25</td>
             </tr>
+            
         </table>
 
 
         <p>
-            If we wanted to delete the van Gogh row from our table we would use this DELETE statement.
+            The number 13.95 has the next lower whole number of 13 and next larger whole number of 14.<br>
+The number 15.45 has the next lower whole number of 15 and the next larger whole number of 16.<br>
+The number 17.50 has the next lower whole number of 17 and the next larger whole number of 18.<br>
+The number 18.00 has the next lower whole number of 18 and the next larger whole number of 18.<br>
+The number 25.00 has the next lower whole number of 25 and the next larger whole number of 25.
+
         </p>
         <pre>
 
- DELETE FROM artist  
- WHERE lname = 'van Gogh';
+SELECT SQRT(magPrice)
+FROM magazine
+WHERE magKey = 5
+            </pre>
+
+        <table class='results'>
+            <tr>
+                <th>SQRT(magPrice)</th>
+            </tr>
+            <tr>
+                <th>5</th>
+            </tr>
+        </table>
+        <p> The square root of 25 is 5.
+        </p>
+        <p>
+            If you wanted to manipulate your magazine prices to look more like currency you can use the FORMAT function. The first parameter is the number, the second the decimal places and the third is the locale which determines the thousands separator. Ours will be ‘en_US’ to show US English formatting. 10,000 dollars will be added to each magazine price so we can see the commas placed at each thousands grouping. The CONCAT function will also be used to add the ‘$’ dollar sign to the number.    </p>
+
+<pre>
+
+SELECT CONCAT(‘$’, FORMAT(magPrice + 10000, 2, ‘en_US’)) 
+FROM magazine
 
             </pre>
 
-        <p>
-            Don’t forget to always use a WHERE clause with UPDATE and DELETE otherwise every row in the table will be UPDATED or DELETED. You might need to turn off the Safe Mode in Workbench by going to ‘Preferences’ – ‘SQL Editor’ and uncheck “Safe Updates’ near the bottom of the preferences there. Remember there is no undo button once you run a UPDATE or DELETE statement. 
-        </p>
-        <p>
-            The way we create our database this week, we will not need to use the CREATE command because Workbench does that for us in the forward engineering from our ERD to the database set up. We also should not need to use DROP to delete any of our tables or any of our databases. If we need to delete a table or database from Workbench because we made a mistake or want to start over you can run a DROP statement but be careful not to drop something you don’t mean to. You can also right click the table or database name from your schema list in Workbench and drop them that way.  Be very careful with the DROP command. There is no undo button.
-        </p>
+        <table class='results'>
+            <tr>
+                <th>CONCAT(‘$’, FORMAT(magPrice + 10000, 2, ‘en_US’))</th>
+            </tr>
+            <tr>
+                <th>$10,013.95</th>
+            </tr>
+            <tr>
+                <th>$10,015.45</th>
+            </tr>
+            <tr>
+                <th>$10,017.50</th>
+            </tr>
+            <tr>
+                <th>$10,018.00</th>
+            </tr>
+            <tr>
+                <th>$10,025.00</th>
+            </tr>
+        </table>
 
-        <h1>Referential Integrity and Foreign Key Constraints</h1>
+        <h2>Commonly used Date and Time Functions</h2>
+
+
+    <table>
+          <tr>
+            <th>Function</td>
+            <th>Description</td>
+          </tr>
+          <tr>
+            <td>YEAR(date)</td>
+            <td>Returns the year portion of a date</td>
+          </tr>
+          <tr>
+            <td>MONTH(date)</td>
+            <td>Returns the month portion of a date</td>
+          </tr>
+          <tr>
+            <td>DAY(date)</td>
+            <td>Returns the day portion of a date</td>
+          </tr>
+          <tr>
+            <td>HOUR(time)	</td>
+            <td>Returns the hour portion of a time</td>
+          </tr>
+          <tr>
+            <td>MINUTE(time)</td>
+            <td>Returns the minute portion of a time</td>
+          </tr>
+          <tr>
+            <td>SECOND(time)</td>
+            <td>Returns the second portion of a time</td>
+          </tr>
+          <tr>
+            <td>NOW()</td>
+            <td>Returns the current local time and date from your system</td>
+          </tr>
+          <tr>
+            <td>DATE_ADD(date, interval)</td>
+            <td>Adds a specified interval to a date</td>
+          </tr>
+          <tr>
+            <td>DATEDIFF(date, date)</td>
+            <td>Calculates the difference between two dates</td>
+          </tr>
+          <tr>
+            <td>DATE_FORMAT(date, format)</td>
+            <td>Returns a string for a date with specific formatting</td>
+          </tr>
+    </table>
+   
         <p>
-            Referential Integrity implies that relationships among data should be enforced. This will guarantee that relationships between rows in two tables will remain synchronized during all updates and deletes. When we create a database from our ERD diagram the foreign keys are by default mandatory (or they are already enforcing the relationships between tables. This is referred to as Foreign Key Constraints. This constraint enforces the referential integrity by guaranteeing that changes cannot be made to data in the primary key table if those changes invalidate the link to data in the foreign key table. 
+            Let’s use the employee table to demonstrate some of the date and time functions.
         </p>
+        <pre>
+
+ SELECT * FROM employee
+
+            </pre>
+        <table class='results'>
+            <tr>
+                <th>emp_id</th>
+                <th>emp_fname</th>
+                <th>emp_lname</th>
+                <th>hire_date</th>
+                <th>emp_email</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Jenny</td>
+                <td>Jensen</td>
+                <td>2013-06-15</td>
+                <td>jensenj@salon.com</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Haley</td>
+                <td>Lopez</td>
+                <td>2013-08-23</td>
+                <td>lopezh@salon.com</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Robert</td>
+                <td>Green</td>
+                <td>2014-01-03</td>
+                <td>greenr@salon.com</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Olive</td>
+                <td>Adams</td>
+                <td>2015-07-12</td>
+                <td>adamso@salon.com</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Julie</td>
+                <td>Davis</td>
+                <td>2015-10-20</td>
+                <td>davisj@salon.com</td>
+            </tr>
+     </table>
+
+    <pre>
+
+SELECT hire_date, YEAR(hire_date), MONTH(hire_date) 
+FROM employee
+
+
+            </pre>
+        <table class='results'>
+            <tr>
+                <th>hire_date</th>
+                <th>YEAR(hire_date)</th>
+                <th>MONTH(hire_date)</th>
+            </tr>
+        </table>
         <p>
             This is important to know because, as we enter data, edit and delete data in our tables, we cannot delete a row of data that has a foreign key associated with the primary key of that row in another table. We also cannot add a row to a table with a foreign key that does not already exist as a primary key of another table. 
         </p>
