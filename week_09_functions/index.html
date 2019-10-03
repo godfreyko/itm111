@@ -100,67 +100,275 @@
         <pre>
  SELECT * FROM key
          </pre>
-        
-        <img class='narrowimg' src="images/artist_definitions.png" alt="image of the artist table column definitions in Workbench">
-        <p>
-            Here we have a few columns have a null value as the default if nothing is entered for that column value. We also have a local column with the default value of ‘n’. That column tells us whether the artist is local or not. Most artists are not local, so the value of ‘n’ will be inserted into that column if no other value is placed there as data is entered for that row. Also notice that the artist_id is set up as auto-increment. 
-        </p>
-        <p>
-            We can insert data into this table in a few different ways.
-        </p>
-        <p>
-            We can use the keyword of DEFAULT instead of an actual integer for any auto-incremented field. And we can also use NULL to leave a data value null. Or DEFAULT to enter the default value amount.
-        </p>
+    
+    <table class='results'>
+            <tr>
+                <th>keyword_id</th>
+                <th>keyword</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sky</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>landscape</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>people</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>nature</td>
+            </tr>
+        </table>
+       
         <pre>
 
- INSERT INTO artist VALUES
- (DEFAULT, 'Vincent', NULL, 'van Gogh', '1853', NULL, 'France', DEFAULT);
-            </pre>
-        <p>
-            Since we already defined NULL in our column definitions for mname and dod, we could have also used DEFAULT for mname and dod instead of NULL.
-        </p>
-        <p>
-            Or this INSERT would do the same thing.
-        </p>
+ SELECT CONCAT(‘The primary key of  ‘, keyword, ‘ is ‘, keyword_id) AS new_string, 
+ FROM key
+ WHERE keyword_id = 1
 
+            </pre>
+    
+    <table class='results'>
+            <tr>
+                <th>new_string</th>
+            </tr>
+            <tr>
+                <td>The primary key of sky is 1</td>
+            </tr>
+     </table>
+        <p>
+           The result is made up of string literals inside quotes and column values all combined into one new string.   
+        </p>
+    
         <pre>
 
- INSERT INTO artist 
-    (fname, lname, dob, country)
- VALUES
-    ('Vincent', 'van Gogh', '1853', 'France');
+ SELECT  LEFT(keyword, 4), LENGTH(keyword), UPPER(keyword)
+ FROM key
+ WHERE keyword_id = 2
+
+
             </pre>
+    <table class='results'>
+            <tr>
+                <th>LEFT(keyword, 4)</th>
+                <th>LENGTH(keyword)</th>
+                <th>UPPER(keyword)</th>
+            </tr>
+            <tr>
+                <td>land</td>
+                <td>9</td>
+                <td>LANDSCAPE</td>
+            </tr>
+     </table>
         <p>
-            Because we have an auto-increment for artist_id it will be filled in automatically and mname, dod, and local will all just get the default values filled in automatically from the column definitions.
+            The first column takes the string ‘landscape’ and returns 4 characters from the left.<br>
+            The second column adds up all the characters in the string ‘landscape’<br>
+            The third column converts all the letters in the string ‘landscape’ to upper case.
+        </p>
+      <p>Index numbering of the characters in the string ‘landscape’</p>
+      <table>
+        <tr>
+            <td>l</td>
+            <td>a</td>
+            <td>n</td>
+            <td>d</td>
+            <td>s</td>
+            <td>c</td>
+            <td>a</td>
+            <td>p</td>
+            <td>e</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+      </table>
+        <pre>
+
+SELECT LOCATE( ‘and’, keyword), SUBSTRING(keyword, 1, 5), SUBSTRING(keyword, 7)
+FROM key
+WHERE keyword_id  = 2
+
+            </pre>
+    <table class='results'>
+            <tr>
+                <th>LOCATE(‘and’, keyword)</th>
+                <th>SUBSTRING(keyword, 1, 5)</th>
+                <th>SUBSTRING(keyword, 7)</th>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>lands</td>
+                <td>ape</td>
+            </tr>
+     </table>
+    
+    
+    
+        <p>
+            The first column searches for the substring ‘and’ inside of the string ‘landscape’ and returns the index number of where it was found. the 2nd character in is where the ‘a’ in ‘and’ starts.<br>
+            The second column starts at the first character and returns all character from there to the fifth character.<br>
+            The third column starts at the seventh character and returns the rest of the string from there.
         </p>
         <br><br>
+        <h2>Commonly used Numeric Functions</h2>
+    <table>
+          <tr>
+            <th>Function</td>
+            <th>Description</td>
+          </tr>
+          <tr>
+            <td>ROUND(number, length)</td>
+            <td>Returns the number rounded </td>
+          </tr>
+          <tr>
+            <td>FLOOR(number)</td>
+            <td>Returns the next smaller whole number</td>
+          </tr>
+          <tr>
+            <td>CEILING(number)</td>
+            <td>Returns the next larger whole number</td>
+          </tr>
+          <tr>
+            <td>ABS(number)</td>
+            <td>Returns the absolute value of the number</td>
+          </tr>
+          <tr>
+            <td>SQRT(number)</td>
+            <td>Returns the square root of the number</td>
+          </tr>
+          <tr>
+            <td>FORMAT(number, decimals, locale)</td>
+            <td>Returns the number is currency format</td>
+          </tr>
+    </table>
+   
         <p>
-            You can also enter data into your tables in the table view in Workbench without using the SQL INSERT command. When you apply the data you’ve entered, it will create an INSERT statement for you to run. When entering a string or string literal this way, you don’t have to put quotes around the string value.
+            Lets use the magazine table to demonstrate some of the numeric functions        
         </p>
 
-        <h1>UPDATE Statement</h1>
-        <h3>The UPDATE Statment Syntax:</h3>
-        <h3 class="syntax">UPDATE table_name <br>SET column_name = expresson <br>WHERE search_condition</h3>
-        <p>
-            To modify or edit your data that is already entered into a table you can use the UPDATE statement.
-        </p>
-        <p>
-            If we wanted to change Vincent’s first name to Vinny we would use this UPDATE statement.
-        </p>
         <pre>
 
- UPDATE artist 
- SET fname = 'Vinny' 
- WHERE artist_id = 2;
+ SELECT * FROM magazine
 
             </pre>
+        <table class='results'>
+            <tr>
+                <th>magKey</th>
+                <th>magName</th>
+                <th>magPrice</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Fishing in the Mojave</td>
+                <td>13.95</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Car Racing Made Easy</td>
+                <td>15.45</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Pine Cone Computing</td>
+                <td>17.50</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Cooking Like Mad</td>
+                <td>18.00</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>If Only I Could Sing</td>
+                <td>25.00</td>
+            </tr>
+     </table>
 
-        <h1>DELETE Statement</h1>
-        <h3>The DELETE Statment Syntax:</h3>
-        <h3 class="syntax">DELETE FROM table_name <br>WHERE search_condition</h3>
+     <pre>
+
+SELECT ROUND(magPrice), ROUND(magPrice, 1)
+FROM magazine
+
+
+            </pre>
+        <table class='results'>
+            <tr>
+                <th>ROUND(magPrice)</th>
+                <th>ROUND(magPrice,1)</th>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>14.0</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>15.5</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>17.5</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>18.0</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>25.0</td>
+            </tr>
+        </table>
         <p>
-            To delete a row of a table we can use a DELETE statement.
+            The first column rounds to the nearest whole number.<br>
+            The second column rounds to one decimal place.
         </p>
+
+         <pre>
+
+SELECT magPrice, FLOOR(magPrice), CEILING(magPrice)
+FROM magazine
+
+            </pre>
+        <table class='results'>
+            <tr>
+                <th>magPrice</th>
+                <th>FLOOR(magPrice)</th>
+                <th>CEILING(magPrice)</th>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>14.0</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>15.5</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>17.5</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>18.0</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>25.0</td>
+            </tr>
+        </table>
+
+
         <p>
             If we wanted to delete the van Gogh row from our table we would use this DELETE statement.
         </p>
