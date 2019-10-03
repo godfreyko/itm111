@@ -547,16 +547,78 @@ FROM employee
                 <th>YEAR(hire_date)</th>
                 <th>MONTH(hire_date)</th>
             </tr>
+            <tr>
+                <td>2013-06-15</td>
+                <td>2013</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>2013-08-23</td>
+                <td>2013</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>2014-01-03</td>
+                <td>2014</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2015-07-12</td>
+                <td>2015</td>
+                <td>7</td>
+            </tr><tr>
+                <td>2015-10-20</td>
+                <td>2015</td>
+                <td>10</td>
+            </tr>
         </table>
         <p>
-            This is important to know because, as we enter data, edit and delete data in our tables, we cannot delete a row of data that has a foreign key associated with the primary key of that row in another table. We also cannot add a row to a table with a foreign key that does not already exist as a primary key of another table. 
-        </p>
+            The YEAR function takes the hire date and extracts only the year and the MONTH function only extracts out the month from the date.      </p>
+
+    <pre>
+SELECT NOW()
+    </pre>
+        <table class='results'>
+            <th>
+                <th>NOW()</th>
+            </th>
+            <tr>
+                <td>2020-12-28 13:26:17</td>
+            </tr>
+        </table>
         <p>
-            So if an attempt is made to delete a row in a primary key table or to change a primary key value, the action will fail when the deleted or changed primary key value corresponds to a value in the foreign key of another table. To edit or delete a row in a foreign key, you must first either delete the foreign key data in the foreign key table or change the foreign key data in the foreign key table, which links the foreign key to the different primary key.
-
-
+            The NOW function returns the systems current date. When you run this function it will be the current date and time of your system.
         </p>
-
+    <pre>
+SELECT hire_date AS Hire Date, DATE_ADD(hire_date, INTERVAL 6 MONTH) AS Six Months Later
+FROM employee
+    </pre>
+        <table class='results'>
+            <th>
+                <th>Hire Date</th>
+                <th>Six Months Later</th>
+            </th>
+            <tr>
+                <td>2013-06-15</td>
+                <td>2013-12-15</td>
+            </tr>
+            <tr>
+                <td>2013-08-23</td>
+                <td>2014-02-23</td>
+            </tr>
+            <tr>
+                <td>2014-01-03</td>
+                <td>2014-17-03</td>
+            </tr>
+            <tr>
+                <td>2015-07-12</td>
+                <td>2016-01-12</td>
+            </tr>
+            <tr>
+                <td>2015-10-20</td>
+                <td>2016-04-20</td>
+            </tr>
+        </table>
         
     </main>
 </body>
