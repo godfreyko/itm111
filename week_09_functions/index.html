@@ -619,7 +619,130 @@ FROM employee
                 <td>2016-04-20</td>
             </tr>
         </table>
-        
+        <pre>
+SELECT DATEDIFF(hire_date, 2013-01-01) AS ‘Days Between’
+FROM employee
+        </pre>
+        <table class='results'>
+            <th>
+                <th>Days Between</th>
+            </th>
+            <tr>
+                <td>165</td>
+            </tr>
+            <tr>
+                <td>234</td>
+            </tr>
+            <tr>
+                <td>367</td>
+            </tr>
+           <tr>
+                <td>922</td>
+            </tr>
+            <tr>
+                <td>1022</td>
+            </tr>
+        </table>
+        <p>
+            This gives the difference in days between January 1st 2013 and the hire date. If you want years, you would need to divide it by 365.      
+        </p>
+        <pre>
+SELECT DATEDIFF(hire_date, 2013-01-01) / 365 AS ‘Years Between’
+FROM employee
+        </pre>
+        <table class='results'>
+            <th>
+                <th>Years Between</th>
+            </th>
+            <tr>
+                <td>0.4521</td>
+            </tr>
+            <tr>
+                <td>0.641</td>
+            </tr>
+            <tr>
+                <td>1.0055</td>
+            </tr>
+           <tr>
+                <td>2.5260</td>
+            </tr>
+            <tr>
+                <td>2.8000</td>
+            </tr>
+        </table>
+        <p>
+            The DATE FORMAT function allows you to format the date so it isn’t always in the format of  yyyy-mm-dd.   
+        </p>
+        <pre>
+SELECT hire_date, DATE_FORMAT(hire_date, ‘%M %D, %Y’) AS ‘hire date formatted’
+FROM employee
+    </pre>
+        <table class='results'>
+            <th>
+                <th>hire_date</th>
+                <th>hire date formatted</th>
+            </th>
+            <tr>
+                <td>2013-06-15</td>
+                <td>June 15th, 2013</td>
+            </tr>
+            <tr>
+                <td>2013-08-23</td>
+                <td>August 23rd, 2013</td>
+            </tr>
+            <tr>
+                <td>2014-01-03</td>
+                <td>January 3rd, 2014</td>
+            </tr>
+            <tr>
+                <td>2015-07-12</td>
+                <td>July 12th, 2015</td>
+            </tr>
+            <tr>
+                <td>2015-10-20</td>
+                <td>October 20th, 2015</td>
+            </tr>
+        </table>
+        <p>
+            The second parameter is a format string that includes codes for formatting the different parts of the date. Here are a few of the comment codes for formatting dates:  
+        </p>
+        <table>
+            <tr>
+                <th>Format Code</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>%c</td>
+                <td>Month, numeric</td>
+            </tr>
+            <tr>
+                <td>%M</td>
+                <td>Month name</td>
+            </tr>
+            <tr>
+                <td>%e</td>
+                <td>Day of the month, numeric</td>
+            </tr>
+            <tr>
+                <td>%D</td>
+                <td>Day of the month with suffix</td>
+            </tr>
+            <tr>
+                <td>%y</td>
+                <td>Year, 2 digits</td>
+            </tr>
+            <tr>
+                <td>%Y</td>
+                <td>Year, 4 digits</td>
+            </tr><tr>
+                <td>%W</td>
+                <td>Weekday name</td>
+            </tr>
+        </table>
+        <p> There are also format codes for formatting times with the function TIME_FORMAT. But we won’t be using any of those in this course.
+        </p>
+        <p> There are many more functions than we have not covered here, but for the depth of this course, these are the text, numeric, and date & time functions we will be focusing on.
+        </p>
     </main>
 </body>
 
