@@ -579,9 +579,9 @@ FROM employee
 SELECT NOW()
     </pre>
         <table class='results'>
-            <th>
+            <tr>
                 <th>NOW()</th>
-            </th>
+            </tr>
             <tr>
                 <td>2020-12-28 13:26:17</td>
             </tr>
@@ -594,10 +594,10 @@ SELECT hire_date AS Hire Date, DATE_ADD(hire_date, INTERVAL 6 MONTH) AS Six Mont
 FROM employee
     </pre>
         <table class='results'>
-            <th>
+            <tr>
                 <th>Hire Date</th>
                 <th>Six Months Later</th>
-            </th>
+            </tr>
             <tr>
                 <td>2013-06-15</td>
                 <td>2013-12-15</td>
@@ -624,9 +624,9 @@ SELECT DATEDIFF(hire_date, 2013-01-01) AS ‘Days Between’
 FROM employee
         </pre>
         <table class='results'>
-            <th>
+            <tr>
                 <th>Days Between</th>
-            </th>
+            </tr>
             <tr>
                 <td>165</td>
             </tr>
@@ -651,9 +651,9 @@ SELECT DATEDIFF(hire_date, 2013-01-01) / 365 AS ‘Years Between’
 FROM employee
         </pre>
         <table class='results'>
-            <th>
+            <tr>
                 <th>Years Between</th>
-            </th>
+            </tr>
             <tr>
                 <td>0.4521</td>
             </tr>
@@ -678,10 +678,10 @@ SELECT hire_date, DATE_FORMAT(hire_date, ‘%M %D, %Y’) AS ‘hire date format
 FROM employee
     </pre>
         <table class='results'>
-            <th>
+            <tr>
                 <th>hire_date</th>
                 <th>hire date formatted</th>
-            </th>
+            </tr>
             <tr>
                 <td>2013-06-15</td>
                 <td>June 15th, 2013</td>
