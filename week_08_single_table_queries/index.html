@@ -15,23 +15,23 @@
         
         <table>
             <tr>
-                <th>SELECT</th> 
-                <th>Describes the columns in the result set</th>
+                <td>SELECT</td> 
+                <td>Describes the columns in the result set</td>
             </tr>
             <tr>
-                <th>FROM</th>
-                <th>The table you are getting the data from</th>
+                <td>FROM</td>
+                <td>The table you are getting the data from</td>
             </tr>
-                <th>WHERE</th> 
-                <th>Filters the rows, only those that match the condition </th>
-            </tr>
-            <tr>
-                <th>ORDER BY</th>
-                <th>How to sort the rows</th>
+                <td>WHERE</td> 
+                <td>Filters the rows, only those that match the condition </td>
             </tr>
             <tr>
-                <th>LIMIT</th>
-                <th>The number of rows to return</th>
+                <td>ORDER BY</td>
+                <td>How to sort the rows</td>
+            </tr>
+            <tr>
+                <td>LIMIT</td>
+                <td>The number of rows to return</td>
             </tr>
         </table>
         <h2>SELECT and FROM Statements</h2>
@@ -46,7 +46,7 @@
 
         <h2>There are 4 ways to code the select list in the SELECT statement.</h2>
 
-        <h2>1. All columns with an asterisk</h2>
+        <h3>1. All columns with an asterisk</h3>
         <pre>
  SELECT * 
  FROM products
@@ -116,7 +116,7 @@
         <p>The wildcard asterisk (*) is a fast way to list all the columns of the table during development but should be avoided when writing queries for production. Retrieving unnecessary columns slows down performance. It’s better to list only the columns
             you need for a given query.</p>
 
-        <h2>2. By column name (each column separated with a comma)</h2>
+        <h3>2. By column name (each column separated with a comma)</h3>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -163,7 +163,7 @@
                 <td> 1.99</td>
             </tr>
         </table>
-        <h2>3. Columns created with calculations</h2>
+        <h3>3. Columns created with calculations</h3>
         <pre>
  SELECT prod_name, prod_price + 2.00 
  FROM products
@@ -268,7 +268,7 @@
 </pre>
         <p>If more than one arithmetic operator is used they follow the order of precedence as they are listed in the table above.</p>
 
-        <h2>4. Columns created with functions</h2>
+        <h3>4. Columns created with functions</h3>
         <pre>
  SELECT prod_name, ROUND(prod_price) AS nearest_dollar
  FROM products 
