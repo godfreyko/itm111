@@ -492,6 +492,7 @@
         </table>
 
         <p>You can also use multiple conditions with logical operators. Use AND and OR to combine two or more search condition and NOT to negate a search condition.</p>
+        <p>If you have multiple conditions (or a compound condition), there is an order of precedence. First the NOT runs, then the AND, and then the OR. Use parenthesis to override this order of precedence.</p>
         <pre>
  AND    Both conditions have to be true for it to show up in the result set
  OR     One of the conditions has to be true for it to show up in the result set
@@ -790,6 +791,7 @@
 </pre>
 
         <p>The IS NULL or IS NOT NULL will find all nulls or all that are not null as well. We only had one null in our table; the product category of the jump rope row.</p>
+        <p>Because NULLs are not values (they is no value), it is not possible to use comparison operators (=, < or >) with NULL.
         <table class='results'>
             <tr>
                 <td>prod_id </td>
