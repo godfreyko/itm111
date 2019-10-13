@@ -106,7 +106,6 @@ pre {
 
 .erd-data {
     display: grid;
-    
     grid-template-columns: 50% 30%;
     grid-gap: 25px;
     font-size: 1.5em;
@@ -114,6 +113,8 @@ pre {
 
 .erd-data image {
     max-height: 100%;
+    width: 50%;
+    padding-left: 30px;
 }
 
 .img-holder {
