@@ -111,15 +111,11 @@ pre {
     font-size: 1.5em;
 }
 
-.erd-data image {
-    max-height: 100%;
-    width: 50%;
-    padding-left: 30px;
-}
-
 .img-holder {
     grid-column: 2/3;
     grid-row: 1/4;
+    width: 50%;
+    padding-left: 30px;
 }
 
 #table-1 {
