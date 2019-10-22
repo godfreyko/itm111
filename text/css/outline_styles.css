@@ -81,7 +81,7 @@ main {
 #text {
    margin-left: 360px; /* Same width as the sidebar + left position in px */
   font-size: 12px; /* Increased text to enable scrolling */
-  padding: 0px 60px;
+  padding: 0px 60px 0px 40px;
 }
 h1 {
     font-family: 'ralewaysemibold', Helvetica, sans-serif;
