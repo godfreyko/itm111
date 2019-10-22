@@ -80,7 +80,7 @@ main {
 
 #text {
    margin-left: 340px; /* Same width as the sidebar + left position in px */
-  font-size: 14px; /* Increased text to enable scrolling */
+  font-size: 12px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
 h1 {
