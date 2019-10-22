@@ -251,7 +251,7 @@ pre {
 @media only screen and (max-width: 800px) {
     
     #text {
-    margin-left: 50px; /* Same width as the sidebar + left position in px */
+    margin-left: 40px; /* Same width as the sidebar + left position in px */
   font-size: 12px; /* Increased text to enable scrolling */
   padding: 0px 10px;
     }
