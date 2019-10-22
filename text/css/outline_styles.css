@@ -21,10 +21,10 @@ main {
 
 }
 .nav {
-    width: 250px;
+    width: 220px;
     z-index: 1;
     border: 2px solid black;
-    margin: 20px 100px 20px 40px;
+    margin: 20px 100px 20px 100px;
     position: fixed;
     top: 20px;
     left: 10px;
@@ -44,7 +44,7 @@ main {
   border: none;
   outline: none;
   transition: 0.4s;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
@@ -79,19 +79,19 @@ main {
 }
 
 #text {
-   margin-left: 340px; /* Same width as the sidebar + left position in px */
+   margin-left: 360px; /* Same width as the sidebar + left position in px */
   font-size: 12px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  padding: 0px 60px;
 }
 h1 {
     font-family: 'ralewaysemibold', Helvetica, sans-serif;
-    font-size: 2.5em;
+    font-size: 2.25em;
     margin-top: 10px;
 }
 
 h2 {
     font-family: 'ralewaysemibold', Helvetica, sans-serif;
-    font-size: 2em;
+    font-size: 1.75em;
     margin-top: 35px;
 }
 
@@ -135,7 +135,7 @@ table+h3 {
 p,
 code {
     font-family: Georgia, serif;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 p {
@@ -146,7 +146,7 @@ pre {
     background-color: #F5F5F5;
     max-width: 1000px;
     overflow: auto;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .syntax {
@@ -248,7 +248,7 @@ pre {
     
     #text {
     margin-left: 50px; /* Same width as the sidebar + left position in px */
-  font-size: 14px; /* Increased text to enable scrolling */
+  font-size: 12px; /* Increased text to enable scrolling */
   padding: 0px 10px;
     }
     .nav {
