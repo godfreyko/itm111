@@ -9,7 +9,7 @@
 }
 
 body {
-    padding: 15px;
+    
     background-color: #FFFFFF;
 
 }
@@ -38,7 +38,7 @@ main {
   background-color: #F5F5F5;
   color: #444;
   cursor: pointer;
-  padding: 10px;
+  padding: 5px;
   width: 100%;
   text-align: left;
   border: none;
@@ -74,12 +74,15 @@ main {
   float: right;
   margin-left: 5px;
 }
+.accordian p {
+    line-height: 1em;
+}
 .active:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
 #text {
-   margin-left: 360px; /* Same width as the sidebar + left position in px */
+  margin-left: 360px; /* Same width as the sidebar + left position in px */
   font-size: 12px; /* Increased text to enable scrolling */
   padding: 0px 60px 0px 40px;
 }
@@ -138,7 +141,7 @@ code {
     font-size: 1em;
 }
 
-p {
+#text p {
     line-height: 1.2em;
 }
 
