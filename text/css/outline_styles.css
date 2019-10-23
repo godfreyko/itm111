@@ -75,7 +75,7 @@ main {
   margin-left: 5px;
 }
 .accordian p {
-    line-height: 1em;
+    line-height: 1.1em;
 }
 .active:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
