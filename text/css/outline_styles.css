@@ -21,10 +21,10 @@ main {
 
 }
 .nav {
-    width: 220px;
+    width: 200px;
     z-index: 1;
     border: 2px solid black;
-    margin: 20px 100px 20px 100px;
+    margin: 20px 120px 20px 100px;
     position: fixed;
     top: 20px;
     left: 5px;
@@ -44,7 +44,7 @@ main {
   border: none;
   outline: none;
   transition: 0.4s;
-  font-size: 1em;
+  font-size: .9em;
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
@@ -52,7 +52,7 @@ main {
 }
 /* Style the accordion panel. Note: hidden by default */
 .panel {
-  padding: 0 18px;
+  padding: 0 15px;
   background-color: white;
   max-height: 0;
   overflow: hidden;
