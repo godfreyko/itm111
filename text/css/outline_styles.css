@@ -148,6 +148,9 @@ code {
 #text p {
     font-size: 1.2em;
 }
+#text img {
+    width: 100%;
+}
 
 pre {
     background-color: #F5F5F5;
