@@ -80,6 +80,10 @@ code {
     font-size: 1em;
 }
 
+footer p {
+    font-size: .6em;
+}
+
 #text p {
     line-height: 1.2em;
 }
