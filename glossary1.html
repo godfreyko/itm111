@@ -1,116 +1,163 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Verdana, sans-serif;
-  font-size: 14px;
-}
-
-h1, h3 {
-  padding: 15px, 15px, 0, 15px;
-  text-align: center;
-}
-
-h3 {
-  font-family: Georgia, serif;
-}
-.flip-card {
-  background-color: white;
-  width: 270px;
-  height: 330px;
-  margin: 0 auto;
-}
-
-.flip-card-inner {
-  border-radius: 25px;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 5px 9px 0 rgba(0,0,0,0.3);
-}
-
-/*.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}*/
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  backface-visibility: hidden;
-}
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
- 
-
-}
-
-.flip-card-back {
-  background-color: #2980b9;
-  color: white;
- 
-  transform: rotateY(180deg);
- 
-}
-</style>
-  <title>Week 1 - Glossary</title>
-</head>
-<body>
-
-<h3>Click the Card to see the Definition</h3>
-
-<div class="flip-card">
-  <div class="flip-card-inner" id="click">
-    <div class="flip-card-front">
-          <h1>
-          Entity
-          </h1>
-    </div>
-    <div class="flip-card-back" id="flipback">
-      <h1>
-            Entity
-          </h1>
-          <h3>
-            Any object (people, place, thing) that we want to model and store information about.
-          </h3>
-    </div>
-  </div>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cards</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   
-<div class="flip-card">
-  <div class="flip-card-inner" id="click">
-    <div class="flip-card-front">
-          <h1>
-          Attribute
-          </h1>
-    </div>
-    <div class="flip-card-back" id="flipback">
-      <h1>
-            Attribute
-          </h1>
-          <h3>
-            Describes the facts, details or characteristics of an entity 
-          </h3>
-    </div>
+<style>
+
+body {
+  background-color:#161718;
+}
+.container {
+  height:320px;
+  width:600px;
+  margin:0 auto;
+  position:absolute;
+  top:0;bottom:0;left:0;right:0; 
+
+}
+
+.flip-container {
+  perspective: 1000;
+  cursor:pointer;
+  margin: 25px auto;
+}
+
+  .flippable {
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  
+
+
+.flip-container, .front, .back {
+  width: 300px;
+  height: 300px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 40px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.back{
+  padding-top: 10px;
+}
+.front {
+  z-index: 2;
+  color: white;
+}
+  
+  span{
+    font-size:30px;
+    position:absolute;
+    top: 30px;
+    left:30px;
+    font-family:verdana;
+  }
+
+
+.back {
+  transform: rotateY(180deg);
+  font-size: 25px;
+  border:1px solid;
+  font-family: Verdana;
+  color: white;
+}
+
+
+  .front{
+    background-color:#1189d1;
+  }
+  .back{
+    background-color:#1189d1;
+    border-color:#1189d1);
+  }
+
+
+</style>
+<body>
+<div class="container">
+      
+  <div class="flip-container">
+      <div class="flippable">
+        <div class="front">
+          <span>Entity</span>
+        </div>
+        <div class="back">
+          Entity: <br><br>
+          Any object (people, place, thing) that we want to model and store information about.
+        </div>
+      </div>
+  </div>
+  
+  <div class="flip-container">
+      <div class="flippable">
+        <div class="front">
+          <span>Attribute </span>
+        </div>
+        <div class="back">
+          Attribute: <br><br>
+          Describes the facts, details or characteristics of an entity 
+        </div>
+      </div>
+  </div>
+      
+  <div class="flip-container">
+      <div class="flippable">
+        <div class="front">
+          <span>Data</span>
+        </div>
+        <div class="back">
+          Data: <br><br>
+          The bits and pieces, like numbers, characters or symbols with no context or meaning
+        </div>
+      </div>
+  </div>
+  
+  <div class="flip-container">
+      <div class="flippable">
+        <div class="front">
+          <span>Information</span>
+        </div>
+        <div class="back">
+          Information: <br><br>
+          A set of data in context with relevance. At a certain place in time, or for a certain person the data makes sense.
+        </div>
+      </div>
+  </div>
+    
+  <div class="flip-container">
+      <div class="flippable">
+        <div class="front">
+          <span>Knowledge</span>
+        </div>
+        <div class="back">
+          Knowledge: <br><br>
+          Information that has been acquired and gives understanding about the importance of the information. Used to make decisions.
+        </div>
+      </div>
   </div>
 </div>
-  <script>
-    var card = document.getElementById('click');
-    card.addEventListener('click', flip, false);
 
-    
-    function flip() {
-     card.style.transform = "rotateY(180deg)";
-    }
-   
-    
-   
-  </script>
+<script>
+  $(".flippable").click(function(){
+  $(this).toggleClass("flipme");
+});
+</script>
 </body>
 </html>
