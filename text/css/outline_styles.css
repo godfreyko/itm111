@@ -21,6 +21,7 @@ main {
   width: 75%;
   font-size: 14px; /* Increased text to enable scrolling */
   padding: 0px 60px 0px 60px;
+  border: 2px solid black;
 }
 
 h1 {
