@@ -324,6 +324,96 @@
             The data from the entire table(s) is retrieved, then that is filtered by the WHERE criteria. Then that resulting data is grouped and filtered by the HAVING criteria. The columns, calculations or functions that will show up are determined in SELECT. Then
             that resulting data is sorted and then limited.
         </p>
+	<h3>Grouping within a group</h3>
+	<p>With a single grouping we could find out how much of each product we have in all our stores</p>
+	<pre>
+ SELECT product_name, COUNT(product_name)
+ FROM store s 
+   JOIN stock st
+ 	ON s.store_id = st.store_id
+   JOIN product p
+	ON st.product_id = p.product_id
+ GROUP BY product_name;
+	</pre>
+	
+	<table class="results">
+            <tr>
+                <th>product_name</th>
+                <th>COUNT(product_name)</th>
+            </tr>
+            <tr>
+                <td>Trek 820 - 2016</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Ritchey Timberwolf Frameset - 2016</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Surly Wednesday Frameset - 2016</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Trek Fuel EX 8 29 - 2016</td>
+                <td>3</td>
+	    </tr>
+	    <tr>. . .</tr>
+        </table>  
+	<p>To see how many of each products we have in each of our stores we'd have to group on two categories; the store and the products.</p>
+	
+	<pre>
+  SELECT s.store_id, product_name, COUNT(product_name)
+  FROM store s 
+     JOIN stock st
+	ON s.store_id = st.store_id
+     JOIN product p
+	ON st.product_id = p.product_id
+  GROUP BY product_name, store_id;
+	</pre>
+	<table class="results">
+            <tr>
+		<th>store_id</th>
+		<th>product_name</th>
+                <th>COUNT(product_name)</th>
+            </tr>
+            <tr>
+		<td>1</td>
+		<td>Trek 820 - 2016</td>
+                <td>1</td>
+            </tr>
+            <tr>
+		<td>2</td>
+                <td>Trek 820 - 2016</td>
+                <td>1</td>
+            </tr>
+            <tr>
+		<td>3</td>
+                <td>Trek 820 - 2016</td>
+                <td>1</td>
+            </tr>
+            <tr>
+		<td>1</td>
+                <td>Ritchey Timberwolf Frameset - 2016</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Ritchey Timberwolf Frameset - 2016</td>
+                <td>1</td>
+            </tr>
+            <tr>
+		<td>1</td>
+                <td>Surly Wednesday Frameset - 2016</td>
+                <td>1</td>
+            </tr>
+ 	    <tr>
+		<td>3</td>
+                <td>Surly Wednesday Frameset - 2016</td>
+                <td>2</td>
+            </tr>
+		<tr>. . .</tr>
+        </table>  
+	<p>Also notice, how the store_id in the SELECT field list had to be qualified. That's because store_id is in two different tables and it needs to know which table you are using with it. It wouldn't have mattered is I used s. or st. to qualify it in this case. This makes sense when you think of the order or execution and the aliases were set up before the SELECT so those same aliases need to be used in the select as well. I could not have used store.store_id in the SELECT list. I have to use the alias if I set one up</p>
       </div>
     </main>
     <script type="text/javascript" src="scripts/script.js">
