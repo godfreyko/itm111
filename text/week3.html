@@ -27,6 +27,9 @@
         <p>
             The hierarchical database organizes data in a tree-like structure with parents and child nodes. Each child node will only have one parent node, parents can have many child nodes. When data needs to be retrieved the whole tree is searched. This model was widely used during the mainframe era in the 60s. It can still be used for storing file systems and geographic information. It allows for high performance needs but its structure is very rigid.
         </p>
+        <br>
+        <img src="images/hierarchical_model.png" alt="hierarchical model diagram">
+        <br>
         <p>
             The network model is an extension of the hierarchical database model. With the network model, child nodes can have more than one parent. This allowed more flexibility. This was widely used before the relational model was introduced. It was difficult to implement and maintain.
         </p>
@@ -56,9 +59,7 @@
                 <li>Dynamo – Amazon proprietary database, allows documents and graphs as data</li>
                 <li>CouchDB – open source, high concurrency with strict consistency, uses JSON to store data and JavaScript as its query language</li>
             </ul>
-        <br>
-        <img src="images/laptop.jpg" alt="laptop with information and graphs on screen">
-        <br>
+        
         <h2>Datatypes</h2>
         <p>
             The type of data that can be stored in relational databases is defined ahead of time. This is referred to as datatypes. Datatypes are the rules that define what data may be stored and how it is stored. We bring up the topic here because it’s important to figure out the correct datatype during the design process. Having to make changes to a datatype later after the database is developed can result in data loss. Datatypes also allow for more efficient storage and enables restrictions on data that can be entered into our database; therefore keeping our data consistent and accurate. The follow are some of the common relational datatypes we will be using in our course.
