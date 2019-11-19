@@ -14,35 +14,13 @@
         <h2>What is the purpose of good design?</h2>
 
         <p>With database design we are trying to organize the data in such a way that redundancy is minimized without losing any data. Redundancy is when we repeat the same data more than once. For example, each time a student registers for a class their name and address might be repeated for each class in which they are registered. Another way you might have repeating data is if you have a list of those same students and their addresses in a separate file listing parking passes or ticket violations. Say the student’s address changes, then changing the address would mean editing in different locations; not only in multiple places in registration, but also in a different file at the parking office. There is a greater chance of making a data entry mistake when you must edit in multiple places. It takes more time and resources as well. Having multiple copies of information also increases the chances for unauthorized access to data that should be secure. </p>
-
-        <p>So for relational database design, reducing redundancy means splitting the data up into separate entities or tables to minimize redundancy. But it is not always clear how to do this, especially with large ‘real-life’ databases. Database design can be complex. You may not be the person who will design the database, usually this is the database administrator, but knowing the proper way to design a database will help you understand the structure of the database you work with.</p>
+        <p>Good design also means our data should be accurate and reliable. Setting up constraints on our data is a good way to ensure it has integrity and is consistent. We learned learned about what data integrity and data consistency were earlier and now we will see this in action as we design our database.</p>
+        <p>For relational database design, reducing redundancy means splitting the data up into separate entities or tables to minimize redundancy. But it is not always clear how to do this, especially with large ‘real-life’ databases. Database design can be complex. You may not be the person who will design the database, usually this is the database administrator, but knowing the proper way to design a database will help you understand the structure of the database you work with.</p>
 
         <h2>The Statement of Work</h2>
 
-        <p>It is wise to start with determining what output is needed and work backwards from there to determine what data is even going to be used in the database. You will take a look at those who will use the database system and what output they need from the system to do their jobs well. These users may not know anything about database design, but they do know exactly what they need to do their job. As you analyze the needs of the business you can determine what is needed for the database. This may require a lengthy time period to accomplish. 
+        <p>It is wise to start with determining what output is needed and work backwards from there to determine what data is even going to be used in the database. As you analyze the needs of the business you can determine what is needed for the database. This may require a lengthy time period to accomplish. Remember is process can begin with the Statement of Work that was covered earlier. It is a document that describes the work that needs to be done on a project. It can help clarify the project for both the users and the database designer. 
         </p>
-
-        <p>A starting point would be to create something like a ‘Statement of Work” which is a document that describes the work that needs to be done on a project. It can help clarify the project for both the users and the database designer. 
-        </p>
-
-        <p>There are a number of different elements that can go into creating a Statement of Work. We will cover 4 basic elements of the statement of work. 
-        </p>
-
-        <ol>
-            <li><h3>History</h3></li>
-            <p>Here is where you will find out why they need the database system in the first place. What is the current system like or perhaps they may not even have a current digital system and they need one. How did they come up with their current system? What problems is that current system causing? What are its limitations? At this points it helpful to realize you need to be prepared with helpful questions you can ask to get the users to focus on the important aspects they need. Make sure to do a lot of listening so you can understand exactly what is needed. Keep your preconceived notions of what you think out of the discussion.
-            </p>
-            <li><h3>Scope</h3></li>
-            <p>Basically scope is a description of what needs to be done. It is a general statement of the requirements and expectations of the project. It does not go into detailed about how exactly this will be done but the overall description. This may also include general constraints such as time and budget constraints. What software and hardware will be needed and who will do the work?
-            </p>
-            <li><h3>Purpose</h3></li>
-            <p>The objective element of the statement of work involves the purpose of the project; what it is intended to achieve? This does not include specifics about each of the elements of the database, but what the database is supposed to achieve. What outputs will be produced by the system? Remember, users know what they need to do a good job. You will listen to them, look at their current outputs, screen views, reports, forms etc. and get an idea of what information your database will need to produce. 
-            </p>
-            <li><h3>Timeline</h3></li>
-            <p>The timeline will look at breaking the project into discrete tasks. Each task will have an estimated time frame and what will be done during that time frame.</p>
-        </ol>
-        <p>So the statement of work can be the beginning point to see what will be going into the database design. We will not get into too many details of this process for this introductory course; many of the databases we use with come with assumptions that we have already been through this process. However, it is not something you want to skip in a real world situation. It is a mistake to think you know how to begin the design process before you have studied it out thoroughly with those who will be using the system.
-            </p>
 
         <h2>Basic Steps for Proper Design</h2>
 
