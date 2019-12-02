@@ -48,7 +48,9 @@ h3 {
 table+h3 {
     margin-top: 20px;
 }
-
+.syntax {
+    background-color: #f5f5f5;
+}
 .results {
     background-color: #F5F5F5;
     margin-left: 75px;
