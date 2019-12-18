@@ -147,7 +147,7 @@
             This is important to know because, as we enter data, edit and delete data in our tables, we cannot delete a row of data that has a foreign key associated with the primary key of that row in another table. We also cannot add a row to a table with a foreign key that does not already exist as a primary key of another table. 
         </p>
         <p>
-            So if an attempt is made to delete a row in a primary key table or to change a primary key value, the action will fail when the deleted or changed primary key value corresponds to a value in the foreign key of another table. To edit or delete a row in a foreign key, you must first either delete the foreign key data in the foreign key table or change the foreign key data in the foreign key table, which links the foreign key to the different primary key.
+            So if an attempt is made to delete a row in a primary key table or to change a primary key value, the action will fail when the deleted or changed primary key value corresponds to a foreign key value of another table. All links to that primary key would have to be deleted first before you could delete or change that primary key. Also if an attempt is made to enter a row into a table that uses a foreign key that doesn't exist as a primary key in another table, the action will fail.
 
 
         </p>
