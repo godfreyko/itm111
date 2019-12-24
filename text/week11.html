@@ -21,8 +21,8 @@
      (SELECT brand_id
       FROM brand
       WHERE brand_name = "Haro"),
-     (SELECT category_id</p>
-      FROM category</p>
+     (SELECT category_id
+      FROM category
       WHERE category_name = "Mountain Bikes"));
         </pre>
         <p>The two subquerys are run first returning the values 2 for brand_id of Haro and the value 6 for the category_id of Montain Bikes. Then with those two values the INSERT runs and a new bike is placed in the product table with the proper brand_id and category_id foreign keys entered.</p>
@@ -77,7 +77,6 @@
         </pre>
           </main>
     <footer>
-        <p>source: https://bus206.pressbooks.com/chapter/chapter-4-data-and-databases/</p>
         <hr>
         <p>CIT 111 - Introduction to Databases - BYUI - andersonju</p>
     </footer>
