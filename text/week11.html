@@ -45,7 +45,6 @@
         <p>The subquery runs returning all quantities added up of the product with product_id of 20 from all the order items. Then the main query runs using that result as it&rsquo;s 3<sup>rd</sup> column of the result set. It returns one row with the product name, the price and then the total quantity of how many of the product have been sold.</p>
         <h2>INDEX</h2>
         <p>An index provides a way to retrieve data more quickly from a table based on values in specific columns. The database management system can go directly to a specific row with an index rather than having to go row by row until it is found without an index. Indexes do use extra resources and time when updating or deleting rows with indexes, so don&rsquo;t create an index for a column unless you know you will be searching on that column often. Indexes are automatically created for primary keys and unique keys.</p>
-        <p>&nbsp;</p>
         <h3>To create an index:</h3>
         <h3 class="syntax">
  CREATE INDEX index_name
