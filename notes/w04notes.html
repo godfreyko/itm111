@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>W03 Teaching Notes</title>
+    <title>W04 Teaching Notes</title>
     <link rel="stylesheet" type="text/css" href="notes.css">
   </head>
   <body>
@@ -19,8 +19,8 @@
 <div class="beforeTheWeekBegins">
 <h2>Before the Week Begins</h2>
 <ul>
-<li>Students will go over preparation materials and complete the preparation check before class on Monday.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W01 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
+<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
+<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W04 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
 </ul>
 </div>
 <div class="duringTheWeek">
@@ -37,7 +37,7 @@
 <li style="list-style-type: none;">
 <ul>
 <li>Take the ERD you showed last week with their gathered data and now show them the tables. Explain again the tables and relationships involved. Explain that this is what makes a relational database relational. Talk about primary and foreign keys that were used. Show the design view of a table and also go over Not Null, Default values and Auto-increment and what they mean. Look at the data in each table and understand how primary keys won't repeat, but foreign keys might with a many relationship.</li>
-<li>Remind students of the quiz on Wednesday, each Wednesday there will be a quiz.&nbsp;</li>
+<li>Remind students of the quiz the second class of the week.&nbsp;</li>
 </ul>
 </li>
 <li>Mid-week
@@ -54,6 +54,44 @@
 </ul>
 </li>
 </ul>
+<pre>
+-- Top app genre
+SELECT app_genre, COUNT(*)
+FROM student
+GROUP BY app_genre
+ORDER BY COUNT(*) DESC;
+
+-- Top distraction category
+SELECT dist_category, COUNT(*)
+FROM student
+GROUP BY dist_category
+ORDER BY COUNT(*) DESC;
+
+-- Top worry category
+SELECT worry_category, COUNT(*)
+FROM student
+GROUP BY worry_category
+ORDER BY COUNT(*) DESC;
+
+-- Which group had the most selfies?
+SELECT group_name, COUNT(type)
+FROM student_group JOIN student
+  ON student_group.group_id = student.group_id
+  JOIN image
+  ON student.student_id = image.student_id
+WHERE student_group.location LIKE "%2" AND type="selfie"
+GROUP BY group_name
+ORDER BY COUNT(type) DESC;
+
+-- Which major had the most documentation type images
+SELECT major, COUNT(type)
+FROM student
+  JOIN image
+  ON student.student_id = image.student_id
+WHERE type="documentation"
+GROUP BY major
+ORDER BY COUNT(type) DESC;
+</pre>
 <ul>
 <li style="list-style-type: none;"></li>
 <li>End of the Week<br />
@@ -77,7 +115,7 @@
 <div class="lookingAhead">
 <h2>Looking Ahead</h2>
 <ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before Monday to be prepared for the next week.</li>
+<li>Remind students that they have readings and videos to watch and a check to complete before the first class next week.</li>
 </ul>
 </div>
 </body>
