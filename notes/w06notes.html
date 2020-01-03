@@ -19,7 +19,7 @@
 <div class="beforeTheWeekBegins">
 <h2>Before the Week Begins</h2>
 <ul>
-<li>Students will go over preparation materials and complete the preparation check before class on Monday.</li>
+<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
 <li>Consider reviewing the teaching tips and suggestions in the CIT111 - W06 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
 </ul>
 </div>
@@ -47,19 +47,14 @@ CREATE TABLE actors (actor_id int(11) NOT NULL AUTO_INCREMENT,
 	first_name varchar(45) NOT NULL,
 PRIMARY KEY (actor_id));
 
-
 INSERT INTO actors VALUES
 	(NULL,'Hanks', 'Tom'), (NULL,'Allen', 'Tim');
     
 INSERT INTO actors VALUES
 	(DEFAULT, 'Potts', 'Annie');
 
-
-INSERT INTO actor_copy
-	SELECT *
-    FROM invoices
-    WHERE last_name = 'Potts';
-    
+INSERT INTO actors (last_name, first_name)
+	VALUES ("Fisher", "Carrie");
     
 CREATE TABLE movies (movie_id int(11) NOT NULL AUTO_INCREMENT,
 	title varchar(45) NOT NULL,
@@ -68,20 +63,16 @@ CREATE TABLE movies (movie_id int(11) NOT NULL AUTO_INCREMENT,
     studio varchar(45),
 PRIMARY KEY (movie_id));
 
-
 INSERT INTO movies VALUES
 	(DEFAULT, 'Toy Story', 'G', '1995-10-01', 'Pixar');
-    
     
 UPDATE actors 
 SET first_name = 'Tommy'
 WHERE last_name = 'Hanks';  -- won't work because we are in safe mode
 
-
 UPDATE actors 
 SET first_name = 'Tommy'
 WHERE actor_id = 1;  -- works because we used a primary key to do it
-
 
 DELETE FROM actors
 WHERE actor_id = 1;
