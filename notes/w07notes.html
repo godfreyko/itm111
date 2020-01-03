@@ -12,15 +12,16 @@
 <div class="objectives">
 <h2>Week 07 Outcomes</h2>
 <ul>
-<li>Objective 1</li>
-<li>Objective 2</li>
+<li>Create single table queries</li>
+<li>Code all the statements, commands, clauses and keywords that are used in single table queries</li>
+<li>Code using arithmetic, comparison and logical operators</li>
 </ul>
 </div>
 <div class="beforeTheWeekBegins">
 <h2>Before the Week Begins</h2>
 <ul>
-<li>Students will go over preparation materials and complete the preparation check before class on Monday.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W0XX Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
+<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
+<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W07 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
 </ul>
 </div>
 <div class="duringTheWeek">
@@ -28,16 +29,84 @@
 <ul>
 <li>First of the week:
 <ul>
-<li>The students should have completed the preparation materials and check before the beginning of the week and be ready for learning, activities, and discussions.</li>
+<li>The students should have completed the preparation materials and check before the first class of the week and be ready for learning, activities, and discussions.</li>
 </ul>
 </li>
 </ul>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W0XXX - XXXXXX)</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W07 - Query Art DB)</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>What students do first of week XXXXX</li>
-<li>Remind students of the quiz on Wednesday, each Wednesday there will be a quiz.&nbsp;</li>
+<li>Because not all student created the art database properly, have the import the v_art database from the dump file so they all have the same database to query from</li>
+<li>They will also use a new bike shop database this week. Have the also import that database as well.</li>
+<li>Demonstrate, explain, and have them follow along with examples of querying the v_art and bike databases. Here are some examples:</li>
+<pre>
+USE v_art;
+
+SELECT * FROM artwork;
+
+SELECT DISTINCT period 
+FROM artwork;
+
+SELECT title 
+FROM artwork
+WHERE artist_id = 3; 
+
+SELECT title, artyear
+FROM artwork
+WHERE artyear > 1800 AND artyear < 1900;
+-- OR
+SELECT title, artyear
+FROM artwork
+WHERE artyear BETWEEN 1800 AND 1900;
+
+SELECT title 
+FROM artwork
+WHERE period IN('Modern', 'Baroque');
+
+SELECT title, period
+FROM artwork
+WHERE period LIKE '%impr%';
+-- OR
+SELECT title, period
+FROM artwork
+WHERE period REGEXP 'impr';
+
+SELECT title, period
+FROM artwork
+WHERE period REGEXP 'ism$';
+
+SELECT title 
+FROM artwork
+WHERE title REGEXP '^Old';
+
+SELECT title
+FROM artwork
+WHERE title REGEXP 'the|in|on';
+
+SELECT title, artdescription AS Description
+FROM artwork
+WHERE artdescription IS NOT NULL
+ORDER BY Description; 
+-- can't use Description for WHERE
+
+USE bike;
+
+SELECT * FROM product;
+
+SELECT product_name, model_year, ROUND(list_price)
+FROM product;
+ 
+SELECT product_name, model_year, list_price + 10000
+FROM product;
+
+SELECT product_name, model_year
+FROM product
+WHERE (product_name LIKE 'Trek%' OR product_name LIKE 'Surly%') OR model_year <> 2016;  
+-- change AND to OR
+-- Without the ()s is only takes off 2016s for Surly
+</pre>
+<li>Remind students of the quiz on the second day of class this week.&nbsp;</li>
 </ul>
 </li>
 <li>Mid-week
@@ -46,7 +115,7 @@
 </ul>
 </li>
 </ul>
-<p style="padding-left: 40px;">(W0XXXX - XXXXX):</p>
+<p style="padding-left: 40px;">(W07 - Bike Shop Queries):</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
