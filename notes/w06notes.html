@@ -12,15 +12,15 @@
 <div class="objectives">
 <h2>Week 06 Outcomes</h2>
 <ul>
-<li>Objective 1</li>
-<li>Objective 2</li>
+<li>Construct Create, Insert, Update and Delete statements</li>
+<li>Demonstrate the different ways to Insert data into your database</li>
 </ul>
 </div>
 <div class="beforeTheWeekBegins">
 <h2>Before the Week Begins</h2>
 <ul>
 <li>Students will go over preparation materials and complete the preparation check before class on Monday.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W0XX Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
+<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W06 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
 </ul>
 </div>
 <div class="duringTheWeek">
@@ -28,7 +28,7 @@
 <ul>
 <li>First of the week:
 <ul>
-<li>The students should have completed the preparation materials and check before the beginning of the week and be ready for learning, activities, and discussions.</li>
+<li>The students should have completed the preparation materials and check before the first class of the week and be ready for learning, activities, and discussions.</li>
 </ul>
 </li>
 </ul>
@@ -36,8 +36,62 @@
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>Use the movie database they designed last week to practice with CRUD commands.</li>
-<li>Remind students of the quiz on Wednesday, each Wednesday there will be a quiz.&nbsp;</li>
+<li>Use the movie database they designed last week to practice with CRUD commands. Here are some examples:</li>
+<pre>
+CREATE DATABASE mdb;
+
+USE mdb;
+
+CREATE TABLE actors (actor_id int(11) NOT NULL AUTO_INCREMENT,
+	last_name varchar(45) NOT NULL,
+	first_name varchar(45) NOT NULL,
+PRIMARY KEY (actor_id));
+
+
+INSERT INTO actors VALUES
+	(NULL,'Hanks', 'Tom'), (NULL,'Allen', 'Tim');
+    
+INSERT INTO actors VALUES
+	(DEFAULT, 'Potts', 'Annie');
+
+
+INSERT INTO actor_copy
+	SELECT *
+    FROM invoices
+    WHERE last_name = 'Potts';
+    
+    
+CREATE TABLE movies (movie_id int(11) NOT NULL AUTO_INCREMENT,
+	title varchar(45) NOT NULL,
+    rating varchar(10),
+    r_year datetime NOT NULL,
+    studio varchar(45),
+PRIMARY KEY (movie_id));
+
+
+INSERT INTO movies VALUES
+	(DEFAULT, 'Toy Story', 'G', '1995-10-01', 'Pixar');
+    
+    
+UPDATE actors 
+SET first_name = 'Tommy'
+WHERE last_name = 'Hanks';  -- won't work because we are in safe mode
+
+
+UPDATE actors 
+SET first_name = 'Tommy'
+WHERE actor_id = 1;  -- works because we used a primary key to do it
+
+
+DELETE FROM actors
+WHERE actor_id = 1;
+
+DROP TABLE movies;
+
+DROP DATABASE mdb;
+</pre>
+<br>
+<li>Remind students of the quiz on the second day of the week.&nbsp;</li>
 </ul>
 </li>
 <li>Mid-week
@@ -50,7 +104,7 @@
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>As a class use the movie data to create a file that contains all the insert statements they will need to populate the database. They will do something similar for their homework and this is good practice. You can populate a few tables as a class and then they can try some on their own or in groups.</li>
+<li>As a class, use the movie data to create a file that contains all the insert statements they will need to populate the database. They will do something similar for their homework and this is good practice. You can populate a few tables as a class and then they can try some on their own or in groups.</li>
 </ul>
 </li>
 </ul>
@@ -61,7 +115,7 @@
 <li style="list-style-type: none;"></li>
 <li>The homework due Saturday will be
 <ul>
-<li>Homework XXXXX</li>
+<li>creating a SQL file with all the insert commands to populate the art database. Once their database has data they will export a dump file.</li>
 </ul>
 </li>
 </ul>
@@ -71,13 +125,13 @@
 <div class="gradingFeedback">
 <h2>Grading/Feedback</h2>
 <ul>
-<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will checking their XXXXXXX. </li>
+<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded. Look at their SQL insert commands file and their dump file. In the dump file you will check that they have the data in the tables properly. </li>
 </ul>
 </div>
 <div class="lookingAhead">
 <h2>Looking Ahead</h2>
 <ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before Monday to be prepared for the next week.</li>
+<li>Remind students that they have readings and videos to watch and a check to complete before the first class of next week to be prepared for the next week.</li>
 </ul>
 </div>
 </body>
