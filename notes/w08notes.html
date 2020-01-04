@@ -13,15 +13,16 @@
 <div class="objectives">
 <h2>Week 08 Outcomes</h2>
 <ul>
-<li>Objective 1</li>
-<li>Objective 2</li>
+<li>Explain what a function is and its parts and purpose</li>
+<li>Code SQL functions within queries</li>
+<li>Recognize different types of functions and how they might nest</li>
 </ul>
 </div>
 <div class="beforeTheWeekBegins">
 <h2>Before the Week Begins</h2>
 <ul>
-<li>Students will go over preparation materials and complete the preparation check before class on Monday.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W0XX Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
+<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
+<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W08 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
 </ul>
 </div>
 <div class="duringTheWeek">
@@ -29,16 +30,161 @@
 <ul>
 <li>First of the week:
 <ul>
-<li>The students should have completed the preparation materials and check before the beginning of the week and be ready for learning, activities, and discussions.</li>
+<li>The students should have completed the preparation materials and check before the first class of the week and be ready for learning, activities, and discussions.</li>
+<li>Have student import the magazine database</li>
 </ul>
 </li>
 </ul>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W0XXX - XXXXXX)</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W08 - Functions Practice)</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>What students do first of week XXXXX</li>
-<li>Remind students of the quiz on Wednesday, each Wednesday there will be a quiz.&nbsp;</li>
+<li>Demonstrate, explain and have students follow along with functions. Here are some examples you could use:</li>
+<pre>
+USE bike;
+
+-- 1.
+SELECT SUBSTRING(product_name,10)
+FROM product;
+
+-- 2.
+-- Show the subscriberKey and using the date of 2020-12-20 as today. How long in years, ROUNDED to the nearest year, has it been since their subscriptions started
+
+SELECT cust_order_id, ROUND(DATEDIFF(NOW, shipped_date)/365) AS 'Years since product shipped'
+FROM cust_order;
+
+-- 3.
+-- Show the subscriptionStartDate and subscriptionLength and 
+-- Add the subscriptionLength to the subscriptionStartDate to see the date of how long their subscription will go
+-- Format that date so it takes the format of Month name, number day with comma and then a 4 digit year January 14, 2019
+
+SELECT shipped_date, DATE_FORMAT(DATE_ADD(shipped_date, INTERVAL 2 MONTH), '%c / %e / %y') AS '2 months after shipped'
+FROM cust_order;
+
+-- 4.
+-- We need a list of all the products without the year at the end of the product_name string
+-- Notice, some have two years listed, make sure you take those off as well.
+
+-- SELECT LOCATE(' -', product_name, 1 ) 
+-- FROM product; -- index of where the space before the - starts
+-- Limit your results to the first 8 
+
+USE magazine;
+ 
+SELECT * from magazine;
+
+-- any string with 'Ma", we want to take from that word on and take if off the magazine name
+SELECT LEFT(magazineName, LOCATE('Ma', magazineName)-1)
+FROM magazine
+WHERE magazineName LIKE '%Ma%';
+
+-- What if we just wanted that 'Ma' word and beyond?
+SELECT RIGHT(magazineName,LENGTH(magazineName) - LOCATE('Ma', magazineName)+1)
+FROM magazine
+WHERE magazineName LIKE '%Ma%';
+
+USE bike;
+
+SELECT LOCATE('2016', product_name, 4)
+FROM product;
+
+SELECT LEFT(product_name, LOCATE('20', product_name, 1)-3) AS  'Year 2016'
+FROM product;
+
+-- List the product name and then
+-- Take the 2019 bikes and divide the price into 3 equal payments. Display one of the payments
+-- with a dollar sign, comma at the thousands place and two decimal places.
+SELECT product_name, CONCAT('$', FORMAT(list_price / 3, 2, 'en_US')) AS 'One of 3 payments'
+FROM product
+WHERE model_year = '2019';
+
+SELECT * FROM store;
+
+SELECT CONCAT('The ', store_name, ' email is ', email)
+FROM store;
+
+-- if we used store_id which is an integer that would become a part of the string and would not be an integer any more.
+
+SELECT LEFT(product_name, 15)
+FROM product;
+
+SELECT LENGTH(TRIM('  this is it  ')); -- try LTRIM and RTRIM
+
+SELECT * FROM product;
+
+SELECT LENGTH(product_name)  -- includes spaces
+FROM product;
+
+SELECT LOWER(store_name) -- and UPPER
+FROM store;
+
+SELECT product_name
+FROM product;
+
+SELECT LOCATE('Girl', product_name, 1) AS 'Girl Bike'
+FROM product
+WHERE LOCATE('Girl', product_name, 1) > 1;
+
+SELECT SUBSTRING(product_name, 9, 6)
+FROM product;
+
+SELECT SUBSTRING(product_name, LOCATE('Girl', product_name, 1), 6)
+FROM product
+WHERE LOCATE('Girl', product_name, 1) > 1;
+
+USE v_art;
+
+SELECT title
+FROM artwork;
+
+SELECT LOCATE('Woman', title, 1)
+FROM artwork;
+
+SELECT SUBSTRING(title, LOCATE('Woman', title, 1), 5)
+FROM artwork;
+
+-- NUMERIC functions
+
+USE bike;
+
+SELECT list_price
+FROM product;
+
+SELECT ROUND(list_price, 2) -- try 3, 2, no 2nd parameter
+FROM product;
+
+
+SELECT FLOOR(list_price) -- CEILING
+FROM product;
+
+SELECT CONCAT('$', FORMAT(list_price, 2, 'en_US'))
+FROM product;
+
+-- DATE functions
+
+SELECT * FROM cust_order;
+
+SELECT YEAR(order_date) -- MONTH, DAY 
+FROM cust_order;
+
+SELECT HOUR(NOW()); -- MINUTE, SECOND
+
+-- time it took from order to shipped
+
+SELECT DATEDIFF(shipped_date, order_date)
+FROM cust_order;
+
+SELECT order_date, DATE_ADD(order_date, INTERVAL 9 DAY)
+FROM cust_order;
+
+SELECT DATE_FORMAT(order_date, '%M the %D, %Y')
+FROM cust_order;
+
+SELECT DATE_FORMAT(order_date, '%c/%e/%y')
+FROM cust_order;
+
+</pre>
+<li>Remind students of the quiz on the second class of the week.&nbsp;</li>
 </ul>
 </li>
 <li>Mid-week
@@ -47,11 +193,11 @@
 </ul>
 </li>
 </ul>
-<p style="padding-left: 40px;">(W0XXXX - XXXXX):</p>
+<p style="padding-left: 40px;">(W08 - Workbench Errors):</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>What students do midweek XXXX&nbsp;</li>
+<li>Using the PowerPoint file "errorpractice.pptx" and buzzin.live see which group can spot the listed error first. (one buzzin device per group) The next slide after each error shows the answer. This takes a little practice to figure it all out with timing between the slides and buzzin.live but the students have a lot of fun with this one.&nbsp;</li>
 </ul>
 </li>
 </ul>
@@ -62,7 +208,7 @@
 <li style="list-style-type: none;"></li>
 <li>The homework due Saturday will be
 <ul>
-<li>Homework XXXXX</li>
+<li>Creating a number of queries that use functions.</li>
 </ul>
 </li>
 </ul>
@@ -72,13 +218,13 @@
 <div class="gradingFeedback">
 <h2>Grading/Feedback</h2>
 <ul>
-<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will checking their XXXXXXX. </li>
+<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded and will be checking that their queries produce the proper result sets. </li>
 </ul>
 </div>
 <div class="lookingAhead">
 <h2>Looking Ahead</h2>
 <ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before Monday to be prepared for the next week.</li>
+<li>Remind students that they have readings and videos to watch and a check to complete before the first class of next week to be prepared for the next week.</li>
 </ul>
 </div>
 </body>
