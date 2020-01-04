@@ -13,15 +13,17 @@
 <div class="objectives">
 <h2>Week 10 Outcomes</h2>
 <ul>
-<li>Objective 1</li>
-<li>Objective 2</li>
+<li>Know the different between a scalar function and an aggregate function</li>
+<li>Create summary queries using aggregate functions</li>
+<li>Understand the difference between filtering with WHERE and HAVING</li>
+<li>Understand the order of execution and how that works with summary queries</li>
 </ul>
 </div>
 <div class="beforeTheWeekBegins">
 <h2>Before the Week Begins</h2>
 <ul>
-<li>Students will go over preparation materials and complete the preparation check before class on Monday.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W0XX Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
+<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
+<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W10 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
 </ul>
 </div>
 <div class="duringTheWeek">
@@ -29,16 +31,122 @@
 <ul>
 <li>First of the week:
 <ul>
-<li>The students should have completed the preparation materials and check before the beginning of the week and be ready for learning, activities, and discussions.</li>
+<li>The students should have completed the preparation materials and check before the first class of the week and be ready for learning, activities, and discussions.</li>
 </ul>
 </li>
 </ul>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W0XXX - XXXXXX)</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W10 - Summary Query Practice)</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>What students do first of week XXXXX</li>
-<li>Remind students of the quiz on Wednesday, each Wednesday there will be a quiz.&nbsp;</li>
+<li>Demonstrate, explain and have them follow along with coding summary queries together. Here are some examples:</li>
+<pre>
+USE v_art;
+
+-- how many artist are from France
+SELECT country, COUNT(artist_id) -- can't put fname and lname because it's not referring to only one person
+FROM artist
+WHERE country = "France";
+
+-- how many artist from each country
+SELECT country, COUNT(artist_id)
+FROM artist
+GROUP BY country;  -- show with rollup
+
+USE magazine;
+
+-- how many people subscribe to Beautiful Birds magazine?
+SELECT magazineName, COUNT(subscriberKey) AS subscribers -- leave magazineName off at first -- works because the WHERE limits it to only one magazine.
+FROM magazine m
+	JOIN subscription sn
+		ON m.magazineKey = sn.magazineKey
+WHERE magazineName = "Beautiful Birds";
+
+-- on their own - What is the average price of all magazines?
+SELECT AVG(magazinePrice) -- explain why we can't have magazineName here, because we are averaging a bunch of magazines
+FROM magazine;
+
+-- How many subscribers does each magazine have?
+SELECT magazineName, COUNT(subscriberKey) AS subscribers
+FROM magazine m
+	JOIN subscription sn
+		ON m.magazineKey = sn.magazineKey
+GROUP BY magazineName;
+
+-- Having filter (just those magazines having 2 or more subscribers)
+SELECT magazineName, COUNT(subscriberKey) AS subscribers
+FROM magazine m
+	JOIN subscription sn
+		ON m.magazineKey = sn.magazineKey  -- add a WHERE after this line later WHERE magazineName LIKE 'fish%' or WHERE m.magazineKey > 4 You can use a column name that is not in SELECT with WHERE  But can't use COUNT(subscriberKey >=2) No aggregates in WHERE
+GROUP BY magazineName
+HAVING subscribers >= 2;  -- if you try m.magazineKey > 4 it won't be recognized
+
+-- on their own using the query we just did -- Add a total revenue onto each magazine
+SELECT magazineName, COUNT(subscriberKey) AS subscribers, SUM(magazinePrice) AS 'Total Revenue'
+FROM magazine m
+	JOIN subscription sn
+		ON m.magazineKey = sn.magazineKey  
+GROUP BY magazineName
+ORDER BY magazineName;
+
+USE bike;
+
+-- on their own -- get the highest price from the product table
+SELECT brand_id, MAX(list_price), MIN(list_price) -- add brand_id later
+FROM product
+GROUP BY brand_id; -- add group by later (highest and lowest within brands)
+
+-- same query but we want to see the brand name so we need to join
+SELECT brand.brand_name, MAX(list_price), MIN(list_price) 
+FROM product
+	JOIN brand
+		ON product.brand_id = brand.brand_id
+GROUP BY brand.brand_name; 
+
+-- average of all bikes
+SELECT ROUND(AVG(list_price), 2)
+FROM product;
+
+-- on their own - Get the average of each brand
+SELECT brand.brand_name, FORMAT(AVG(list_price), 2, 'en-US') 
+FROM product
+	JOIN brand
+		ON product.brand_id = brand.brand_id
+GROUP BY brand.brand_name WITH ROLLUP; 
+
+-- practice with WHERE and HAVING again
+SELECT brand.brand_name, FORMAT(AVG(list_price), 2, 'en-US') AS average
+FROM product
+	JOIN brand
+		ON product.brand_id = brand.brand_id
+WHERE model_year > '2016'
+GROUP BY brand.brand_name WITH ROLLUP
+HAVING AVG(list_price) > 2000; 
+
+-- How many of each product do we have?
+SELECT product_name, COUNT(product_name)
+	FROM store s 
+		JOIN stock st
+			ON s.store_id = st.store_id
+		JOIN product p
+			ON st.product_id = p.product_id
+GROUP BY product_name;
+
+-- How many of each product do we have in each store?
+-- grouping within a group
+-- also point out that the qualifier s. has to be used in 
+-- the SELECT list. Once we set up a qualifier it has to be used 
+-- throughout the query. We can't use store. there anymore.
+SELECT s.store_id, product_name, COUNT(product_name)
+	FROM store s 
+		JOIN stock st
+			ON s.store_id = st.store_id
+		JOIN product p
+			ON st.product_id = p.product_id
+GROUP BY product_name, store_id WITH ROLLUP ; -- add rollup later
+
+</pre>
+<li>Remind students of the quiz on the second class of the week.&nbsp;</li>
 </ul>
 </li>
 <li>Mid-week
@@ -47,11 +155,11 @@
 </ul>
 </li>
 </ul>
-<p style="padding-left: 40px;">(W0XXXX - XXXXX):</p>
+<p style="padding-left: 40px;">(W10 - Summary Query Activity):</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>What students do midweek XXXX&nbsp;</li>
+<li>Just like the JOINS week, summary queries may take awhile to explain and help them understand. There may be some time this week for an extra activity.</li>
 </ul>
 </li>
 </ul>
@@ -62,7 +170,7 @@
 <li style="list-style-type: none;"></li>
 <li>The homework due Saturday will be
 <ul>
-<li>Homework XXXXX</li>
+<li>creating a list of summary queries that produce the proper result sets.</li>
 </ul>
 </li>
 </ul>
@@ -72,13 +180,13 @@
 <div class="gradingFeedback">
 <h2>Grading/Feedback</h2>
 <ul>
-<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will checking their XXXXXXX. </li>
+<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded. It will be checking their summary queries and ensuring they produce the proper result sets. </li>
 </ul>
 </div>
 <div class="lookingAhead">
 <h2>Looking Ahead</h2>
 <ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before Monday to be prepared for the next week.</li>
+<li>Remind students that they have readings and videos to watch and a check to complete before the first class of next week to be prepared for the next week.</li>
 </ul>
 </div>
 </body>
