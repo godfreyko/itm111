@@ -12,15 +12,16 @@
 <div class="objectives">
 <h2>Week 09 Outcomes</h2>
 <ul>
-<li>Objective 1</li>
-<li>Objective 2</li>
+<li>Create multiple tables queries</li>
+<li>Code queries with inner joins</li>
+<li>Explain the difference between inner and outer joins</li>
 </ul>
 </div>
 <div class="beforeTheWeekBegins">
 <h2>Before the Week Begins</h2>
 <ul>
-<li>Students will go over preparation materials and complete the preparation check before class on Monday.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W0XX Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
+<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
+<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W09 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
 </ul>
 </div>
 <div class="duringTheWeek">
@@ -28,16 +29,159 @@
 <ul>
 <li>First of the week:
 <ul>
-<li>The students should have completed the preparation materials and check before the beginning of the week and be ready for learning, activities, and discussions.</li>
+<li>The students should have completed the preparation materials and check before the beginning of the first class of the week and be ready for learning, activities, and discussions.</li>
 </ul>
 </li>
 </ul>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W0XXX - XXXXXX)</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W09 - Joins Practice)</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>What students do first of week XXXXX</li>
-<li>Remind students of the quiz on Wednesday, each Wednesday there will be a quiz.&nbsp;</li>
+<li>Demonstrate, explain and have them follow along with different queries using joins. Here are some examples you could use:</li>
+<pre>
+USE v_art;
+
+-- A list of all the artists with each of their art works
+
+SELECT fname, lname, title
+FROM artist JOIN artwork
+	ON artist.artist_id = artwork.artist_id;
+
+-- A list of all the artists even if they don't have any artwork
+-- in other words: all artist and only related artwork
+
+SELECT fname, lname, title
+FROM artist LEFT JOIN artwork
+	ON artist.artist_id = artwork.artist_id;
+
+-- Show them art.ceiwebdev.com
+
+-- What is I only want Leonardo diVinci's
+
+SELECT fname, lname, title, artfile, period, arttype, artlocation
+FROM artist JOIN artwork
+	ON artist.artist_id = artwork.artist_id
+WHERE lname = 'da Vinci';
+
+-- On their own: A list of all the artwork from artist in the 
+-- Netherlands
+
+SELECT title, artfile, period, arttype, artlocation
+FROM artwork JOIN artist
+	ON artist.artist_id = artwork.artist_id
+WHERE country = "Netherlands";
+
+
+
+USE bike;
+
+SELECT * FROM category;
+
+SELECT * FROM product;
+
+SELECT product_name, category_name, list_price
+FROM product JOIN category
+	ON product.category_id = category.category_id;
+    
+-- I also want the brand as well, this involves 3 tables
+SELECT product_name, category_name, brand_name, list_price
+FROM product JOIN category
+	ON product.category_id = category.category_id
+    JOIN brand
+    ON product.brand_id = brand.brand_id;
+    
+-- On their own: All children category bikes
+
+SELECT product_id, product_name
+FROM product JOIN category
+	ON product.category_id = category.category_id
+WHERE category_name = "Children Bicycles";
+
+SELECT * FROM store;
+SELECT * FROM staff;
+
+-- On their own: All staff at Rowlett Bikes Store
+
+SELECT first_name, last_name
+FROM staff JOIN store
+	ON staff.store_id = store.store_id
+WHERE store_name = "Rowlett Bikes";
+
+-- All products ordered with price and quantity, shows need for grouping later
+
+SELECT product_name, cust_order_id, product.list_price, quantity
+FROM product JOIN cust_order_item
+	ON product.product_id = cust_order_item.product_id
+ORDER BY cust_order_id;
+
+SELECT * FROM cust_order;
+
+-- All products ordered in March 2016
+
+SELECT product_name, cust_order.cust_order_id, product.list_price, quantity, order_date
+FROM product JOIN cust_order_item
+	ON product.product_id = cust_order_item.product_id
+	JOIN cust_order
+    ON cust_order.cust_order_id = cust_order_item.cust_order_id
+WHERE order_date BETWEEN '2016-03-01' AND '2016-03-31';
+
+-- More joins (table aliases, more practice with outer joins)
+
+-- show table aliases, AS is an optional keyword with column aliases
+-- and with table aliases
+
+SELECT subscriberLastName AS lastname, subscriberFirstName, subscriptionStartDate
+FROM subscriber sr
+	JOIN subscription sn -- add LEFT OUTER later to review OUTER JOINS Walter shows
+		ON sr.subscriberKey = sn.subscriberKey
+ORDER BY lastname;
+
+-- reverse the two table's order and show how it's the same with RIGHT
+
+-- There is one magazine with no subscribers. How would you show all magazines
+-- and only the related data of the subscription table? (On their own)
+-- list out magazineName, magazinePrice, and subscriptionStartDate (use table aliases)
+
+SELECT magazineName, magazinePrice, subscriptionStartDate
+FROM magazine m LEFT JOIN subscription s
+	ON m.magazineKey = s.magazineKey;
+    
+-- Now add to the query above the 3rd table of subscribers so you can see
+-- their last name (demonstrates using 3 tables in a OUTER JOIN) (On their Own)
+-- It should still show the one magazine with  date and name as null
+
+SELECT magazineName, magazinePrice, subscriptionStartDate, subscriberLastName
+FROM magazine m 
+	LEFT JOIN subscription s
+	ON m.magazineKey = s.magazineKey
+    LEFT JOIN subscriber sr
+    ON s.subscriberKey = sr.subscriberKey;
+    
+-- need the second JOIN as LEFT otherwise you don't get all the results from 
+-- the first join that includes the one magazine with no relations
+-- draw a Venn diagram to explain with 3 circles. 
+
+-- Demonstrate a FULL OUTER JOIN simulated with UNION in MySQL
+-- Copy the LEFT OUTER JOIN above and UNION it to Same with ithe RIGHT JOINS
+
+SELECT magazineName, magazinePrice, subscriptionStartDate, subscriberLastName
+FROM magazine m 
+	LEFT JOIN subscription s
+	ON m.magazineKey = s.magazineKey
+    LEFT JOIN subscriber sr
+    ON s.subscriberKey = sr.subscriberKey
+UNION
+SELECT magazineName, magazinePrice, subscriptionStartDate, subscriberLastName
+FROM magazine m 
+	RIGHT JOIN subscription s
+	ON m.magazineKey = s.magazineKey
+    RIGHT JOIN subscriber sr
+    ON s.subscriberKey = sr.subscriberKey;
+    
+-- show Venn diagrams with two 3 part tables coming together and shading everything.
+
+</pre>
+<li>Remind students of the quiz the second class of the week.&nbsp;</li>
 </ul>
 </li>
 <li>Mid-week
@@ -46,11 +190,11 @@
 </ul>
 </li>
 </ul>
-<p style="padding-left: 40px;">(W0XXXX - XXXXX):</p>
+<p style="padding-left: 40px;">(W09 - Joins Activity):</p>
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>What students do midweek XXXX&nbsp;</li>
+<li>There may be time for a short activity this week. Joins take a lot of time to understand.&nbsp;</li>
 </ul>
 </li>
 </ul>
@@ -61,7 +205,7 @@
 <li style="list-style-type: none;"></li>
 <li>The homework due Saturday will be
 <ul>
-<li>Homework XXXXX</li>
+<li>Creating a number of queries using joins.</li>
 </ul>
 </li>
 </ul>
@@ -71,13 +215,13 @@
 <div class="gradingFeedback">
 <h2>Grading/Feedback</h2>
 <ul>
-<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will checking their XXXXXXX. </li>
+<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will checking their join queries and making sure they get the proper result set. </li>
 </ul>
 </div>
 <div class="lookingAhead">
 <h2>Looking Ahead</h2>
 <ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before Monday to be prepared for the next week.</li>
+<li>Remind students that they have readings and videos to watch and a check to complete before the first class next week to be prepared for the next week.</li>
 </ul>
 </div>
 </body>
