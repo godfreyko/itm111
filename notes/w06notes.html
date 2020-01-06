@@ -96,7 +96,7 @@ DROP DATABASE mdb;
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>As a class, use the movie data to create a file that contains all the insert statements they will need to populate the database. They will do something similar for their homework and this is good practice. You can populate a few tables as a class and then they can try some on their own or in groups.</li>
+<li>As a class, use the movie data to create a file that contains all the insert statements they will need to populate the database. They will do something similar for their homework and this is good practice. You can populate a few tables as a class and then they can try some on their own or in groups. It is always confusing students on how to insert the linking tables data, so go over these examples well.</li>
 <br>
 <li>Show them how to Forward Engineer their ERD from last week with Database - Forward Engineer (have them check the "DROP objects before each CREATE object" and "Generate DROP SCHEMA" -- this will help if they end up Forward Engineering multiple times). They will need to do this to create their empty art database for their homework. Then they will use their INSERT statements file to populate this database.</li>
 <li>Show them how to create a dump file with Server - Data Export - Self-contained file. They will need to know how to do this after they have all the data in their database. It is one of the files they will need for their homework.</li>
@@ -121,6 +121,77 @@ DROP DATABASE mdb;
 <h2>Grading/Feedback</h2>
 <ul>
 <li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded. Look at their SQL insert commands file and their dump file. In the insert file they could have used different types of insert commands to get the data into the database. In the dump file you will check that they have the data actually went into the tables properly. (I found from past experience that even though they can enter data into the result set area in Workbench, it's usually best to have them create SQL insert statements. This is because if they mess up their database it's much easier to just drop that database and reverse engineer again and start over and if they have these inserts saved, they can edit and re-run them much easier than having to re-enter all the data into the database again.)</li>
+<li>Here is an example of what their inserts might look like.</li>
+<pre>
+INSERT INTO artist VALUES
+    (DEFAULT, 'Vincent', NULL, 'van Gogh', 1853, 1890, 'France', 'n'),
+    (DEFAULT, 'Rembrandt', 'Harmenszoon', 'van Rijn', 1606, 1669, 'Netherlands', 'n'),
+    (DEFAULT, 'Leonardo', NULL, 'da Vinci', 1452, 1519, 'Italy', 'n'),
+    (DEFAULT, 'Venture', 'Lonzo', 'Coy', 1965, NULL, 'United States', 'y'),
+    (DEFAULT, 'Deborah', NULL, 'Gill', 1970, NULL, 'United States', 'y'),
+    (DEFAULT, 'Claude', NULL, 'Monet', 1840, 1926, 'France', 'n'),
+    (DEFAULT, 'Pablo', NULL, 'Picasso', 1904, 1973, 'Spain', 'n'),
+    (DEFAULT, 'Michelangelo', 'di Lodovico', 'Simoni', 1475, 1564, 'Italy', 'n');
+
+INSERT INTO artwork VALUES
+    (DEFAULT, 'Irises', 1889, 'Impressionism', NULL, 'Oil', 'J. Paul Getty Museum', NULL, 'irises.jpg', 1),
+    (DEFAULT, 'Starry Night', 1889, 'Post-impressionism', NULL, 'Oil', 'Museum of Modern Art', 'Lillie P. Bliss Bequest', 'starrynight.jpg', 1),
+    (DEFAULT, 'Sunflowers', 1888, 'Post-impressionism', NULL, 'Oil on canvas', 'London National Gallery', NULL, 'sunflowers.jpg', 1),
+    (DEFAULT, 'Night Watch', 1642, 'Baroque', 'The Night Watch is one of the most famous Dutch paintings', 'Oil on canvas', 'Amsterdam Museum', NULL, 'nightwatch.jpg', 2),
+    (DEFAULT, 'Storm on the Sea of Galilee', 1633, 'Dutch Golden Age', NULL, 'Oil paint', 'Isabelle Stewart Gardner Museum', NULL, 'stormgalilee.jpg', 2),
+    (DEFAULT, 'Head of a Woman', 1508, 'High Renaissance', 'also known as La Scapigliata', 'Oil paint', 'Galleria Nazionale di Parma', NULL, 'headwoman.jpg', 3),
+    (DEFAULT, 'Last Supper', 1498, 'Renaissance', NULL, 'Tempra', 'Santa Maria delle Grazie', 'Chester Dale', 'lastsupper.jpg', 3),
+    (DEFAULT, 'Mona Lisa', 1517, 'Renaissance', 'The Mona Lisa is acclaimed as the best known, and the most visited', 'Oil', 'Louvre', NULL, 'monalisa.jpg', 3),
+    (DEFAULT, 'Hillside Stream', 2005, 'Modern', NULL, 'Oil', NULL, NULL, 'hillsidestream.jpg', 4),
+    (DEFAULT, 'Old Barn', 1992, 'Modern', NULL, 'Oil', NULL, NULL, 'oldbarn.jpg', 4),
+    (DEFAULT, 'Beach Baby', 1999, 'Modern', NULL, 'Watercolor', 'Gill Gallery', NULL, 'beachbaby.jpg', 5),
+    (DEFAULT, 'Woman in the Garden', 1866, 'Impressionism', NULL, 'Oil', 'Musee d-Orsay', NULL, 'womengarden.jpg', 6),
+    (DEFAULT, 'Old Guitartist', 1904, 'Modern', NULL, 'Oil', 'Art Institute of Chicago', NULL, 'guitarist.jpg', 7);
+    
+INSERT INTO keyword VALUES
+    (DEFAULT, 'flowers'),
+    (DEFAULT, 'blue'),
+    (DEFAULT, 'landscape'),
+    (DEFAULT, 'girl'),
+    (DEFAULT, 'people'),
+    (DEFAULT, 'battle'),
+    (DEFAULT, 'boat'),
+    (DEFAULT, 'water'),
+    (DEFAULT, 'Christ'),
+    (DEFAULT, 'food'),
+    (DEFAULT, 'baby');
+
+INSERT INTO artwork_keyword VALUES
+    (1, 1),
+    (2, 2),
+    (2, 3),
+    (3, 1),
+    (4, 4),
+    (4, 5),
+    (4, 6),
+    (5, 7),
+    (5, 8),
+    (5, 5),
+    (5, 9),
+    (6, 4),
+    (6, 5),
+    (7, 10),
+    (7, 5),
+    (7, 9),
+    (8, 4),
+    (8, 5),
+    (9, 8),
+    (9, 3),
+    (10, 3),
+    (11, 8),
+    (11, 5),
+    (11, 11),
+    (12, 3),
+    (12, 5),
+    (12, 1),
+    (13, 2),
+    (13, 5);
+</pre>
 </ul>
 </div>
 <div class="lookingAhead">
