@@ -54,7 +54,7 @@
 <li style="list-style-type: none;"></li>
 <li>The homework due Saturday will be
 <ul>
-<li>Creating 10 different queries using the database they designed and populated last week.</li>
+<li>Creating 10 different queries using the database they designed and populated last week. Query #9 uses the function MOD. You can introduce that new function or have them look it up to learn about themselves. This is a good opportunity to talk about researching things they might not have learned on their own.</li>
 </ul>
 </li>
 </ul>
@@ -65,6 +65,153 @@
 <h2>Grading/Feedback</h2>
 <ul>
   <li><strong>Instructor:</strong>The homework will be checking their queries and making sure they got the correct result sets for each. </li>
+  <li>Here is the key:</li>
+<pre>
+USE univ;
+
+-- 1) Report showing the number of courses in each college.
+
+SELECT c.name AS College
+, COUNT(co.course_num) AS Courses
+FROM college c
+   INNER JOIN department d
+      ON c.college_id = d.college_id
+   INNER JOIN course co
+      ON d.department_code = co.department_code
+GROUP BY c.name;
+
+-- 2) Report showing the total number of students each professor can teach (capacity)
+-- broken out by term.
+
+SELECT f.lname, f.fname
+, t.year
+, t.term
+, SUM(s.capacity) AS TeachingCapacity
+FROM faculty f
+   INNER JOIN section s
+      ON f.faculty_id = s.faculty_id
+   INNER JOIN term t
+      ON s.term_id = t.term_id
+GROUP BY f.lname, f.fname, t.year, t.term;
+
+-- 3) Report showing the actual number of students taught by each professor
+-- broken out by term.
+
+SELECT f.lname, f.fname
+, t.year
+, t.term
+, COUNT(e.student_id) AS StudentCount
+FROM faculty f
+   INNER JOIN section s
+      ON f.faculty_id = s.faculty_id
+   INNER JOIN term t
+      ON s.term_id = t.term_id
+   INNER JOIN enrollment e
+      ON e.section_id = s.section_id
+GROUP BY f.lname, f.fname, t.Year, t.Term;
+
+-- 4) Report showing a list of the professors Bryce will have in Winter 2018.
+
+SELECT f.lname, f.fname
+FROM faculty f
+   INNER JOIN section s
+      ON f.faculty_id = s.faculty_id
+   INNER JOIN term t
+      ON s.term_id = t.term_id
+   INNER JOIN enrollment e
+      ON e.section_id = s.section_id
+   INNER JOIN student st
+      ON e.student_id = st.student_id
+WHERE st.fname = 'Bryce'
+   AND t.year = '2018'
+   AND t.term = 'Winter';
+
+-- 5) Report showing a list of students that take Econometrics in Fall 2016.
+
+SELECT st.lname, st.fname
+FROM faculty f
+   INNER JOIN section s
+      ON f.faculty_id = s.faculty_id
+   INNER JOIN term t
+      ON s.term_id = t.term_id
+   INNER JOIN enrollment e
+      ON e.section_id = s.section_id
+   INNER JOIN Student st
+      ON e.student_id = st.student_id
+   INNER JOIN course c
+      ON s.course_num = c.course_num
+WHERE c.name = 'Econometrics'
+   AND t.year = '2019'
+   AND t.term = 'Fall';
+
+-- 6) Report showing all of Bryce Carlson's courses for Winter.
+
+SELECT section.department_code, section.course_num, course.name
+FROM course 
+	JOIN section
+		ON course.course_num = section.course_num
+    JOIN term
+		ON section.term_id = term.term_id
+    JOIN enrollment
+		ON section.section_id = enrollment.section_id
+	JOIN student
+		ON student.student_id = enrollment.student_id
+WHERE lname = "Carlson" AND fname = "Bryce" AND
+term = "Winter";
+
+-- 7) Report showing students total credit load by term but only students with
+-- a credit load greater than three.  Sort by Year and Term
+-- in ascending order and then Credits in descending order.
+
+SELECT st.lname, st.fname
+, t.term
+, t.year
+, SUM(c.credit) AS Credits
+FROM Section s
+   INNER JOIN term t
+      ON s.term_id = t.term_id
+   INNER JOIN enrollment e
+      ON e.section_id = s.section_id
+   INNER JOIN student st
+      ON e.student_id = st.student_id
+   INNER JOIN course c
+      ON s.course_num = c.course_num
+Group By st.lname, st.fname, t.term, t.year
+Having Credits > 3
+Order By t.year, t.term, credits DESC;
+
+-- 8) Report showing students and their birthdays of students
+--  born in September.
+
+SELECT lname, fname, dob
+FROM student
+WHERE MONTH(DOB) = 9;
+
+-- 9) Report showing students age in years and days as of Jan. 5, 2017
+-- Sorted from oldest to youngest.
+
+SELECT lname, fname
+, datediff('2017-01-05', dob) div 365 AS Years
+, MOD(datediff('2017-01-05', dob), 365) AS Days
+, CONCAT(datediff('2017-01-05', dob) div 365, '-Yrs  ', MOD(datediff('2017-01-05', DOB), 365), '-Days') AS YearDays
+FROM student
+Order By datediff('2017-01-05', dob) DESC;
+
+-- 10) A list of all students taking CIT 111 Winter Semester
+
+SELECT student.lname, student.fname
+FROM course 
+	JOIN section
+		ON course.course_num = section.course_num
+	JOIN term
+		ON section.term_id = term.term_id
+    JOIN enrollment
+		ON section.section_id = enrollment.section_id
+	JOIN student
+		ON student.student_id = enrollment.student_id
+WHERE term = "Winter" AND course.course_num = 111 AND 
+section.department_code = "CIT";
+</pre>
 </ul>
 </div>
 <div class="lookingAhead">
