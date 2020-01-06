@@ -38,7 +38,7 @@
 <li style="list-style-type: none;">
 <ul>
 <li>Because not all student created the art database properly, have them import the v_art database from the dump file so they all have the same database to query from.</li>
-<li>They will also use a new bike shop database this week. Have the also import that database as well.</li>
+<li>They will also use a new bike shop database this week. Have the also import that database as well. Reverse engineer this new database so the students can see the ERD and how it is designed with Database - Reverse Engineer.</li>
 <li>Demonstrate, explain, and have them follow along with examples of querying the v_art and bike databases. Here are some examples:</li>
 <pre>
 USE v_art;
@@ -94,7 +94,7 @@ USE bike;
 
 SELECT * FROM product;
 
-SELECT product_name, model_year, ROUND(list_price)
+SELECT product_name, model_year, ROUND(list_price) AS 'Rounded Price'
 FROM product;
  
 SELECT product_name, model_year, list_price + 10000
@@ -102,8 +102,8 @@ FROM product;
 
 SELECT product_name, model_year
 FROM product
-WHERE (product_name LIKE 'Trek%' OR product_name LIKE 'Surly%') OR model_year <> 2016;  
--- change AND to OR
+WHERE (product_name LIKE 'Trek%' OR product_name LIKE 'Surly%') AND model_year <> 2016;  
+-- change AND to OR and now you get other brands that are not 2016
 -- Without the ()s is only takes off 2016s for Surly
 </pre>
 <br>
@@ -123,22 +123,71 @@ WHERE (product_name LIKE 'Trek%' OR product_name LIKE 'Surly%') OR model_year <>
 <ul>
 <li>This activity will be to retrieve the right data from the database for the bike shop owner (these are requests from the owner). Have the student complete these on their own or in groups. Here are some examples:</li>
 <pre>
-1. I need a list of all the customers with Gmail email accounts because there is a new Google application 
-   that can interface with them through their email that we’d like to send them and invite them to use it.
+1. I need a list of all the customers with Gmail email accounts because there 
+   is a new Google application that can interface with them through their 
+   email that we’d like to send them and invite them to use it.
 
-2. Haro called and wants to discount all their bikes by 20%. Please get me the name of the bikes from Haro (brand_id 2) 
-   and show the original price and then a column with the sales price with a readable column header.
+2. Haro called and wants to discount all their bikes by 20%. Please get me 
+   the name of the bikes from Haro (brand_id 2) and show the original price 
+   and then a column with the sales price with a readable column header.
 
-3. We need to see the order number and order date from all orders at Santa Cruz Bikes (store_id 1) but I don’t need to see the 
-   orders made by Mireya Copeland who’s staff_id is 2.  Just Fabiola, Genna and Virgie’s orders (everyone else who works there).
+3. We need to see the order number and order date from all orders at Santa 
+   Cruz Bikes (store_id 1) but I don’t need to see the orders made by Mireya 
+   Copeland who’s staff_id is 2.  Just Fabiola, Genna and Virgie’s orders 
+   (everyone else who works there).
 
 4. I need all the order numbers and order dates for the month of February 2017.
 
-5. We need to clear out all our frame specific bikes and Women’s bikes. They are not selling well and we will be displaying 
-   them in or annual sidewalk sale. Find all the bike product name with ‘Frame’ or ‘Frameset’ in the name or the word “Women’s” 
+5. We need to clear out all our frame specific bikes and Women’s bikes. They 
+   are not selling well and we will be displaying them in or annual sidewalk 
+   sale. Find all the bike product name with ‘Frame’ or ‘Frameset’ in the name 
+   or the word “Women’s” 
 
-6. We need all the bikes product names that start with A-H and whose list price is more than 299.99 or exactly 299.99.  
-   Sort them by product name. We will need to inventory those bikes first during inventory. 
+6. We need all the bikes product names that start with A-H and whose list price 
+   is more than 299.99 or exactly 299.99. Sort them by product name. We will 
+   need to inventory those bikes first during inventory. 
+</pre>
+<li>Here are some possible answers:</li>
+<pre>
+  -- 1.
+  SELECT first_name, last_name, email
+  FROM customer
+  WHERE email LIKE '%gmail%';
+  -- OR
+  SELECT first_name, last_name, email
+  FROM customer
+  WHERE email REGEXP 'gmail';
+  
+  -- 2.
+  SELECT product_name, list_price, list_price -(list_price *.20) AS sale_price
+  FROM product
+  WHERE brand_id = 2;
+  
+  -- 3.
+  SELECT cust_order_id, order_date
+  FROM cust_order
+  WHERE store_id = 1 AND NOT staff_id = 2; -- 184 rows returned
+  
+  -- 4.
+  SELECT cust_order_id, order_date
+  FROM cust_order
+  WHERE order_date BETWEEN '2017-02-01' AND '2017-02-28';  
+  
+  -- 5.
+  SELECT product_name
+  FROM product
+  WHERE product_name LIKE '%Frame%' OR product_name LIKE '%Women%';
+  -- 52 rows returned if they put AND there is only one
+  -- OR
+  SELECT product_name
+  FROM product
+  WHERE product_name REGEXP 'Frame' OR product_name REGEXP 'Women';
+  
+  -- 6.
+  SELECT product_name, list_price
+  FROM product
+  WHERE product_name < 'I' AND list_price >= 299.99
+  ORDER BY product_name;
 </pre>
 <br>
 </ul>
@@ -162,6 +211,65 @@ WHERE (product_name LIKE 'Trek%' OR product_name LIKE 'Surly%') OR model_year <>
 <h2>Grading/Feedback</h2>
 <ul>
 <li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded and will involve checking their commands and queries to make sure they produce the intended results. </li>
+  <li>Here is the key:</li>
+  <pre>
+  -- 1.
+INSERT INTO artist
+	(fname, lname, dob, dod, country)
+VALUES
+	('Johannes', 'Vermeer', 1632, 1674, 'Netherlands');
+    
+-- OR
+INSERT INTO artist VALUES
+	(DEFAULT, 'Johannes', NULL, 'Vermeer', 1632, 1674, 'Netherlands', 'n');
+
+-- 2.
+SELECT fname, mname, lname, dob, dod, country, local 
+FROM artist;
+-- (not SELECT * FROM artist, because artist_id is not listed)
+
+-- 3.
+UPDATE artist
+SET dod = 1675
+WHERE lname = 'Vermeer'; -- this WHERE can use name or artist_id
+-- the artist_id number can vary 
+
+-- 4.
+DELETE FROM artist
+WHERE lname = 'Vermeer'; -- this WHERE can use name or artist_id
+
+-- 5. (9 results)
+SELECT first_name, last_name, phone FROM customer
+WHERE state='TX' AND city = 'Houston';  -- if they just have city that's fine
+
+-- 6 (13 results)
+SELECT product_name, list_price, list_price - 500 AS 'Discount Price'
+FROM product
+WHERE list_price > 5000
+ORDER BY list_price DESC;
+
+-- 7 
+SELECT first_name, last_name, email
+FROM staff
+WHERE store_id <> 1; -- could also be != or store_id = 2 AND store_id = 3
+
+-- 8 
+SELECT product_name, model_year, list_price
+FROM product
+WHERE product_name LIKE '%spider%'; -- or REGEXP 'spider'
+
+-- 9.
+SELECT product_name, list_price
+FROM product
+WHERE list_price BETWEEN 500 AND 550
+ORDER BY list_price;
+
+-- 10. There are a variety of ways they could do the WHERE
+SELECT first_name, last_name, phone, street, city, state, zip_code
+FROM customer
+WHERE phone IS NOT NULL AND city REGEXP 'ach|och' OR last_name = 'William'
+LIMIT 5;
+  </pre>
 </ul>
 </div>
 <div class="lookingAhead">
