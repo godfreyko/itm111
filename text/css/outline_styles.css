@@ -8,17 +8,17 @@
 }
 
 body {
-    padding: 15px;
-    background-color: #FFFFFF;
+    padding: 30px;
+    background-color: lightgray;
 }
 
 main {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 #text {
-  width: 75%;
+  width: 85%;
   font-size: 14px; /* Increased text to enable scrolling */
   padding: 0px 60px 0px 60px;
   border: 2px solid black;
