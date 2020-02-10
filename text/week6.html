@@ -65,7 +65,7 @@
         </p>
         <img class='narrowimg' src="images/artist_definitions.png" alt="image of the artist table column definitions in Workbench">
         <p>
-            Here we have a few columns have a null value as the default if nothing is entered for that column value. We also have a local column with the default value of ‘n’. That column tells us whether the artist is local or not. Most artists are not local, so the value of ‘n’ will be inserted into that column if no other value is placed there as data is entered for that row. Also notice that the artist_id is set up as auto-increment. 
+            Here we have a few columns with a null value as the default if nothing is entered for that column value. We also have a local column with the default value of ‘n’. That column tells us whether the artist is local or not. Most artists are not local, so the value of ‘n’ will be inserted into that column if no other value is placed there as data is entered for that row. Also notice that the artist_id is set up as auto-increment. 
         </p>
         <p>
             We can insert data into this table in a few different ways.
@@ -141,7 +141,7 @@
 
         <h1>Referential Integrity and Foreign Key Constraints</h1>
         <p>
-            Referential Integrity implies that relationships among data should be enforced. This will guarantee that relationships between rows in two tables will remain synchronized during all updates and deletes. When we create a database from our ERD diagram the foreign keys are by default mandatory (or they are already enforcing the relationships between tables. This is referred to as Foreign Key Constraints. This constraint enforces the referential integrity by guaranteeing that changes cannot be made to data in the primary key table if those changes invalidate the link to data in the foreign key table. 
+            Referential Integrity implies that relationships among data should be enforced. This will guarantee that relationships between rows in two tables will remain synchronized during all updates and deletes. When we create a database from our ERD diagram the foreign keys are by default mandatory (or they are already enforcing the relationships between tables). This is referred to as Foreign Key Constraints. This constraint enforces the referential integrity by guaranteeing that changes cannot be made to data in the primary key table if those changes invalidate the link to data in the foreign key table. 
         </p>
         <p>
             This is important to know because, as we enter data, edit and delete data in our tables, we cannot delete a row of data that has a foreign key associated with the primary key of that row in another table. We also cannot add a row to a table with a foreign key that does not already exist as a primary key of another table. 
