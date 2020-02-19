@@ -58,6 +58,10 @@ SELECT title
 FROM artwork
 WHERE artist_id = 3; 
 
+SELECT title
+FROM artwork
+WHERE title < 'I'     -- try < 'J' to get I's
+
 SELECT title, artyear
 FROM artwork
 WHERE artyear > 1800 AND artyear < 1900;
