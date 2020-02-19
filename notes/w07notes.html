@@ -45,6 +45,11 @@ USE v_art;
 
 SELECT * FROM artwork;
 
+SELECT title, period
+FROM artwork
+ORDER BY title
+LIMIT 3;
+
 SELECT DISTINCT period 
 FROM artwork;
 
@@ -84,11 +89,11 @@ SELECT title
 FROM artwork
 WHERE title REGEXP 'the|in|on';
 
-SELECT title, artdescription AS Description
-FROM artwork
-WHERE artdescription IS NOT NULL
-ORDER BY Description; 
--- can't use Description for WHERE
+SELECT fname AS First, mname AS Middle, lname AS Last
+FROM artist
+WHERE mname IS NOT NULL
+ORDER BY Middle; 
+-- can't use Middle for WHERE
 
 USE bike;
 
@@ -97,8 +102,13 @@ SELECT * FROM product;
 SELECT product_name, model_year, ROUND(list_price) AS 'Rounded Price'
 FROM product;
  
-SELECT product_name, model_year, list_price + 10000
+SELECT product_name, model_year, list_price + 100
 FROM product;
+
+SELECT product_name, list_price + 100 AS price_adjustment
+FROM product
+WHERE list_price + 100 > 1000   -- can't use price_adjustment here because of Order of Executuion
+ORDER BY price_adjustment;     -- can use it here however
 
 SELECT product_name, model_year
 FROM product
