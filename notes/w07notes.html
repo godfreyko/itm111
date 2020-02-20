@@ -37,12 +37,12 @@
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>Because not all student created the art database properly, have them import the v_art database from the dump file so they all have the same database to query from.</li>
-<li>They will also use a new bike shop database this week. Have the also import that database as well. Reverse engineer this new database so the students can see the ERD and how it is designed with Database - Reverse Engineer.</li>
+<li>Because not all student created the art database properly, have them import the art_gallery database from the dump file so they all have the same database to query from.</li>
+<li>They will also use a new bike shop database this week. Have the also import that database as well. Reverse engineer this new bike database so the students can see the ERD and how it is designed with Database - Reverse Engineer.</li>
 <li>With the introduction of the SELECT statement coding order (SELECT, FROM, WHERE, ORDER BY, LIMIT) it's good to go over the order of execution order (FROM, WHERE, SELECT, ORDER BY LIMIT). This helps explain why you can use an alias in ORDER BY but not WHERE.</li>
 <li>Demonstrate, explain, and have them follow along with examples of querying the v_art and bike databases. Here are some examples:</li>
 <pre>
-USE v_art;
+USE art_gallery;
 
 SELECT * FROM artwork;
 
@@ -140,7 +140,7 @@ WHERE (product_name LIKE 'Trek%' OR product_name LIKE 'Surly%') AND model_year <
 <pre>
 1. I need a list of all the customers with Gmail email accounts because there 
    is a new Google application that can interface with them through their 
-   email that we’d like to send them and invite them to use it.
+   email that we’d like to contact them and invite them to use it.
 
 2. Haro called and wants to discount all their bikes by 20%. Please get me 
    the name of the bikes from Haro (brand_id 2) and show the original price 
@@ -154,7 +154,7 @@ WHERE (product_name LIKE 'Trek%' OR product_name LIKE 'Surly%') AND model_year <
 4. I need all the order numbers and order dates for the month of February 2017.
 
 5. We need to clear out all our frame specific bikes and Women’s bikes. They 
-   are not selling well and we will be displaying them in or annual sidewalk 
+   are not selling well and we will be displaying them in our annual sidewalk 
    sale. Find all the bike product name with ‘Frame’ or ‘Frameset’ in the name 
    or the word “Women’s” 
 
