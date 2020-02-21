@@ -108,7 +108,7 @@ FROM faculty f
       ON s.term_id = t.term_id
    INNER JOIN enrollment e
       ON e.section_id = s.section_id
-GROUP BY f.lname, f.fname, t.Year, t.Term;
+GROUP BY f.lname, f.fname, t.year, t.term;
 
 -- 4) Report showing a list of the professors Bryce will have in Winter 2018.
 
@@ -146,18 +146,17 @@ WHERE c.name = 'Econometrics'
 
 -- 6) Report showing all of Bryce Carlson's courses for Winter.
 
-SELECT section.department_code, section.course_num, course.name
-FROM course 
-	JOIN section
-		ON course.course_num = section.course_num
-    JOIN term
-		ON section.term_id = term.term_id
-    JOIN enrollment
-		ON section.section_id = enrollment.section_id
-	JOIN student
-		ON student.student_id = enrollment.student_id
-WHERE lname = "Carlson" AND fname = "Bryce" AND
-term = "Winter";
+SELECT c.department_code, c.course_num, c.name
+FROM term t
+JOIN section s
+  ON t.term_id = s.term_id
+JOIN course c
+  ON s.course_num = c.course_num
+JOIN enrollment e
+  ON s.section_id = e.section_id
+JOIN student st
+  ON e.student_id = st.student_id
+WHERE st.lname = "Carlson" AND term = 'Winter';
 
 -- 7) Report showing students total credit load by term but only students with
 -- a credit load greater than three.  Sort by Year and Term
@@ -199,18 +198,15 @@ Order By datediff('2017-01-05', dob) DESC;
 
 -- 10) A list of all students taking CIT 111 Winter Semester
 
-SELECT student.lname, student.fname
-FROM course 
-	JOIN section
-		ON course.course_num = section.course_num
-	JOIN term
-		ON section.term_id = term.term_id
-    JOIN enrollment
-		ON section.section_id = enrollment.section_id
-	JOIN student
-		ON student.student_id = enrollment.student_id
-WHERE term = "Winter" AND course.course_num = 111 AND 
-section.department_code = "CIT";
+SELECT lname, fname
+FROM student st
+JOIN enrollment e
+  ON st.student_id = e.student_id
+JOIN section s
+  ON e.section_id = s.section_id
+JOIN term t
+  ON t.term_id = s.term_id
+WHERE course_num = 111 AND term = 'Winter';
 </pre>
 </ul>
 </div>
