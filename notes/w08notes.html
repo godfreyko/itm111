@@ -65,7 +65,7 @@ SELECT product_name AS 'Girl Bike'
 FROM product
 WHERE LOCATE('Girl', product_name, 1) > 1;
 
---parameters for SUBSTRING(string, start, length)--
+-- parameters for SUBSTRING(string, start, length)--
 
 SELECT SUBSTRING(product_name, 9, 6)
 FROM product;
