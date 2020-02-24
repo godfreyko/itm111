@@ -43,61 +43,6 @@
 <pre>
 USE bike;
 
--- 1.
-SELECT SUBSTRING(product_name,10)
-FROM product;
-
--- 2.
--- Show the subscriberKey and using the date of 2020-12-20 as today. How long in years, ROUNDED to the nearest year, has it been since their subscriptions started
-
-SELECT cust_order_id, ROUND(DATEDIFF(NOW, shipped_date)/365) AS 'Years since product shipped'
-FROM cust_order;
-
--- 3.
--- Show the subscriptionStartDate and subscriptionLength and 
--- Add the subscriptionLength to the subscriptionStartDate to see the date of how long their subscription will go
--- Format that date so it takes the format of Month name, number day with comma and then a 4 digit year January 14, 2019
-
-SELECT shipped_date, DATE_FORMAT(DATE_ADD(shipped_date, INTERVAL 2 MONTH), '%c / %e / %y') AS '2 months after shipped'
-FROM cust_order;
-
--- 4.
--- We need a list of all the products without the year at the end of the product_name string
--- Notice, some have two years listed, make sure you take those off as well.
-
--- SELECT LOCATE(' -', product_name, 1 ) 
--- FROM product; -- index of where the space before the - starts
--- Limit your results to the first 8 
-
-USE magazine;
- 
-SELECT * from magazine;
-
--- any string with 'Ma", we want to take from that word on and take if off the magazine name
-SELECT LEFT(magazineName, LOCATE('Ma', magazineName)-1)
-FROM magazine
-WHERE magazineName LIKE '%Ma%';
-
--- What if we just wanted that 'Ma' word and beyond?
-SELECT RIGHT(magazineName,LENGTH(magazineName) - LOCATE('Ma', magazineName)+1)
-FROM magazine
-WHERE magazineName LIKE '%Ma%';
-
-USE bike;
-
-SELECT LOCATE('2016', product_name, 4)
-FROM product;
-
-SELECT LEFT(product_name, LOCATE('20', product_name, 1)-3) AS  'Year 2016'
-FROM product;
-
--- List the product name and then
--- Take the 2019 bikes and divide the price into 3 equal payments. Display one of the payments
--- with a dollar sign, comma at the thousands place and two decimal places.
-SELECT product_name, CONCAT('$', FORMAT(list_price / 3, 2, 'en_US')) AS 'One of 3 payments'
-FROM product
-WHERE model_year = '2019';
-
 SELECT * FROM store;
 
 SELECT CONCAT('The ', store_name, ' email is ', email)
@@ -106,24 +51,21 @@ FROM store;
 -- if we used store_id which is an integer that would become a part of the string and would not be an integer any more.
 
 SELECT LEFT(product_name, 15)
-FROM product;
-
-SELECT LENGTH(TRIM('  this is it  ')); -- try LTRIM and RTRIM
-
-SELECT * FROM product;
+FROM product;  -- try RIGHT
 
 SELECT LENGTH(product_name)  -- includes spaces
 FROM product;
 
+SELECT LENGTH(TRIM('  this is it  ')); -- try LTRIM and RTRIM
+
 SELECT LOWER(store_name) -- and UPPER
 FROM store;
 
-SELECT product_name
-FROM product;
-
-SELECT LOCATE('Girl', product_name, 1) AS 'Girl Bike'
+SELECT product_name AS 'Girl Bike'
 FROM product
 WHERE LOCATE('Girl', product_name, 1) > 1;
+
+--parameters for SUBSTRING(string, start, length)--
 
 SELECT SUBSTRING(product_name, 9, 6)
 FROM product;
@@ -153,7 +95,6 @@ FROM product;
 SELECT ROUND(list_price, 2) -- try 3, 2, no 2nd parameter
 FROM product;
 
-
 SELECT FLOOR(list_price) -- CEILING
 FROM product;
 
@@ -162,14 +103,12 @@ FROM product;
 
 -- DATE functions
 
-SELECT * FROM cust_order;
-
 SELECT YEAR(order_date) -- MONTH, DAY 
 FROM cust_order;
 
 SELECT HOUR(NOW()); -- MINUTE, SECOND
 
--- time it took from order to shipped
+-- days it took from order to shipped
 
 SELECT DATEDIFF(shipped_date, order_date)
 FROM cust_order;
@@ -182,6 +121,40 @@ FROM cust_order;
 
 SELECT DATE_FORMAT(order_date, '%c/%e/%y')
 FROM cust_order;
+
+-- A few similar to Homework for practice
+
+-- 1. --parameters for DATEDIFF(date, date)--
+-- Show the cust_order_id and using today's date. How long in years, ROUNDED to the nearest year, has it been since the product shipped.
+
+SELECT cust_order_id, ROUND(DATEDIFF(NOW(), shipped_date)/365) AS 'Years since product shipped'
+FROM cust_order;
+
+-- 2. -- parameters for DATE_FORMAT(date, format)--
+	  -- parameters for DATE_ADD(date, interval)--
+-- Show the shipped_date
+-- Add 2 months to each shipped_date 
+-- Format that date so it takes the format of Month name, number day with comma and then a 4 digit year January 14, 2019
+
+SELECT shipped_date, DATE_FORMAT(DATE_ADD(shipped_date, INTERVAL 2 MONTH), '%c / %e / %y') AS '2 months after shipped'
+FROM cust_order;
+
+-- download magazine.sql and import it into Workbench
+
+USE magazine;
+ 
+SELECT * from magazine;
+
+-- 3. -- parameters for LOCATE(find, search, start)
+-- any string with 'Ma", we want to take from that word on and take if off the magazine name
+SELECT LEFT(magazineName, LOCATE('Ma', magazineName)-1)
+FROM magazine
+WHERE magazineName LIKE '%Ma%';
+
+-- What if we just wanted that 'Ma' word and beyond?
+SELECT RIGHT(magazineName,LENGTH(magazineName) - LOCATE('Ma', magazineName)+1)
+FROM magazine
+WHERE magazineName LIKE '%Ma%';
 
 </pre>
 <li>Remind students of the quiz on the second class of the week.&nbsp;</li>
@@ -252,6 +225,12 @@ FROM subscription;
 -- FROM product; -- index of where the space before the - starts
 
 SELECT LEFT(product_name, LOCATE(' -', product_name)) AS 'Product Name without Year'
+FROM product
+LIMIT 14;
+
+-- or
+
+SELECT SUBSTRING(product_name, 1, LOCATE(' -', product_name, 1 ))
 FROM product
 LIMIT 14;
 
