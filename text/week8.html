@@ -621,7 +621,7 @@ FROM employee
             </tr>
         </table>
         <pre>
-SELECT DATEDIFF(hire_date, 2013-01-01) AS ‘Days Between’
+SELECT DATEDIFF(hire_date, '2013-01-01') AS ‘Days Between’
 FROM employee
         </pre>
         <table class='results'>
@@ -648,7 +648,7 @@ FROM employee
             This gives the difference in days between January 1st 2013 and the hire date. If you want years, you would need to divide it by 365.      
         </p>
         <pre>
-SELECT DATEDIFF(hire_date, 2013-01-01) / 365 AS ‘Years Between’
+SELECT DATEDIFF(hire_date, '2013-01-01') / 365 AS ‘Years Between’
 FROM employee
         </pre>
         <table class='results'>
