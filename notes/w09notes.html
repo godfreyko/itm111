@@ -144,7 +144,9 @@ FROM magazine m
     ON s.subscriberKey = sr.subscriberKey;
     
 -- need the second JOIN as LEFT otherwise you don't get all the results from 
--- the first join that includes the one magazine with no relations
+-- the first join that includes the one magazine with no relations.
+-- Because that magazine didn't have a related magazineKey in the first JOIN, it won't
+-- show the next join either (no subscriber either), unless we ask for all in the previous join.
 -- draw a Venn diagram to explain with 3 circles. 
 
 -- Demonstrate a FULL OUTER JOIN simulated with UNION in MySQL
@@ -164,8 +166,11 @@ FROM magazine m
     ON s.subscriberKey = sr.subscriberKey;
     
 -- show Venn diagrams with two 3 part tables coming together and shading everything.
+-- The first SELECT gets all magazines even with no subscribers.
+-- The second SELECT gets all the subscribers even if they haven't subscribed to a magazine.
 
 </pre>
+<br>
 <li>Remind students of the quiz the second class of the week.&nbsp;</li>
 </ul>
 </li>
