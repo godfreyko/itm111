@@ -41,7 +41,7 @@
 <pre>
 USE v_art;
 
--- A list of all the artists with each of their art works (can demonstrate alias's and USING if you'd like here, but realize the USING contruct isn't universal for all RDBMS and there are some limitations with USING. That is why we teach with ON not USING) 
+-- A list of all the artists with each of their art works (can demonstrate alias's and USING if you'd like here, but realize the USING clause isn't universal for all RDBMS and there are some limitations with USING. That is why we teach with ON not USING) 
 SELECT fname, lname, title
 FROM artist JOIN artwork
 	ON artist.artist_id = artwork.artist_id;
