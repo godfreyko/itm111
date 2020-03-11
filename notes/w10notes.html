@@ -124,7 +124,7 @@ GROUP BY brand.brand_name WITH ROLLUP
 HAVING AVG(list_price) > 2000; 
 
 -- How many of each product do we have?
-SELECT product_name, COUNT(product_name)
+SELECT product_name, SUM(quantity)
 	FROM store s 
 		JOIN stock st
 			ON s.store_id = st.store_id
@@ -137,7 +137,7 @@ GROUP BY product_name;
 -- also point out that the qualifier s. has to be used in 
 -- the SELECT list. Once we set up a qualifier it has to be used 
 -- throughout the query. We can't use store. there anymore.
-SELECT s.store_id, product_name, COUNT(product_name)
+SELECT s.store_id, product_name, SUM(quantity)
 	FROM store s 
 		JOIN stock st
 			ON s.store_id = st.store_id
