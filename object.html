@@ -10,15 +10,13 @@
     </style>
   </head>
   <body>
-    <div>
+   	<h1>Click on a car</h1>
       <img src="img/porshe911.png" id="car0" class="car" alt="Porche 911">
       <img src="img/fiat500.png" id="car1" class="car" alt="Fiat 500">
       <img src="img/fordfusion.png" id="car2" class="car" alt="Ford Fusion">
       <img src="img/bmwz4.png" id="car3" class="car" alt="BMW Z4">
-    </div>
-    <div>
-      <h1 id="info"></h1>
-    </div>
+ 
+    <h1 id="info"></h1>
 
   	<script>
   		/*var car = {
@@ -52,14 +50,13 @@
 
   		function showInfo(e) {
   			var target = e.target;
-  			var carSelected = target.id;
   			
         	var carInfo = document.getElementById('info');
-        	carInfo.textContent = carSelected.getInfo();
+        	carInfo.textContent = window[target.id].getInfo();
       	}
 
       var elCar = document.querySelectorAll('.car');
-      
+
       elCar[0].addEventListener('click', showInfo);
       elCar[1].addEventListener('click', showInfo);
       elCar[2].addEventListener('click', showInfo);
