@@ -44,7 +44,7 @@
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/6fBmbsrgaO4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	<li>Here are some examples:</li>
 <pre>
-USE v_art;
+USE art_gallery;
 
 -- how many artist are from France
 SELECT country, COUNT(artist_id) -- can't put fname and lname because it's not referring to only one person
@@ -54,7 +54,7 @@ WHERE country = "France";
 -- how many artist from each country
 SELECT country, COUNT(artist_id)
 FROM artist
-GROUP BY country;  -- show with rollup
+GROUP BY country;  
 
 USE magazine;
 
