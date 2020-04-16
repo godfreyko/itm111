@@ -39,8 +39,8 @@
 <ul>
 <li style="list-style-type: none;">
 <ul>
-<li>Take the ERD you showed last week with their gathered data and now show them the tables with data. Explain again the tables and relationships involved. Explain that this is what makes a relational database relational. Talk about primary and foreign keys that were used. Show the design view of a table and also go over Not Null, Default values and Auto-increment and what they mean. Look at the data in each table and understand how primary keys won't repeat, but foreign keys might with a many relationship.</li>
-<li>Show them a website that uses a database to populate the content on the web pages. Show them how they might attempt to reverse engineer the database structure. Show the entities and attributes of the entities. They will be doing this in their homework this week. For example I show them: https://www.churchofjesuschrist.org/music/index/hymns and talk about the entities and attributes that might be needed.</li>
+<li>Take the ERD you showed last week with their gathered data and now show them the tables with data. Explain again the tables and relationships involved. Explain that this is what makes a relational database relational. Talk about primary and foreign keys that were used. Show the design view of a table and also go over Not Null, Default values and Auto-increment and what they mean. Look at the data in each table and understand how primary keys won't repeat, but foreign keys might with a many relationship.</li><br>
+<li>Show them a website that uses a database to populate the content on the web pages. Show them how they might attempt to reverse engineer the database structure. Show the entities and attributes of the entities. They will be doing this in their homework this week. For example you could show them: https://www.churchofjesuschrist.org/music/index/hymns and talk about the entities and attributes that might be needed.</li>
   <li>Here's a very simplistic ERD that might be created from that site:</li>
   <li><img src="../text/images/hymnserd.png" alt="hymns ERD" width='500px'></li>
 <li>Remind students of the quiz the second class of the week.&nbsp;</li>
@@ -328,7 +328,8 @@ INSERT INTO hymn_composer VALUES
 -- tables or columns, just retrieving data.
 -- things like UPDATE and DELETE that we will see in a few weeks
 -- would also be DML - it is manipulating the data in the table or columns
--- but with SELECT no data is being changed, just retrieved.
+-- but not changing the structure of the table or columns.
+-- With SELECT no data is being changed, just retrieved.
 
 -- What is the title of hymn #18?
 SELECT title 
