@@ -82,7 +82,43 @@ DATABASE HERE
 
 <li>Here is some code to show the students. The students do not need to be able to create any of this code. The purpose is just to show them the code and explain what each does and the purpose of each. Let them know we will learn how to code later in our course.</li>
 <pre>
-OVERVIEW CODE HERE
+-- Top app genre
+SELECT app_genre, COUNT(*)
+FROM student
+GROUP BY app_genre
+ORDER BY COUNT(*) DESC;
+
+-- Top distraction category
+SELECT dist_category, COUNT(*)
+FROM student
+GROUP BY dist_category
+ORDER BY COUNT(*) DESC;
+
+-- Top worry category
+SELECT worry_category, COUNT(*)
+FROM student
+GROUP BY worry_category
+ORDER BY COUNT(*) DESC;
+
+-- Which group had the most selfies? (I had 2 classes so as I entered data I put a 1 or 2 at the end of location)
+SELECT group_name, COUNT(type)
+FROM student_group JOIN student
+  ON student_group.group_id = student.group_id
+  JOIN image
+  ON student.student_id = image.student_id
+WHERE student_group.location LIKE "%2" AND type="selfie"
+GROUP BY group_name
+ORDER BY COUNT(type) DESC;
+
+-- Which major had the most documentation type images
+SELECT major, COUNT(type)
+FROM student
+  JOIN image
+  ON student.student_id = image.student_id
+WHERE type="documentation"
+GROUP BY major
+ORDER BY COUNT(type) DESC;
+</pre>
 </pre>
 
 </ul>
