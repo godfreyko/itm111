@@ -54,7 +54,7 @@
 
 <h3>(W03 - ERD and Datatypes Intro):</h3>
 <li>Show the ERD that goes with the data they collected the first week of class.</li>
-<img src="../text/images/gatherdata_erd.png" alt="ERD for data gathering tables in relational database design" width="400px">
+<img src="../text/images/gatherdata-erd.png" alt="ERD for data gathering tables in relational database design" width="500px">
 <li>Show the students how you are entering the data they had in their spreadsheet as tables in the database by looking at the ERD you will use. Look at the datatypes you chose and why. Look at the datatype drop down for other types of data and discuss what you might store in some of the other datatypes. Point out how the way the table columns are used in the ERD will reduce data redundancy. They will be learning about the relationships next week. You can leave the relationship crows feet off if you would like or let them know it will be explained next week. This week we just want to show the column attribute arrangements and datatypes used in the ERD.</li>
 <li>This is just to give them a sneak peak of the ERD, but not actually teaching how to create the ERD.</li>
 </ul>
@@ -82,11 +82,6 @@ DATABASE HERE
 
 <li>Here is some code to show the students. The students do not need to be able to create any of this code. The purpose is just to show them the code and explain what each does and the purpose of each. Let them know we will learn how to code later in our course.</li>
 <pre>
--- Top app genre
-SELECT app_genre, COUNT(*)
-FROM student
-GROUP BY app_genre
-ORDER BY COUNT(*) DESC;
 
 -- Top distraction category
 SELECT dist_category, COUNT(*)
