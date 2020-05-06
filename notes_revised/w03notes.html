@@ -79,6 +79,16 @@
 <li>Here is some code to show the students. The students do not need to be able to create any of this code. The purpose is just to show them the code and explain what each does and the purpose of each. Let them know we will learn how to code later in our course.</li>
 <pre>
 
+SELECT * FROM student;
+
+SELECT lname, fname, major
+FROM student
+WHERE major = "CIT" and group_id = 2;
+
+SELECT lname, fname
+FROM student
+WHERE dist_category = "social media";
+
 -- Top distraction category
 SELECT dist_category, COUNT(*)
 FROM student
