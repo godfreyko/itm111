@@ -77,7 +77,7 @@
 <li><a href="https://cit111byui.github.io/datagathered_dump.sql">datagathered_dump.sql</a></li>
 
 <li>Here is some code to show the students. The students do not need to be able to create any of this code. The purpose is just to show them the code and explain what each does and the purpose of each. Let them know we will learn how to code later in our course. You can let the students download the dump file and practice with it as you show them the statements. I typed the first few with them and went over common syntax errors like forgetting the semi-colon between statements. Also showing hwo to run just one statement at a time in Workbench. The queries that use aggregates, group bys, and joins I just showed them and didn't have them type them in. The point is to show how detailed of questions we can ask the query, not to teach the SQL statements at this point.</li>
-<li>This is also a good chance to talk about datatypes and how they allow different data to be entered. For example, the worry_category is VARCHAR and the dist_category followed the categorization of the data gather sheets with ENUM. The query showing the top worries has a result set that is not as succinct since the data entry person wasn't limited on what they could enter. There are misspellings and categories that didn't fit with the worry_cateogy as represented in the data gathering sheet.
+<li>This is also a good chance to talk about datatypes and how they allow different data to be entered. For example, the worry_category is VARCHAR and the dist_category followed the categorization of the data gather sheets with ENUM. The query showing the top worries has a result set that is not as succinct since the data entry person wasn't limited on what they could enter. There are misspellings and categories that didn't fit with the worry_category as represented in the data gathering sheet.
 </li>
 <pre>
 
@@ -90,6 +90,12 @@ WHERE major = "CIT" and group_id = 2;
 SELECT lname, fname
 FROM student
 WHERE dist_category = "social media";
+
+-- notice how even though someone had wife as a worry, they didn't show up because
+-- VARCHAR allowed for any characters. The string 'wife' doesn't equal the string 'family'
+SELECT lname, fname
+FROM student
+WHERE worry_category = "family";
 
 -- Top distraction category
 SELECT dist_category, COUNT(*)
