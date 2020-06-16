@@ -3,26 +3,18 @@
     {
       "name": "Meowsy",
       "species" : "cat",
-      "foods": {
-        "likes": ["tuna", "catnip"],
-        "dislikes": ["ham", "zucchini"]
-      }
+      "food": "tuna" 
     },
     {
       "name": "Barky",
       "species" : "dog",
-      "foods": {
-        "likes": ["bones", "carrots"],
-        "dislikes": ["tuna"]
+      "food": "bones"
       }
     },
     {
       "name": "Purrpaws",
       "species" : "cat",
-      "foods": {
-        "likes": ["mice"],
-        "dislikes": ["cookies"]
-      }
+      "foods": "mice"
     }
   ]
 }
