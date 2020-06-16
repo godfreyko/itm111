@@ -14,7 +14,7 @@
     {
       "name": "Purrpaws",
       "species" : "cat",
-      "foods": "mice"
+      "food": "mice"
     }
   ]
 }
