@@ -195,7 +195,15 @@ FROM stock;
 
 -- 2. Show each bike that needs to be reordered. Filter the results to only the lowest quantity of zero. Order by product_name
 -- (instructors: the results should be 24 rows, if there is 25 and they have two rows with "Electra Townie Commute Go! - 2018", 
--- then they forgot to use GROUP BY)
+-- then they forgot to use DISTINCT or GROUP BY)
+
+SELECT DISTINCT product_name
+FROM stock s JOIN product p
+	ON s.product_id = p.product_id
+WHERE quantity < 1
+ORDER BY product_name;
+
+OR
 
 SELECT product_name
 FROM stock s JOIN product p
