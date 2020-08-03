@@ -1,114 +1,148 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>W02 Teaching Notes</title>
-    <link rel="stylesheet" type="text/css" href="notes.css">
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <title>W02 Teaching Notes</title>
+  <link rel="stylesheet" type="text/css" href="notes.css">
+</head>
+<body>
+  <div class="objectives">
+    <p><strong>Note:</strong> The weekly Teaching Notes only identify week-specific considerations. Please refer to the
+      <a title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes"
+        target="_blank" rel="noopener"
+        data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes"
+        data-api-returntype="Page">General Teaching Notes</a> for repeating course facilitation expectations.</p>
+    <h2>Week 02 Outcomes</h2>
+    <ul>
+      <li>Understand data-driven decision making</li>
+      <li>Understand how data can help people and organizations</li>
+      <li>Understand the use of spreadsheets and how to use them effectively</li>
+      <li>Understand the limitations of spreadsheets</li>
+    </ul>
+  </div>
+  <div class="beforeTheWeekBegins">
+    <h2>Before the Week Begins</h2>
+    <ul>
+      <li>Students will go over preparation materials and complete the preparation check before the first class of the
+        week.</li>
+      <li>Consider reviewing the teaching tips and suggestions in the CIT111 - W02 Course Group Discussion <a
+          href="https://byui.instructure.com/courses/70298/discussion_topics/1457734"
+          data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734"
+          data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.
+      </li>
+    </ul>
+  </div>
+  <div class="duringTheWeek">
+    <h2>During the Week</h2>
+      <h3>First of the week:</h3>
+      <ul>
+        <li>The students should have completed the preparations materials and check before the first class of the week
+          and be ready for learning, activities, and discussions. (W02 - Preparation Check) Have the preparation check
+          be due before the first class of the week.</li>
+      </ul>
+      <ul>
+          <h4>(W02 - Spreadsheets):</h4>
+          <li>Have a discussion about ways data might be organized to help with decision making.</li>
+          <li>Have students attempt to decide how to organize their gathered data in a spreadsheet. Have them just
+            conceptualize it or write it on a whiteboard or paper. I gave them the 3 table names and column headers I
+            would use with each one, but you can have them try it without this if you'd like. Don't have them place it
+            in a spreadsheet yet. [Some groups had grids, some recorded tables vertically some horizontally, I asked
+            them how they'd identify which image went with which student, some seperated them in tabs, some had it in
+            one spreadsheet, etc.] Once they are done, talk about how each row should be one entity (record) and each
+            column one attribute (field) of that entity or record; otherwise when sorting or adjusting column widths the
+            data can become inefficient. (It would be helpful to demonstrate this with poorly put together spreadsheets.
+            Also, talk about the first row of the spreadsheet as the column headers to tell what is in each row. Help
+            them understand they can make new tabs (new worksheets) for each new table of information. This is better
+            than putting all the tables on one worksheet because column widths and sorting and filtering are clarified.
+          </li>
+          <li>Talk about data consistency, data integrity and data redundancy. For example with Data Integrity, you
+            shouldn't be able to add images that don't belong to a student, but our spreadsheet would let us do that.
+            With Data Consistency you could enter a date where there should be a last name and spreadsheets don't
+            restrict the user by default. Data Redundancy may be demonstrated with how they might have to repeat the
+            student's names again on the 2nd sheet so you know which images belong to that student. If we have a name
+            change we have to do it in two different places this is data redundancy. (You can demonstrate things like
+            linking cells between tables or data validation within Excel if you'd like, but the purpose is not to teach
+            Excel but use a tool they might be more familiar with to introduce database topics they will see later.)
+          </li>
+          <li>For homework this week the students will place the data they collected last week into an Excel workbook
+            with a worksheet for each table of data. Give them time in class on the first and/or second day of class so
+            you can ask questions (query) the data this week in class. One table for group with the columns: group_name
+            and location; another table for student with columns: lname, fname, gender, major, app_genre (the genre of
+            the app they use the most), dist_category (the category where they had the most distractions), and
+            worry_category (the category where they had the most worries); and a last table for images with columns:
+            location and type (this will include all 20 images for each student. This is where they might need to repeat
+            student names to show which images goes with which student).</li>
+          <li>Talk about sorting and filtering the data to make it easier to find our answer. Excel has the Filter and
+            Sort options you can use to show this. This will help them understand ORDER BY and WHERE in SQL later.</li>
+      </ul>
+      <ul>
+        <li>Remind students of the quiz, there will be a quiz each second class of the week.&nbsp;</li>
+      </ul>
+      <h3>Mid-week</h3>
+        <ul>
+          <h4>(W02 - Quiz):</h4>
+          <li>Have them complete their quiz by themselves once and then with others for the second attempt. The
+            discussions and debates during the second attempt as a group are great 'teach one another' opportunities.
+            The two scores will be averaged for their final quiz score.</li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <h4>(W02 - Asking Questions of the Data):</h4>
+      <li>Have a discussion about how to use this data. How can we make money on it? How can we help people with it?
+        How can we provide value in some way with it? This is why a goal, vision or mission is important to base the
+        direction you want to go with the information you get from the data.</li>
+      <li>Show them the Statement of Work for this fictitious company. <a
+          href="https://cit111byui.github.io/datagatheringsow.pdf">https://cit111byui.github.io/datagatheringsow.pdf</a>
+      </li>
+      <li>Have them query or ask questions of the data (here are some ideas):
+        <ul>
+          <li>What was the top distraction category for our group? What was the top distraction category for our
+            class?</li>
+          <li>What was the top worry category for our group> What was the top worry category for our class?</li>
+          <li>Which group had the most selfies?</li>
+          <li>Did males or females have the most group type images?</li>
+          <li>Which major had the most documentation type images?</li>
+        </ul>
+      </li>
+      <li>Students will notice at this point how hard and time consuming it is to get some of
+        the questions answered. Later when we do an SQL query to get the same information, it will become apparent to them
+        the advantages of a database over a spreadsheet or informal tabular data for in-depth data retrieval on related tables.
+      </li>
+    </ul>
+    <ul>
+    <ul>
+      <h4>(W02 - Database vs. Spreadsheet):</h4>
+      <li>Have them watch this video to prepare them for next week and let them start to understand why we can't
+        just use spreadsheets for all data:<br><br><iframe width="560" height="315"
+          src="https://www.youtube.com/embed/x4Xt0M1mHbc" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </li>
+    </ul>
+    <h3>End of the Week</h3>
+    <ul>
+      <li>Have class start watching, and following along with, the Exploring Workbench Videos.&nbsp; (W02&nbsp; - Exploring Workbench)</li>
+      <li>The homework due Saturday will be
+        <ul>
+          <li>watching the 4 videos while following along. They will then delete the store database they created, uncheck the Show Metadata Internal Schemas, screen shot the preferences they changed in the Modeling section, and screen shot the schema list.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="gradingFeedback">
+    <h2>Grading/Feedback</h2>
+    <ul>
+      <li><strong>Instructor:</strong> The check and quiz are auto-graded. The submitted homework (W02 - Exploring Workbench) will need to be instructor or TA graded. It will be two screen shots submitted. One of the Modeling preferences. And one of Schema list.</li>
+    </ul>
+  </div>
+  <div class="lookingAhead">
+    <h2>Looking Ahead</h2>
+    <ul>
+      <li>Remind students that they have readings and videos to watch and a check to complete before the first class of
+        the week to be prepared for the next week.</li>
+    </ul>
+  </div>
 
-<div class="objectives">
-<p><strong>Note:</strong> The weekly Teaching Notes only identify week-specific considerations. Please refer to the <a title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes" target="_blank" rel="noopener" data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes" data-api-returntype="Page">General Teaching Notes</a> for repeating course facilitation expectations.</p>
-<h2>Week 02 Outcomes</h2>
-<ul>
-<li>Understand data-driven decision making</li>
-<li>Understand how data can help people and organizations</li>
-<li>Understand the use of spreadsheets and how to use them effectively</li>
-<li>Understand the limitations of spreadsheets</li>
-</ul>
-</div>
-<div class="beforeTheWeekBegins">
-<h2>Before the Week Begins</h2>
-<ul>
-<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W02 Course Group Discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
-</ul>
-</div>
-<div class="duringTheWeek">
-<h2>During the Week</h2>
-<ul>
-<li>First of the week:
-<ul>
-<li>The students should have completed the preparations materials and check before the first class of the week and be ready for learning, activities, and discussions. (W02 - Preparation Check) Have the preparation check be due before the first class of the week.</li>
-</ul>
-</li>
-</ul>
-<p style="padding-left: 40px;">(W02 - Spreadsheets):</p>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>Have a discussion about ways data might be organized to help with decision making.</li>
-<li>Have students attempt to decide how to organize their gathered data in a spreadsheet. Have them just conceptualize it or write it on a whiteboard or paper. I gave them the 3 table names and column headers I would use with each one, but you can have them try it without this if you'd like. Don't have them place it in a spreadsheet yet. [Some groups had grids, some recorded tables vertically some horizontally, I asked them how they'd identify which image went with which student, some seperated them in tabs, some had it in one spreadsheet, etc.] Once they are done, talk about how each row should be one entity (record) and each column one attribute (field) of that entity or record; otherwise when sorting or adjusting column widths the data can become inefficient. (It would be helpful to demonstrate this with poorly put together spreadsheets. Also, talk about the first row of the spreadsheet as the column headers to tell what is in each row. Help them understand they can make new tabs (new worksheets) for each new table of information. This is better than putting all the tables on one worksheet because column widths and sorting and filtering are clarified.</li>
-<li>Talk about data consistency, data integrity and data redundancy. For example with Data Integrity, you shouldn't be able to add images that don't belong to a student, but our spreadsheet would let us do that. With Data Consistency you could enter a date where there should be a last name and spreadsheets don't restrict the user by default. Data Redundancy may be demonstrated with how they might have to repeat the student's names again on the 2nd sheet so you know which images belong to that student. If we have a name change we have to do it in two different places this is data redundancy. (You can demonstrate things like linking cells between tables or data validation within Excel if you'd like, but the purpose is not to teach Excel but use a tool they might be more familiar with to introduce database topics they will see later.)</li>
-<li>For homework this week the students will place the data they collected last week into an Excel workbook with a worksheet for each table of data. Give them time in class on the first and/or second day of class so you can ask questions (query) the data this week in class. One table for group with the columns: group_name and location; another table for student with columns: lname, fname, gender, major, app_genre (the genre of the app they use the most), dist_category (the category where they had the most distractions), and worry_category (the category where they had the most worries); and a last table for images with columns: location and type (this will include all 20 images for each student. This is where they might need to repeat student names to show which images goes with which student).</li>
-<li>Talk about sorting and filtering the data to make it easier to find our answer. Excel has the Filter and Sort options you can use to show this. This will help them understand ORDER BY and WHERE in SQL later.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>Remind students of the quiz, there will be a quiz each second class of the week.&nbsp;</li>
-</ul>
-</li>
-<li>Mid-week
-<ul>
-<li>Have them complete their quiz by themselves once and then with others for the second attempt. The discussions and debates during the second attempt as a group are great 'teach one another' opportunities. The two scores will be averaged for their final quiz score.</li>
-<li>Have the students finish entering their data into the spreadsheet.&nbsp;</li>
-</ul>
-</li>
-</ul>
-<p style="padding-left: 40px;">(W02 - Asking Questions of the Data):</p>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>Have a discussion about how to use this data. How can we make money on it? How can we help people with it? How can we provide value in some way with it? This is why a goal, vision or mission is important to base the direction you want to go with the information you get from the data.</li>
-<li>Show them the Statement of Work for this fictitious company. <a href="https://cit111byui.github.io/datagatheringsow.pdf">https://cit111byui.github.io/datagatheringsow.pdf</a></li>
-<li>After the data is entered have them query or ask questions of the data (here are some ideas):
-<ul>
-<li>What was the top distraction category for our group? What was the top distraction category for our class?</li>
-<li>What was the top worry category for our group> What was the top worry category for our class?</li>
-<li>Which group had the most selfies?</li>
-<li>Did males or females have the most group type images?</li>
-<li>Which major had the most documentation type images?</li>
-</ul>
-</li>
+</body>
 
-</ul>
-</li>
-</ul>
-<p style="padding-left: 40px;">Students will notice at this point how hard and time consuming it is to get some of the questions answered. Later when we do an SQL query to get the same information, it will become apparent to them the advantages of a database over a spreadsheet for in-depth data retrieval on related tables.</p>
-<p style="padding-left: 40px;">(W02 - Database vs. Spreadsheet):</p>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>Have them watch this video to prepare them for next week and let them start to understand why we can't just use spreadsheets for all data:<br><br><iframe width="560" height="315" src="https://www.youtube.com/embed/x4Xt0M1mHbc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
-</ul>
-</li>
-<li>End of the Week
-<ul>
-<li>Have class finish recording and storing the data in a spreadsheet.&nbsp; (W02&nbsp; - Data in a Spreadsheet)</li>
-<li>The homework due Saturday will be
-<ul>
-<li>a spreadsheet with their gathered data.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="gradingFeedback">
-<h2>Grading/Feedback</h2>
-<ul>
-<li><strong>Instructor:</strong> The check and quiz are auto-graded. The submitted data homework (W02 - Data Storage in a Spreadsheet) will need to be instructor or TA graded. It will be one workbook file containing 3 spreadsheets submitted by one member of the group. Points will have to be manually added to the other students in that group. Their name and data will be in the spreadsheet so you will know who is in the group and who participated for points. 10 points for having every group member's data in the spreadsheet and 30 points for the correct format as specified above W02 - Spreadsheets. Give feedback on any data they might be missing.</li>
-</ul>
-</div>
-<div class="lookingAhead">
-<h2>Looking Ahead</h2>
-<ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before the first class of the week to be prepared for the next week.</li>
-</ul>
-</div>
-  
-  </body>
 </html>
