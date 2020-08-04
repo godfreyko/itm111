@@ -1,208 +1,117 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>W06 Teaching Notes</title>
-    <link rel="stylesheet" type="text/css" href="notes.css">
-  </head>
-  <body>
-
-
-<p><strong style="font-family: sans-serif; font-size: 1rem;">Note:</strong><span style="font-family: sans-serif; font-size: 1rem;"> The weekly Teaching Notes only identify week-specific considerations. Please refer to the </span><a style="font-family: sans-serif; font-size: 1rem;" title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes" target="_blank" rel="noopener" data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes" data-api-returntype="Page">General Teaching Notes</a><span style="font-family: sans-serif; font-size: 1rem;"> for repeating course facilitation expectations.</span></p>
-<div class="objectives">
-<h2>Week 06 Outcomes</h2>
-<ul>
-<li>Construct Create, Insert, Update and Delete statements</li>
-<li>Demonstrate the different ways to Insert data into your database</li>
-</ul>
-</div>
-<div class="beforeTheWeekBegins">
-<h2>Before the Week Begins</h2>
-<ul>
-<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W06 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
-</ul>
-</div>
-<div class="duringTheWeek">
-<h2>During the Week</h2>
-<ul>
-<li>First of the week:
-<ul>
-<li>The students should have completed the preparation materials and check before the first class of the week and be ready for learning, activities, and discussions.</li>
-</ul>
-</li>
-</ul>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W06 - CRUD with Movies)</p>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>Use the movie database they designed last week to practice with the C.U.D part of CRUD commands. Here are some examples:</li>
-<pre>
-CREATE DATABASE mdb;
-
-USE mdb;
-
-CREATE TABLE actors (actor_id int(11) NOT NULL AUTO_INCREMENT,
-	last_name varchar(45) NOT NULL,
-	first_name varchar(45) NOT NULL,
-PRIMARY KEY (actor_id));
-
-INSERT INTO actors VALUES
-	(NULL,'Hanks', 'Tom'), (NULL,'Allen', 'Tim');
-    
-INSERT INTO actors VALUES
-	(DEFAULT, 'Potts', 'Annie');
-
-INSERT INTO actors (last_name, first_name)
-	VALUES ("Fisher", "Carrie");
-    
-CREATE TABLE movies (movie_id int(11) NOT NULL AUTO_INCREMENT,
-	title varchar(45) NOT NULL,
-    rating varchar(10),
-    r_year datetime NOT NULL,
-    studio varchar(45),
-PRIMARY KEY (movie_id));
-
-INSERT INTO movies VALUES
-	(DEFAULT, 'Toy Story', 'G', '1995-10-01', 'Pixar');
-    
-UPDATE actors 
-SET first_name = 'Tommy'
-WHERE last_name = 'Hanks';  -- won't work because we are in safe mode
-
-UPDATE actors 
-SET first_name = 'Tommy'
-WHERE actor_id = 1;  -- works because we used a primary key to do it
-
-DELETE FROM actors
-WHERE actor_id = 1;
-
-DROP TABLE movies;
-
-DROP DATABASE mdb;
-</pre>
-<br>
-<li>Remind students of the quiz on the second day of the week.&nbsp;</li>
-</ul>
-</li>
-<br>
-<li>Mid-week
-<ul>
-<li>Have them complete their quiz by themselves once and then with others for the second attempt. The discussions and debates during the second attempt as a group is a great 'teach one another' activity. The two scores will be averaged for their final quiz score.</li>
-</ul>
-</li>
-</ul>
-<p style="padding-left: 40px;">(W06 - Creating Insert Statements File):</p>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>As a class, use some of the movie data to create a file that contains insert statements they will need to populate the database. They will do something similar for their homework and this is good practice. You can populate a few tables as a class and then they can try some on their own or in groups. It is always confusing students on how to insert the linking tables data, so go over these examples well. Show them how to save the file with the insert statements as a sql file.</li>
-<br>
-<li>Show them how to Forward Engineer their ERD from last week with Database - Forward Engineer (have them check the "DROP objects before each CREATE object" and "Generate DROP SCHEMA" -- this will help if they end up Forward Engineering multiple times). They will need to do this to create their empty art database for their homework. Then they will use their INSERT statements file to populate this database. In step 1 of their homework I do provide a new .mdb file with a correct art ERD called art_gallery.mwb. I suggest the students use this if their ERD is very different so the insert statements will be similar. If they had problems with their design they should use the new ERD provided. This also helps with simplifying grading.</li><br>
-<li>Show them how to create a dump file with Server - Data Export - Self-contained file. They will need to know how to do this after they have all the data in their database. It is one of the files they will need for their homework.</li><br>
-<li>This is a good week to show them the Art application that uses the SQL queries that they will be creating for the art database. This is a document explaining the application and giving login names and passwords for the backend of the system where an admin user can perform CRUD operations. <a href="../VirtualArtGalleryProjectExplained.pdf">Art Application Explanation</a> This application is referenced in next week's Saturday assignment, showing some of the editing and deleting that can be done. <em>DON'T</em> give login information to the students. They would be able to change data if you do and we want to use this only for demonstrating purposes. </li>
-</ul>
-</li>
-</ul>
-<ul>
-<li style="list-style-type: none;"></li><br>
-<li>End of the Week<br />
-<ul>
-<li style="list-style-type: none;"></li>
-<li>The homework due Saturday will be
-<ul>
-<li>creating a SQL file with all the insert commands to populate the art database. Once their database has data they will export a dump file.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="gradingFeedback">
-<h2>Grading/Feedback</h2>
-<ul>
-<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded. Look at their SQL insert commands file and their dump file. In the insert file they could have used insert commands to get the data into the database. In the dump file you will check that they have the data and it actually went into the tables properly. (I found from past experience that even though they can enter data into the result set area in Workbench, it's usually best to have them create SQL insert statements. This is because if they mess up their database it's much easier to just drop that database and reverse engineer again and start over and if they have these inserts saved, they can edit and re-run them much easier than having to re-enter all the data into the database again.)</li>
-<li>Here is an example of what their inserts might look like.</li>
-<pre>
-USE art_gallery;
-
-INSERT INTO artist VALUES
-  (1, 'Vincent', NULL, 'van Gogh', 1853, 1890, 'France', 'n'),
-  (2, 'Rembrant', 'Harmenszoon', 'van Rijn', 1606, 1669, 'Netherlands', 'n'),
-  (3, 'Leonardo', NULL, 'da Vinci', 1452, 1519, 'Italy', 'n'),
-  (4, 'Venture', 'Lonzo', 'Coy', 1965, NULL, 'United States', 'y'),
-  (5, 'Deborah', NULL, 'Gill', 1970, NULL, 'United States', 'y'),
-  (6, 'Claude', NULL, 'Monet', 1840, 1926, 'France', 'n'),
-  (7, 'Pablo', NULL, 'Picasso', 1904, 1973, 'Spain', 'n'),
-  (8, 'Michelangelo', 'di Lodovico', 'Simoni', 1475, 1564, 'Italy', 'n');
-  
-INSERT INTO artwork VALUES
-  (1, 'Irises', 1889, 'Impressionism', 'Oil', 'irises.jpg', 1),
-  (2, 'The Starry Night', 1889, 'Post-impressionism', 'Oil', 'starrynight.jpg', 1),
-  (3, 'Sunflowers', 1888, 'Post-impressionism', 'Oil', 'sunflowers.jpg', 1),
-  (4, 'Night Watch', 1642, 'Baroque', 'Oil', 'nightwatch.jpg', 2),
-  (5, 'Storm on the Sea of Galilee', 1633, 'Dutch Golden Age', 'Oil', 'stormgalilee.jpg', 2),
-  (6, 'Head of a Woman', 1508, 'High Renaissance', 'Oil', 'headwoman.jpg', 3),
-  (7, 'Last Supper', 1498, 'Renaissance', 'Tempra', 'lastsupper.jpg', 3),
-  (8, 'Mona Lisa', 1517, 'Renaissance', 'Oil', 'monalisa.jpg', 3),
-  (9, 'Hillside Stream', 2005, 'Modern', 'Oil', 'hillsidestream.jpg', 4),
-  (10, 'Old Barn', 1992, 'Modern', 'Oil', 'oldbarn.jpg', 4),
-  (11, 'Beach Baby', 1999, 'Modern', 'Watercolor', 'beachbaby.jpg', 5),
-  (12, 'Women in the Garden', 1866, 'Impressionsim', 'Oil', 'womengarden.jpg', 6),
-  (13, 'Old Guitarist', 1904, 'Modern', 'Oil', 'guitarist.jpg', 7);
-  
-
-INSERT INTO keyword VALUES
-  (1, 'flowers'),
-  (2, 'blue'),
-  (3, 'landscape'),
-  (4, 'girl'),
-  (5, 'people'),
-  (6, 'food'),
-  (7, 'battle'),
-  (8, 'boat'),
-  (9, 'water'),
-  (10, 'Christ'),
-  (11, 'baby');
-  
-INSERT INTO artwork_keyword VALUES
-  (1, 1),
-  (2, 2),
-  (3, 2), 
-  (1, 3),
-  (4, 4),
-  (5, 4),
-  (7, 4),
-  (8, 5),
-  (9, 5),
-  (5, 5),
-  (10, 5),
-  (4, 6),
-  (5, 6),
-  (6, 7),
-  (5, 7),
-  (10, 7),
-  (4, 8),
-  (5, 8),
-  (9, 9),
-  (3, 9),  
-  (3, 10),
-  (9, 11),
-  (5, 11),
-  (11, 11), 
-  (3, 12),
-  (5, 12),
-  (1, 12),
-  (2, 13),
-  (5, 13);
-</pre>
-</ul>
-</div>
-<div class="lookingAhead">
-<h2>Looking Ahead</h2>
-<ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before the first class of next week to be prepared for the next week.</li>
-</ul>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <title>W06 Teaching Notes</title>
+  <link rel="stylesheet" type="text/css" href="notes.css">
+</head>
+<body>
+  <p><strong style="font-family: sans-serif; font-size: 1rem;">Note:</strong><span
+      style="font-family: sans-serif; font-size: 1rem;"> The weekly Teaching Notes only identify week-specific
+      considerations. Please refer to the </span><a style="font-family: sans-serif; font-size: 1rem;"
+      title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes"
+      target="_blank" rel="noopener"
+      data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes"
+      data-api-returntype="Page">General Teaching Notes</a><span style="font-family: sans-serif; font-size: 1rem;"> for
+      repeating course facilitation expectations.</span></p>
+  <div class="objectives">
+    <h2>Week 06 Outcomes</h2>
+    <ul>
+      <li>Construct Create, Insert, Update and Delete statements</li>
+      <li>Demonstrate the different ways to Insert data into your database</li>
+    </ul>
+  </div>
+  <div class="beforeTheWeekBegins">
+    <h2>Before the Week Begins</h2>
+    <ul>
+      <li>Students will go over preparation materials and complete the preparation check before the first class of the
+        week.</li>
+      <li>Consider reviewing the teaching tips and suggestions in the CIT111 - W06 Course Group discussion <a
+          href="https://byui.instructure.com/courses/70298/discussion_topics/1457734"
+          data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734"
+          data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.
+      </li>
+    </ul>
+  </div>
+  <div class="duringTheWeek">
+    <h2>During the Week</h2>
+      <h3>First of the week:</h3>
+        <ul>
+          <li>The students should have completed the preparation materials and check before the first class of the week
+            and be ready for learning, activities, and discussions.</li>
+        </ul>
+        <ul>
+          <h4>(W06 - CRUD with Movies)</h4>
+          <li>Use the movie database they designed last week to practice with the C.U.D part of CRUD commands. Here are
+            some examples:</li>
+          <li><a href="../sql_code/w06_crud_with_movies.sql">SQL CODE FOR PRACTICE</a></li>
+          <br>
+          <li>Remind students of the quiz on the second day of the week.&nbsp;</li>
+        </ul>
+      <h3>Mid-week</h3>
+        <ul>
+          <li>Have them complete their quiz by themselves once and then with others for the second attempt. The
+            discussions and debates during the second attempt as a group is a great 'teach one another' activity. The
+            two scores will be averaged for their final quiz score.</li>
+        </ul>
+    <ul>
+      <h4>(W06 - Creating Insert Statements File):</h4>
+          <li>As a class, use some of the movie data to create a file that contains insert statements they will need to
+            populate the database. They will do something similar for their homework and this is good practice. You can
+            populate a few tables as a class and then they can try some on their own or in groups. It is always
+            confusing students on how to insert the linking tables data, so go over these examples well. Show them how
+            to save the file with the insert statements as a sql file.</li>
+          <br>
+          <li>Show them how to Forward Engineer their ERD from last week with Database - Forward Engineer (have them
+            check the "DROP objects before each CREATE object" and "Generate DROP SCHEMA" -- this will help if they end
+            up Forward Engineering multiple times). They will need to do this to create their empty art database for
+            their homework. Then they will use their INSERT statements file to populate this database. In step 1 of
+            their homework I do provide a new .mdb file with a correct art ERD called art_gallery.mwb. I suggest the
+            students use this if their ERD is very different so the insert statements will be similar. If they had
+            problems with their design they should use the new ERD provided. This also helps with simplifying grading.
+          </li><br>
+          <li>Show them how to create a dump file with Server - Data Export - Self-contained file. They will need to
+            know how to do this after they have all the data in their database. It is one of the files they will need
+            for their homework.</li><br>
+          <li>This is a good week to show them the Art application that uses the SQL queries that they will be creating
+            for the art database. This is a document explaining the application and giving login names and passwords for
+            the backend of the system where an admin user can perform CRUD operations. <a
+              href="../VirtualArtGalleryProjectExplained.pdf">Art Application Explanation</a> This application is
+            referenced in next week's Saturday assignment, showing some of the editing and deleting that can be done.
+            <em>DON'T</em> give login information to the students. They would be able to change data if you do and we
+            want to use this only for demonstrating purposes. </li>
+        </ul>
+        <ul>
+          <h4>End of the Week</h4>
+          <li style="list-style-type: none;"></li>
+          <li>The homework due Saturday will be
+            <ul>
+              <li>creating a SQL file with all the insert commands to populate the art database. Once their database has
+                data they will export a dump file.</li>
+            </ul>
+          </li>
+        </ul>
+  </div>
+  <div class="gradingFeedback">
+    <ul>
+      <h2>Grading/Feedback</h2>
+      <li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded.
+        Look at their SQL insert commands file and their dump file. In the insert file they could have used insert
+        commands to get the data into the database. In the dump file you will check that they have the data and it
+        actually went into the tables properly. (I found from past experience that even though they can enter data into
+        the result set area in Workbench, it's usually best to have them create SQL insert statements. This is because
+        if they mess up their database it's much easier to just drop that database and reverse engineer again and start
+        over and if they have these inserts saved, they can edit and re-run them much easier than having to re-enter all
+        the data into the database again.)</li>
+      <li>Here is an example of what their inserts might look like.</li>
+    </ul>
+  </div>
+  <div class="lookingAhead">
+    <h2>Looking Ahead</h2>
+    <ul>
+      <li>Remind students that they have readings and videos to watch and a check to complete before the first class of
+        next week to be prepared for the next week.</li>
+    </ul>
+  </div>
 </body>
 </html>
