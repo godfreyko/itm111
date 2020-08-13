@@ -1,271 +1,102 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>W08 Teaching Notes</title>
-    <link rel="stylesheet" type="text/css" href="notes.css">
-  </head>
-  <body>
-
-
-<p><strong style="font-family: sans-serif; font-size: 1rem;">Note:</strong><span style="font-family: sans-serif; font-size: 1rem;"> The weekly Teaching Notes only identify week-specific considerations. Please refer to the </span><a style="font-family: sans-serif; font-size: 1rem;" title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes" target="_blank" rel="noopener" data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes" data-api-returntype="Page">General Teaching Notes</a><span style="font-family: sans-serif; font-size: 1rem;"> for repeating course facilitation expectations.</span></p>
-<div class="objectives">
-<h2>Week 08 Outcomes</h2>
-<ul>
-<li>Explain what a function is and its parts and purpose</li>
-<li>Code SQL functions within queries</li>
-<li>Recognize different types of functions and how they might nest</li>
-</ul>
-</div>
-<div class="beforeTheWeekBegins">
-<h2>Before the Week Begins</h2>
-<ul>
-<li>Students will go over preparation materials and complete the preparation check before the first class of the week.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W08 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
-</ul>
-</div>
-<div class="duringTheWeek">
-<h2>During the Week</h2>
-<ul>
-<li>First of the week:
-<ul>
-<li>The students should have completed the preparation materials and check before the first class of the week and be ready for learning, activities, and discussions.</li>
-<li>Have student import the magazine database. Take a look at how the magazine database is designed.</li>
-</ul>
-</li>
-</ul>
-<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (W08 - Functions Practice)</p>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>Demonstrate, explain and have students follow along with functions. Here are some examples you could use:</li>
-<pre>
-USE bike;
-
-SELECT * FROM store;
-
-SELECT CONCAT('The ', store_name, ' email is ', email)
-FROM store;
-
--- if we used store_id which is an integer that would become a part of the string and would not be an integer any more.
-
-SELECT LEFT(product_name, 15)
-FROM product;  -- try RIGHT
-
-SELECT LENGTH(product_name)  -- includes spaces
-FROM product;
-
-SELECT LENGTH(TRIM('  this is it  ')); -- try LTRIM and RTRIM
-
-SELECT LOWER(store_name) -- and UPPER
-FROM store;
-
--- parameters for LOCATE(find, search, start)
-
-SELECT product_name AS 'Girl Bike'
-FROM product
-WHERE LOCATE('Girl', product_name, 1) > 1;
-
--- parameters for SUBSTRING(string, start, length)--
-
-SELECT SUBSTRING(product_name, 9, 6)
-FROM product;
-
-SELECT SUBSTRING(product_name, LOCATE('Girl', product_name, 1), 6)
-FROM product
-WHERE LOCATE('Girl', product_name, 1) > 1;
-
-USE art_gallery;
-
-SELECT title
-FROM artwork;
-
-SELECT LOCATE('Woman', title, 1)
-FROM artwork;
-
-SELECT SUBSTRING(title, LOCATE('Woman', title, 1), 5)
-FROM artwork;
-
--- NUMERIC functions
-
-USE bike;
-
-SELECT list_price
-FROM product;
-
-SELECT ROUND(list_price, 2) -- try 3, 2, no 2nd parameter
-FROM product;
-
-SELECT FLOOR(list_price) -- CEILING
-FROM product;
-
-SELECT CONCAT('$', FORMAT(list_price, 2, 'en_US'))
-FROM product;
-
--- DATE functions
-
-SELECT YEAR(order_date) -- MONTH, DAY 
-FROM cust_order;
-
-SELECT HOUR(NOW()); -- MINUTE, SECOND
-
--- days it took from order to shipped
-
-SELECT DATEDIFF(shipped_date, order_date)
-FROM cust_order;
-
-SELECT order_date, DATE_ADD(order_date, INTERVAL 9 DAY)
-FROM cust_order;
-
--- Format Code	Description
--- %c	Month, numeric
--- %M	Month name
--- %e	Day of the month, numeric
--- %D	Day of the month with suffix
--- %y	Year, 2 digits
--- %Y	Year, 4 digits
--- %W	Weekday name
-
-SELECT DATE_FORMAT(order_date, '%M the %D, %Y')
-FROM cust_order;
-
-SELECT DATE_FORMAT(order_date, '%c/%e/%y')
-FROM cust_order;
-</pre>
-
-<li>As seen in the next examples, this week is also about problem solving. Also as seen in the last example, using functions as parameters of other functions. So not only understanding how functions work and what each function returns, but also how to place them together to find solutions to problems. Here is a good article that steps through basic problem solving if you'd like to go over it with the students. <a href="http://web.mit.edu/be.400/www/problem.htm" target="_blank">web.mit.edu/be.400/www/problem.htm</a>. These are steps they will need to use for homework this week.</li>
-
-<pre>
--- A few similar to Homework for practice, have students use problem solving techniques to think through these practice queries.
-
--- 1. --parameters for DATEDIFF(date, date)--
--- Show the cust_order_id and using today's date. How long in years, ROUNDED to the nearest year, has it been since the product shipped.
-
-SELECT cust_order_id, ROUND(DATEDIFF(NOW(), shipped_date)/365) AS 'Years since product shipped'
-FROM cust_order;
-
--- 2. -- parameters for DATE_FORMAT(date, format)--
-	  -- parameters for DATE_ADD(date, interval)--
--- Show the shipped_date
--- Add 2 months to each shipped_date 
--- Format that date so it takes the format of Month name, number day with comma and then a 4 digit year January 14, 2019
-
-SELECT shipped_date, DATE_FORMAT(DATE_ADD(shipped_date, INTERVAL 2 MONTH), '%c / %e / %y') AS '2 months after shipped'
-FROM cust_order;
-
--- download magazine.sql and import it into Workbench
-
-USE magazine;
- 
-SELECT * from magazine;
-
--- 3. -- parameters for LOCATE(find, search, start)
--- any string with 'Ma", we want to take from that word on and take if off the magazine name
-SELECT LEFT(magazineName, LOCATE('Ma', magazineName)-1)
-FROM magazine
-WHERE magazineName LIKE '%Ma%';
-
--- What if we just wanted that 'Ma' word and beyond?
-SELECT RIGHT(magazineName,LENGTH(magazineName) - LOCATE('Ma', magazineName)+1)
-FROM magazine
-WHERE magazineName LIKE '%Ma%';
-
-</pre>
-
-<li>Remind students of the quiz on the second class of the week.&nbsp;</li>
-</ul>
-</li><br>
-<li>Mid-week
-<ul>
-<li>Have them complete their quiz by themselves once and then with others for the second attempt. The discussions and debates during the second attempt as a group is a great 'teach one another' activity. The two scores will be averaged for their final quiz score.</li>
-</ul>
-</li>
-</ul>
-<p style="padding-left: 40px;">(W08 - Workbench Errors):</p>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-  <li>Using the PowerPoint file <a href="../ErrorPractice.pptx">"errorpractice.pptx"</a> and https://buzzin.live to see which group can spot the listed error first. (one buzzin device per group) The next slide after each error shows the answer. This takes a little practice to figure it all out with timing between the slides and buzzin.live but the students have a lot of fun with this one.&nbsp;</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li style="list-style-type: none;"></li>
-<li>End of the Week<br />
-<ul>
-<li style="list-style-type: none;"></li>
-<li>The homework due Saturday will be
-<ul>
-<li>Creating a number of queries that use functions.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="gradingFeedback">
-<h2>Grading/Feedback</h2>
-<ul>
-<li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded and will be checking that their queries produce the proper result sets. </li>
-  <li>Here is the key:</li>
-  <pre>
-SELECT * FROM magazine;
-
--- 1.
--- List the magazine name and then
--- Take 3% off the magazine price and round to 2 decimal places.
-SELECT magazineName, ROUND(magazinePrice - magazinePrice * .03, 2)AS '3% off'
-FROM magazine;
-
--- 2.
--- Show the subscriberKey and using the date of 2020-12-20 as today. How long in years, ROUNDED to the nearest year, has it been since their subscriptions started
-
-SELECT subscriberKey, ROUND(DATEDIFF('2020-12-20', subscriptionStartDate)/365) AS 'Years since subscription'
-FROM subscription;
-
--- 3.
--- Show the subscriptionStartDate and subscriptionLength and 
--- Add the subscriptionLength to the subscriptionStartDate to see the date of how long their subscription will go
--- Format that date so it takes the format of Month name, number day with comma and then a 4 digit year January 14, 2019
-
-SELECT subscriptionStartDate, subscriptionLength, DATE_FORMAT(DATE_ADD(subscriptionStartDate, INTERVAL subscriptionLength MONTH), '%M %e, %Y') AS 'Subscription end'
-FROM subscription;
-
--- 4.
--- We need a list of all the products without the year at the end of the product_name string
--- Notice, some have two years listed, make sure you take those off as well.
--- Limit your results to the first 14 
-
--- SELECT LOCATE(' -', product_name, 1 ) 
--- FROM product; -- index of where the space before the - starts
-
-SELECT LEFT(product_name, LOCATE(' -', product_name)) AS 'Product Name without Year'
-FROM product
-LIMIT 14;
-
--- or
-
-SELECT SUBSTRING(product_name, 1, LOCATE(' -', product_name, 1 ))
-FROM product
-LIMIT 14;
-
--- 5.
--- List the product name and then
--- Take the 2019 bikes and divide the price into 3 equal payments. Display one of the payments
--- with a dollar sign, comma at the thousands place and two decimal places.
-
-SELECT product_name, CONCAT('$', FORMAT(list_price / 3, 2, 'en_US')) AS 'One of 3 payments'
-FROM product
-WHERE model_year = '2019';
-  </pre>
-</ul>
-</div>
-<div class="lookingAhead">
-<h2>Looking Ahead</h2>
-<ul>
-<li>Remind students that they have readings and videos to watch and a check to complete before the first class of next week to be prepared for the next week.</li>
-</ul>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <title>W08 Teaching Notes</title>
+  <link rel="stylesheet" type="text/css" href="notes.css">
+</head>
+<body>
+  <p><strong style="font-family: sans-serif; font-size: 1rem;">Note:</strong><span
+      style="font-family: sans-serif; font-size: 1rem;"> The weekly Teaching Notes only identify week-specific
+      considerations. Please refer to the </span><a style="font-family: sans-serif; font-size: 1rem;"
+      title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes"
+      target="_blank" rel="noopener"
+      data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes"
+      data-api-returntype="Page">General Teaching Notes</a><span style="font-family: sans-serif; font-size: 1rem;"> for
+      repeating course facilitation expectations.</span></p>
+  <div class="objectives">
+    <h2>Week 08 Outcomes</h2>
+    <ul>
+      <li>Explain what a function is and its parts and purpose</li>
+      <li>Code SQL functions within queries</li>
+      <li>Recognize different types of functions and how they might nest</li>
+    </ul>
+  </div>
+  <div class="beforeTheWeekBegins">
+    <h2>Before the Week Begins</h2>
+    <ul>
+      <li>Students will go over preparation materials and complete the preparation check before the first class of the
+        week.</li>
+      <li>Consider reviewing the teaching tips and suggestions in the CIT111 - W08 Course Group discussion <a
+          href="https://byui.instructure.com/courses/70298/discussion_topics/1457734"
+          data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734"
+          data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.
+      </li>
+    </ul>
+  </div>
+  <div class="duringTheWeek">
+    <h2>During the Week</h2>
+      <h3>First of the week:</h3>
+        <ul>
+          <li>The students should have completed the preparation materials and check before the first class of the week
+            and be ready for learning, activities, and discussions.</li>
+          <li>Have student import the magazine database. Take a look at how the magazine database is designed.</li>
+        </ul>
+      </li>
+        <ul>
+          <h4>(W08 - Functions Practice)</h4> 
+          <li>Demonstrate, explain and have students follow along with functions. Here are some examples you could use:
+          </li><br>
+          <li><a href="../sql_code/w08_functions_practice.sql">SQL CODE FOR PRACTICE</a></li>
+          <h4>(W08 - Problem Solving)</h4>
+          <li>As seen in the next examples, this week is also about problem solving. Also as seen in the last example,
+            using functions as parameters of other functions. So not only understanding how functions work and what each
+            function returns, but also how to place them together to find solutions to problems. Here is a good article
+            that steps through basic problem solving if you'd like to go over it with the students. <a
+              href="http://web.mit.edu/be.400/www/problem.htm" target="_blank">web.mit.edu/be.400/www/problem.htm</a>.
+            These are steps they will need to use for homework this week.</li>
+          <img src="../img/problem_solving.png" width=500px>
+          <li>Using the problem solving steps solve the following (might want to go through one of them as a class with all the problem solving steps):</li>
+          <li><a href="../sql_code/w08_problem_solving.sql">SQL CODE FOR PROBLEM SOLVING PRACTICE</a></li>
+          <br>
+          <li>Remind students of the quiz on the second class of the week.&nbsp;</li>
+        </ul>
+      <h3>Mid-week</h3>
+        <ul>
+          <li>Have them complete their quiz by themselves once and then with others for the second attempt. The
+            discussions and debates during the second attempt as a group is a great 'teach one another' activity. The
+            two scores will be averaged for their final quiz score.</li>
+        </ul>
+        <ul>
+          <h4>(W08 - Workbench Errors):</h4>
+          <li>Using the PowerPoint file <a href="../ErrorPractice.pptx">"errorpractice.pptx"</a> and https://buzzin.live
+            to see which group can spot the listed error first. (one buzzin device per group) The next slide after each
+            error shows the answer. This takes a little practice to figure it all out with timing between the slides and
+            buzzin.live but the students have a lot of fun with this one.&nbsp;</li>
+        </ul>
+      <h3>End of the Week</h3>
+          <li>The homework due Saturday will be
+            <ul>
+              <li>Creating a number of queries that use functions.</li>
+            </ul>
+          </li>
+  </div>
+  <div class="gradingFeedback">
+    <h2>Grading/Feedback</h2>
+    <ul>
+      <li><strong>Instructor:</strong> The check and quiz are auto-graded. The homework will be instructor or TA graded
+        and will be checking that their queries produce the proper result sets. </li>
+      <li>Here is the key:</li>
+      <li><a href="../sql_code/w08_functions_key.sql">SQL CODE KEY FOR FUNCTIONS QUERIES</a></li>
+    </ul>
+  </div>
+  <div class="lookingAhead">
+    <h2>Looking Ahead</h2>
+    <ul>
+      <li>Remind students that they have readings and videos to watch and a check to complete before the first class of
+        next week to be prepared for the next week.</li>
+    </ul>
+  </div>
 </body>
+
 </html>
