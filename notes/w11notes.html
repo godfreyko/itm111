@@ -1,202 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>W11 Teaching Notes</title>
-    <link rel="stylesheet" type="text/css" href="notes.css">
-  </head>
-  <body>
-
-
-<p><strong style="font-family: sans-serif; font-size: 1rem;">Note:</strong><span style="font-family: sans-serif; font-size: 1rem;"> The weekly Teaching Notes only identify week-specific considerations. Please refer to the </span><a style="font-family: sans-serif; font-size: 1rem;" title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes" target="_blank" rel="noopener" data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes" data-api-returntype="Page">General Teaching Notes</a><span style="font-family: sans-serif; font-size: 1rem;"> for repeating course facilitation expectations.</span></p>
-<div class="objectives">
-<h2>Week 11 Outcomes</h2>
-<ul>
-<li>Review concepts including: database design, ERD creation, and Insert commands</li>
-</ul>
-</div>
-<div class="beforeTheWeekBegins">
-<h2>Before the Week Begins</h2>
-<ul>
-<li>Students will go over preparation materials before the first class of the week.</li>
-<li>Consider reviewing the teaching tips and suggestions in the CIT111 - W11 Course Group discussion <a href="https://byui.instructure.com/courses/70298/discussion_topics/1457734" data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734" data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.</li>
-</ul>
-</div>
-<div class="duringTheWeek">
-<h2>During the Week</h2>
-<ul>
-<li>First of the week:
-<ul>
-<li>The students should have completed the preparation materials before the beginning of the first class of the week.</li><br>
-<li>Instead of a preparation check this week you can briefly demonstrate the additional topics by showing them a few subqueries, how to create an index and how to create a view.</li>
-  <li>Here are some examples you could use:</li>
-  <pre>
-  #1. Use a subquery that returns the faculty_id of those who teach for the college of Physical Science and Engineering.  
-#Use the results of the subquery in a WHERE clause with an IN that uses the subquery results as the list of conditions to compare. 
-#The main query will find the course(s) name(s) that are taught by those faculty.
-USE univ;
-
-SELECT DISTINCT c.name
-FROM course c JOIN department d
-	ON c.department_code = d.department_code
-  JOIN faculty f
-  ON d.department_code = f.department_code
-WHERE faculty_id IN (SELECT faculty_id
-		FROM faculty 
-              	JOIN department
-		ON faculty.department_code = department.department_code
-		JOIN college
-		ON department.college_id = college.college_id
-		WHERE college.name = "Physical Science and Engineering");
-                         
-#2. Create an index on course name. 
-#It will be referenced a lot so we'd like to create an index for faster retrieval from that column.
-
-CREATE INDEX num_2 ON course(name);
-
-#3. We always want a list of students we have enrolled in the CIT department. 
-#Create a view called cit_enrollment that contains this information.
-
-CREATE VIEW cit_enrollment AS
-SELECT fname, lname
-FROM student st JOIN enrollment en
-    ON st.student_id = en.student_id
-    JOIN section sec
-    ON en.section_id = sec.section_id
-    JOIN course cr
-    ON cr.course_num = sec.course_num
-    JOIN department dep
-    ON cr.department_code = dep.department_code
-WHERE dep.department_code = "CIT";
-
-#4. Using the cit_enrollment view find out how many students 
-#there are enrolled in the CIT department.
-
-SELECT COUNT(*) FROM cit_enrollment;
-  </pre>
-  
-<li>They won't use any of these "additional topics" in the project this week or next but you can consider letting them add one of the new topics to their project for extra credit if you'd like.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>This week students will begin a project that will help the review everything they have learned in previous weeks.</li>
-</ul>
-</li>
-<li>Mid-week
-<ul>
-<li>There will be no quiz this week. This gives them more time to work on their project.&nbsp;</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li style="list-style-type: none;">
-<ul>
-<li>Give them lots of class time this week to complete their projects</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li style="list-style-type: none;"></li>
-<li>End of the Week<br />
-<ul>
-<li style="list-style-type: none;"></li>
-<li>The homework due Saturday will be
-<ul>
-<li>turning in an ERD that they create, creating insert commands to populate the database and creating a dump file.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="gradingFeedback">
-<h2>Grading/Feedback</h2>
-<ul>
-<li><strong>Instructor:</strong> The homework will be instructor or TA graded and will be checking their ERD that they have the database designed properly, checking their SQL file with all their insert commands, and checking the dump file to make sure all the data was inserted correctly. </li>
-<li>Here is the ERD:</li>
-<img src="../text/images/univ_erd.png" alt="ERD for data gathering tables in relational database design" width="400px">
-<li>Here are the inserts:</li>
-<pre>
-INSERT INTO college VALUES 
-    (1,'Physical Science and Engineering'),
-    (2,'College of Business and Communication'),
-    (3,'College of Language and Letters');
-    
-INSERT INTO department VALUES 
-    ('CIT','Computer Information Technology',1),
-    ('ECON','Economics',2),
-    ('HUM','Humanities',3);
-    
-INSERT INTO course VALUES 
-    (111,'CIT','Intro to Databases',3),
-    (150,'ECON','Micro Economics',3),
-    (376,'HUM','Classical Heritage',2),
-    (388,'ECON','Econometrics',4);
-
-INSERT INTO `faculty` VALUES 
-    (1,'Morring','Marty','CIT'),
-    (2,'Barney','Bill','CIT'),
-    (3,'Barrus','Ben','ECON'),
-    (4,'Nate','Nathan','ECON'),
-    (5,'Jensen','John','HUM'),
-    (6,'Flora','Fiona','HUM');
-
-INSERT INTO `term` VALUES 
-    (1,'Fall',2019),
-    (2,'Winter',2018),
-    (3,'Spring',2017);
-    
-INSERT INTO `student` VALUES 
-    (1,'Miller','Paul','M','Dallas','TX','1996-02-22'),
-    (2,'Smith','Katie','F','Provo','UT','1995-07-22'),
-    (3,'Jones','Kelly','F','Provo','UT','1998-06-22'),
-    (4,'Merrill','Devon','M','Mesa','AZ','2000-07-22'),
-    (5,'Murdock','Mandy','F','Topeka','KS','1996-11-22'),
-    (6,'Adams','Alece','F','Rigby','ID','1997-05-22'),
-    (7,'Carlson','Bryce','M','Bozeman','MT','1997-11-22'),
-    (8,'Larsen','Preston','M','Decatur','TN','1996-09-22'),
-    (9,'Madsen','Julia','F','Rexburg','ID','1998-09-22'),
-    (10,'Sorensen','Susan','F','Mesa','AZ','1998-08-09');
-
-    
-INSERT INTO `section` VALUES 
-    (1,1,30,1,111,'CIT',1),
-    (2,1,35,1,388,'ECON',3),
-    (3,1,50,1,150,'ECON',4),
-    (4,2,50,1,150,'ECON',4),
-    (5,1,30,1,376,'HUM',5),
-    (6,2,30,2,111,'CIT',1),
-    (7,3,35,2,111,'CIT',2),
-    (8,1,50,2,150,'ECON',4),
-    (9,2,50,2,150,'ECON',4),
-    (10,1,30,2,376,'HUM',5);
-    
-INSERT INTO `enrollment` VALUES 
-    (1,1),
-    (4,1),
-    (2,2),
-    (2,3),
-    (5,4),
-    (2,5),
-    (5,5),
-    (7,6),
-    (6,7),
-    (8,7),
-    (10,7),
-    (9,8),
-    (9,9),
-    (6,10);
-</pre>
-</ul>
-</div>
-<div class="lookingAhead">
-<h2>Looking Ahead</h2>
-<ul>
-<li>Remind students that they must have the first part of this project done correctly in order to get the second half of the project done properly next week. They need to double check everything and get feedback before going onto project part 2 next week.</li>
-</ul>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <title>W11 Teaching Notes</title>
+  <link rel="stylesheet" type="text/css" href="notes.css">
+</head>
+<body>
+  <p><strong style="font-family: sans-serif; font-size: 1rem;">Note:</strong><span
+      style="font-family: sans-serif; font-size: 1rem;"> The weekly Teaching Notes only identify week-specific
+      considerations. Please refer to the </span><a style="font-family: sans-serif; font-size: 1rem;"
+      title="General Teaching Notes" href="https://byui.instructure.com/courses/1521/pages/general-teaching-notes"
+      target="_blank" rel="noopener"
+      data-api-endpoint="https://byui.instructure.com/api/v1/courses/1521/pages/general-teaching-notes"
+      data-api-returntype="Page">General Teaching Notes</a><span style="font-family: sans-serif; font-size: 1rem;"> for
+      repeating course facilitation expectations.</span></p>
+  <div class="objectives">
+    <h2>Week 11 Outcomes</h2>
+    <ul>
+      <li>Review concepts including: database design, ERD creation, and Insert commands</li>
+    </ul>
+  </div>
+  <div class="beforeTheWeekBegins">
+    <h2>Before the Week Begins</h2>
+    <ul>
+      <li>Students will go over preparation materials before the first class of the week.</li>
+      <li>Consider reviewing the teaching tips and suggestions in the CIT111 - W11 Course Group discussion <a
+          href="https://byui.instructure.com/courses/70298/discussion_topics/1457734"
+          data-api-endpoint="https://byui.instructure.com/api/v1/courses/70298/discussion_topics/1457734"
+          data-api-returntype="Discussion">https://byui.instructure.com/courses/70298/discussion_topics/1457734</a>.
+      </li>
+    </ul>
+  </div>
+  <div class="duringTheWeek">
+    <h2>During the Week</h2>
+      <h3>First of the week</h3> 
+        <ul>
+          <li>The students should have completed the preparation materials before the beginning of the first class of
+            the week.</li>
+          </ul>
+          <ul>
+          <h4>(W11 - Additional Topics Material)</h4>
+          <li>Instead of a preparation check this week you can briefly demonstrate the additional topics by showing them
+            a few subqueries, how to create an index and how to create a view.</li><br>
+          <li>Here are some examples you could use:</li>
+          <li><a href="../sql_code/w11_additional_topics_practice.sql">SQL CODE FOR PRACTICE</a></li><br>
+          <li>They won't use any of these "additional topics" in the project this week or next but you can consider
+            letting them add one of the new topics to their project for extra credit if you'd like.</li>
+          </ul>
+        <ul>
+          <h4>(W11 - Project Part 1)</h4>
+          <li>This week students will begin a project that will help the review everything they have learned in previous
+            weeks.</li>
+        </ul>
+      <h3>Mid-week</h3>
+        <ul>
+          <li>There will be no quiz this week. This gives them more time to work on their project.&nbsp;</li>
+          <li>Give them lots of class time this week to complete their projects</li>
+        </ul>
+      <h3>End of the Week</h3>
+          <li>The homework due Saturday will be
+            <ul>
+              <li>turning in an ERD that they create, creating insert commands to populate the database and creating a
+                dump file.</li>
+            </ul>
+  </div>
+  <div class="gradingFeedback">
+    <h2>Grading/Feedback</h2>
+    <ul>
+      <li><strong>Instructor:</strong> The homework will be instructor or TA graded and will be checking their ERD that
+        they have the database designed properly, checking their SQL file with all their insert commands, and checking
+        the dump file to make sure all the data was inserted correctly. </li>
+      <li>Here is the ERD:</li>
+      <img src="../text/images/univ_erd.png" alt="ERD for data gathering tables in relational database design"
+        width="400px">
+        <li>Here is the key:</li><br>
+        <li><a href="../sql_code/w11_project_part_1_key.sql">SQL CODE KEY FOR PROJECT PART 1</a></li>
+     
+    </ul>
+  </div>
+  <div class="lookingAhead">
+    <h2>Looking Ahead</h2>
+    <ul>
+      <li>Remind students that they must have the first part of this project done correctly in order to get the second
+        half of the project done properly next week. They need to double check everything and get feedback before going
+        onto project part 2 next week.</li>
+    </ul>
+  </div>
 </body>
+
 </html>
