@@ -17,12 +17,15 @@ main {
     margin: 0 auto;
 }
 
+nav {
+    width: 75%;
+}
+
 /* Style the tab */
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-    width: 75%;
   }
   
   /* Style the buttons that are used to open the tab content */
