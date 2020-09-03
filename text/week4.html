@@ -17,7 +17,7 @@
             Databases are more then just stores of data. They are highly organized files that allow for data to be input, organized and retrieved efficiently.  The data is placed into tables where it can be sorted and filtered in flexible ways.  
         </p>
         <p>Database management systems can not only search and manipulate tables of data, but help create and organize them so they are super efficient and work properly so the right data can be retrieved to become useful information</p>
-        <p>Relational Database Management Systems. We can create, and manipulate our database as well as control the hardware that stores the data with these systems. The RDBMS can let you:</p>
+        <p>With Relational Database Management Systems, we can create, and manipulate our database as well as control the hardware that stores the data with these systems. The RDBMS can let you:</p>
             <ul>
                 <li>Create the Structure and the Rules for the data</li>
                 <li>Store, Manipulate, and Sort Data</li>
@@ -36,26 +36,26 @@
         <p>
             Some tables will combine two columns that together make up the primary key. These are called composite keys.  
         </p>
-        <p>What makes a relational database is the relationship between these tables. A primary key can relate to a foreign key of another table. These relationships are enforced with referential integrity. This means that any changes to the data in the database won’t create invalid relationships between the tables.</p>
+        <p>What makes a relational database, is the relationship between tables. A primary key can relate to a foreign key of another table. These relationships are enforced with referential integrity. This means that any changes to the data in the database won’t create invalid relationships between the tables.</p>
         <ul>
             <li>Primary Key - uniquely identifies each row in a table. It can’t be repeated as a primary key.</li>
             <li>Foreign Key - show a relationship to a primary key of another table. It could possibly be repeated as a foreign key depending on the relationship.</li>
             <li>Composite Key - when two or more columns are used to uniquely identify a row in a table</li>
             <li>Natural Key - uniquely identifies a single record or row in a table and is made up of real data (data that has meaning and occurs naturally in the real world)</li>
-            <li>Surrogate Key - uniquely identify a single record or row in a table but they don’t have a natural relationship with the rest of the columns in the table. They can be created with auto_incrementing.</li>
+            <li>Surrogate Key - uniquely identify a single record or row in a table but it doesn't have a natural relationship with the rest of the columns in the table. They can be created with auto_incrementing.</li>
         </ul>
         <h2>Entity Relationships</h2>
         <p>
-            Sometimes the term cardinality is used to describe the different types of relationships that can occur between these entities of tables. So cardinality refers to how the occurrences in one entity are linked to the number occurrences in another entity. There are 3 types of relationships. One-to-one, one-to-many, and many-to-many.
+            Sometimes the term cardinality is used to describe the different types of relationships that can occur between these entities or tables. So cardinality refers to how the occurrences in one entity are linked to the number occurrences in another entity. There are 3 types of relationships. One-to-one, one-to-many, and many-to-many.
          </p>
          <p>
             A one-to-one relationship is not as common as the other two relationships. Say you have a employee table that anyone in the company can have access to but there are some attributes of the employee you want kept private like their salary or the social security number or their home address. For security and privacy reasons you might want that information stored in a separate table of the database. There would be a one-to-one relationship here because each employee would have one and only one private information about them. And the private information about each employee belongs to one and only one employee.
         </p>
         <p>
-            A one-to-many relationship is more common. An example of a one-to-many might be two entities such as the departments of a company and the employees who work for that company. Each department has employees and each employee belongs to a department within that company. We would be assuming here that each employee only works for one department. The primary key of each department is related to the foreign key value of each employee. That foreign key value can be repeated many times in the table for each employee that belongs to that department. 
+            A one-to-many relationship is more common. An example of a one-to-many might be two entities such as the departments of a company and the employees who work for that company. Each department has employees and each employee belongs to a department within that company. We would be assuming here that each employee only works for only one department. The primary key of each department is related to the foreign key value of each employee. That foreign key value can be repeated many times in the table for each employee that belongs to that department. 
         </p>
         <p>
-            A many-to-many relationship is also common. An example is each class can have one or more students in the class and each students can take one or more classes. Relational database systems don’t allow you to implement a direct many-to-many relationship. A many-to-many relationship always has to be resolved or broken down into 2 one-to-many relationships. This provides a much better data structure for the database. Another table is created in the process. This table that is created is referred to as a linking table, or a joining or a bridge table. For example the table between students and classes would be something like an enrollment table. 
+            A many-to-many relationship is also common. An example of a many-to-many might be between two entities such as classes and students. Each class can have one or more students in the class and each students can take one or more classes. Relational database systems don’t allow you to implement a direct many-to-many relationship. A many-to-many relationship always has to be resolved or broken down into 2 one-to-many relationships. This provides a much better data structure for the database. Another table is created in the process. This table that is created is referred to as a linking table, or a joining or a bridge table. For example the table between students and classes would be something like an enrollment table showing which student is enrolled in which class. 
         </p>
         
       </div>
