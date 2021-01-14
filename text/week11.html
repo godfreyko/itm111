@@ -57,7 +57,7 @@
  WHERE product_id = 20;
         </pre>
         <p>The subquery runs returning all quantities added up of the product with product_id of 20 from all the order items. Then the main query runs using that result as it&rsquo;s 3<sup>rd</sup> column of the result set. It returns one row with the product name, the price and then the total quantity of how many of the product have been sold.</p>
-        <h3 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/Working%20with%20Subqueries.pdf">Working with Subqueries</button></a></h3>
+        <h2 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/Working%20with%20Subqueries.pdf" target="_blank">Working with Subqueries</button></a></h2>
         
         <h2>INDEX</h2>
         <p>An index provides a way to retrieve data more quickly from a table based on values in specific columns. The database management system can go directly to a specific row with an index rather than having to go row by row until it is found without an index. Indexes do use extra resources and time when updating or deleting rows with indexes, so don&rsquo;t create an index for a column unless you know you will be searching on that column often. Indexes are automatically created for primary keys and unique keys.</p>
@@ -70,7 +70,7 @@
  CREATE INDEX bike ON product(product_name);
         </pre>
         <p>This would create an index called bike on product_name.</p>
-        <h3 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/SQL%20Indexes%20Explained.pdf">SQL Indexes Explained</button></a></h3>
+        <h2 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/SQL%20Indexes%20Explained.pdf" target="_blank">SQL Indexes Explained</button></a></h2>
 
         <h2>VIEW</h2>
         <p>A view is a virtual table based on the results from a query from one or more base tables. The view table will always refer back to the base table(s) for the most current data, so it&rsquo;s not a point in time copy and doesn&rsquo;t store any data itself. So it always shows up-to-date data. The data is recreated every time the view is referenced; or in other words, the query used to define it is rerun.</p>
@@ -92,7 +92,7 @@
  FROM employees_limited
  WHERE last_name = "Simmel";
         </pre>
-    <h3 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/SQL%20Views.pdf">SQL Views</button></a></h3>
+    <h2 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/SQL%20Views.pdf" target="_blank">SQL Views</button></a></h2>
 
     </main>
          </div>
