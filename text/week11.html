@@ -39,14 +39,14 @@
       FROM category
       WHERE category_name = "Mountain Bikes"));
         </pre>
-        <p>The two subquerys run first returning the values 2 for brand_id of Haro and the value 6 for the category_id of Montain Bikes. Then with those two values the INSERT runs and a new bike is placed in the product table with the proper brand_id and category_id foreign keys entered.</p>
+        <p>The two subqueries run first returning the value 2 for brand_id of Haro and the value 6 for the category_id of Montain Bikes. Then with those two values the INSERT runs and a new bike is placed in the product table with the proper brand_id and category_id foreign keys entered.</p>
         <h3>Subquery in a WHERE clause</h3>
         <pre>
  SELECT product_name, list_price
  FROM product
  WHERE list_price > (SELECT AVG(list_price) FROM product);
         </pre>
-        <p>The subquery runs first which finds the average of all the list prices in the product table. Then from that single value result it becomes the last part of the WHERE clause and only those product names and list prices show up that are above the average of all the bikes&mdash;the value that the subquery returned.</p>
+        <p>The subquery runs first which finds the average of all the list prices in the product table. Then that single value result becomes the value in the WHERE clause and only those product names and list prices show up that are above the average of all the bikes&mdash;the value that the subquery returned.</p>
         <h3>Subquery in a SELECT clause</h3>
         <pre>
  SELECT product_name, list_price,
