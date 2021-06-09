@@ -23,9 +23,14 @@ SELECT * from magazine;
 
 -- 3. -- parameters for LOCATE(find, search, start)
 -- any string with 'Ma", we want to take from that word on and take if off the magazine name
-SELECT LEFT(magazineName, LOCATE('Ma', magazineName)-1)
+SELECT LEFT(magazineName, LOCATE('Ma', magazineName) -1)
 FROM magazine
 WHERE magazineName LIKE '%Ma%';
+
+-- OR
+
+SELECT SUBSTRING(magazineName, 1, Locate(' Ma', magazineName, 1))
+FROM magazine;
 
 -- What if we just wanted that 'Ma' word and beyond?
 SELECT RIGHT(magazineName,LENGTH(magazineName) - LOCATE('Ma', magazineName)+1)
