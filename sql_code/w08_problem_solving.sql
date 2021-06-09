@@ -29,7 +29,7 @@ WHERE magazineName LIKE '%Ma%';
 
 -- OR
 
-SELECT SUBSTRING(magazineName, 1, Locate(' Ma', magazineName, 1))
+SELECT SUBSTRING(magazineName, 1, Locate(' Ma', magazineName))
 FROM magazine;
 
 -- What if we just wanted that 'Ma' word and beyond?
@@ -39,5 +39,5 @@ WHERE magazineName LIKE '%Ma%';
 
 -- OR
 
-SELECT SUBSTRING(magazineName, Locate(' Ma', magazineName, 1))
+SELECT SUBSTRING(magazineName, Locate(' Ma', magazineName))
 FROM magazine;
