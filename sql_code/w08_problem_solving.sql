@@ -36,3 +36,8 @@ FROM magazine;
 SELECT RIGHT(magazineName,LENGTH(magazineName) - LOCATE('Ma', magazineName)+1)
 FROM magazine
 WHERE magazineName LIKE '%Ma%';
+
+-- OR
+
+SELECT SUBSTRING(magazineName, Locate(' Ma', magazineName, 1))
+FROM magazine;
