@@ -32,18 +32,18 @@
         <table>
             <tr>
                 <td>SELECT</td> 
-                <td>Describes the columns in the result set</td>
+                <td>Lists the columns in the result set</td>
             </tr>
             <tr>
                 <td>FROM</td>
-                <td>The table you are getting the data from</td>
+                <td>Specifies the table from where the data will be retrieved</td>
             </tr>
                 <td>WHERE</td> 
-                <td>Filters the rows, only those that match the condition </td>
+                <td>Filters the rows to only those that match the condition </td>
             </tr>
             <tr>
                 <td>ORDER BY</td>
-                <td>How to sort the rows</td>
+                <td>Specifies how to sort the rows</td>
             </tr>
             <tr>
                 <td>LIMIT</td>
@@ -52,14 +52,14 @@
         </table>
         <h2>SELECT and FROM Statements</h2>
 
-        <p>The SELECT statement is used to retrieve table data. The SELECT statement lists the columns you want as part of the resulting data, or result set. The FROM statement tells what table you are getting the data or columns from.</p>
+        <p>The SELECT statement is used to retrieve data from a table. The SELECT statement lists the columns you want as part of the resulting data, or result set. The FROM statement tells what table you are getting the data or columns from.</p>
 
         <h2>The SELECT Statement Syntax</h2>
 
-        <h3 class='syntax'>SELECT select_list <br> [FROM table_source]</h3>
+        <h3 class='syntax'>SELECT column_list <br> [FROM table_source]</h3>
 
 
-        <h2>There are 4 ways to code the select list in the SELECT statement.</h2>
+        <p>There are 4 ways to code the column list in the SELECT statement.</p>
 
         <h3>1. All columns with an asterisk</h3>
         <pre>
@@ -226,7 +226,7 @@
             </tr>
         </table>
         <p>By default, the result set column header is the same name as the column, calculation or function. Notice “prod_price + 2.00” is the column header for the calculated column. You can rename a column to clarify the data in that column in the result
-            set. The AS keyword allows you to rename the column, this is known as an alias The string following the AS keyword replaced the column name, calculation or function. If there is spaces in the alias string you need to place quotes around it.</p>
+            set. The AS keyword allows you to rename the column. This is known as an alias. The string following the AS keyword replaces the column name, calculation or function. If there are spaces in the alias string you need to place quotes around it.</p>
         <pre>
  SELECT prod_name, prod_price + 2.00 AS ‘Markup Price’
  FROM products
@@ -284,6 +284,7 @@
         <p>If more than one arithmetic operator is used they follow the order of precedence as they are listed in the table above.</p>
 
         <h3>4. Columns created with functions</h3>
+        <p>Functions are not covered until a later lesson, but are mentioned here only to demonstrate that you can use functions in the SELECT statement.</p>
         <pre>
  SELECT prod_name, ROUND(prod_price) AS nearest_dollar
  FROM products 
@@ -331,9 +332,9 @@
             </tr>
         </table>
 
-        <p>SELECT statement uses the ROUND function with price as the parameter to round the price up to the nearest dollar. The alias is the string ‘nearest_dollar’.</p>
+        <p>The SELECT statement uses the ROUND function with price as the parameter to round the price to the nearest dollar. The alias is the string ‘nearest_dollar’.</p>
 
-        <p>The DISTINCT keyword can be used with SELECT to eliminate duplicate rows in a result set. For example without the DISTINCT keyword this SELECT statement would result in all prices of each product listed.</p>
+        <p>The DISTINCT keyword can be used with SELECT to eliminate duplicate rows in a result set. For example without the DISTINCT keyword this SELECT statement results in all prices of each product listed.</p>
         <pre>
  SELECT prod_price
  FROM products
@@ -371,7 +372,7 @@
             </tr>
         </table>
 
-        <p>With the DISTINCT keyword all duplicate prices would be eliminated.</p>
+        <p>With the DISTINCT keyword all duplicate prices are eliminated.</p>
         <pre>
  SELECT DISTINCT(prod_price)
  FROM products  
@@ -396,7 +397,7 @@
 
         <h2>The WHERE Clause</h2>
 
-        <p>The WHERE clause lets you retrieve just the data you want. So only part of the table or column data shows up in the result set depending on the criteria in your WHERE clause. The WHERE clause filters the data.</p>
+        <p>The WHERE clause lets you retrieve just the rows you want. So only part of the table or column data shows up in the result set depending on the criteria in your WHERE clause. The WHERE clause filters the data.</p>
 
         <h3>The SELECT Statement Syntax with WHERE:</h3>
 
@@ -411,7 +412,7 @@
  >= 		   Greater than or equal to
  &lt;> or !=	   Not equal to
 </pre>
-        <p>If you wanted to restrict your result set to only those products who have a price greater than $5.00, you could use this WHERE clause.</p>
+        <p>If you wanted to restrict your result set to only those products that have a price greater than $5.00, you could use this WHERE clause.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -432,7 +433,7 @@
             </tr>
         </table>
 
-        <p>Or those products that are less than or equal to 2.99.</p>
+        <p>Or those products priced less than or equal to 2.99.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -469,7 +470,7 @@
             </tr>
         </table>
 
-        <p>Or those products that are not equal to 2.99.</p>
+        <p>Or those products that are not priced equal to 2.99.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -506,15 +507,15 @@
             </tr>
         </table>
 
-        <p>You can also use multiple conditions with logical operators. Use AND and OR to combine two or more search condition and NOT to negate a search condition.</p>
-        <p>If you have multiple conditions (or a compound condition), there is an order of precedence. First the NOT runs, then the AND, and then the OR. Use parenthesis to override this order of precedence.</p>
+        <p>You can also use multiple conditions with logical operators. Use AND and OR to combine two or more search conditions and NOT to negate a search condition.</p>
+        
         <pre>
  AND    Both conditions have to be true for it to show up in the result set
  OR     One of the conditions has to be true for it to show up in the result set
  NOT    Negates the condition. 
 </pre>
-
-        <p>Select all products with their prices that have a price equal to 5.99 and also have the name of “doll”. There are two products that are 5.99 but only one with the name doll. Both conditions have to be true for the result to show up.</p>
+        <p>If you write a WHERE clause with multiple conditions (or a compound condition), there is an order of precedence. First the NOT runs, then the AND, and then the OR. Use parenthesis to override this order of precedence.</p>
+        <p>Select all products and their price that have a price equal to 5.99 and also have the name of “doll”. There are two products that are 5.99 but only one with the name doll. Both conditions have to be true for the result to show up.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -531,7 +532,7 @@
             </tr>
         </table>
 
-        <p>Select all products with their prices that have a price equal to 5.99 or has a name equal to “bat”. We get both products that are equal to 5.99 and a product name equal to “bat”. So either condition can be true for the result to show up.</p>
+        <p>Select all products and their price that have a price equal to 5.99 or has a name equal to “bat”. We get both products that are equal to 5.99 and a product name equal to “bat”. So either condition can be true for the result to show up.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -555,7 +556,7 @@
                 <td>2.99</td>
             </tr>
         </table>
-        <p>Select all products with their prices that do not have a price equal to 5.99. Reverses, or negates the condition and returns the opposite; all products with their prices that are not equal to 5.99.</p>
+        <p>Select all products and their price that do not have a price equal to 5.99. Reverses, or negates the condition and returns the opposite; all products with their prices that are not equal to 5.99.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -595,7 +596,7 @@
                 <td> 1.99</td>
             </tr>
         </table>
-        <p>The IN operator can test an expression to a list of expressions in an IN phrase. </p>
+        <p>The IN operator tests if an expression is in a list. </p>
 
         <p>Select all products and their prices that have a price of 2.99, 1.99 or 5.99.</p>
         <pre>
@@ -642,7 +643,7 @@
             </tr>
         </table>
 
-        <p>The BETWEEN operator can compare an expression with a range of values. Select all products and their prices that have a price ranging between 1.99 and 3.99.</p>
+        <p>The BETWEEN operator compares an expression with a range of values. Select all products and their prices that have a price ranging between 1.99 and 3.99. It is inclusive and would also include 1.99 and 3.99.</p>
         <pre>
  SELECT prod_name, prod_price 
  FROM products 
@@ -683,9 +684,9 @@
             </tr>
         </table>
 
-        <p>The LIKE operator matches string patterns to a test expression. It uses two characters to represent characters. The _ underscore is a wild card to one character and the % percent is a wild card to any number of characters.</p>
+        <p>The LIKE operator matches a string pattern to an expression. It uses two characters to represent characters. The _ underscore is a wild card to one character and the % percent is a wild card to any number of characters.</p>
 
-        <p>Select all products and their prices that begin with ‘b’ and have any number of character after the ‘b’.</p>
+        <p>Select all products and their price that begin with ‘b’ and have any number of character after the ‘b’.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -710,7 +711,7 @@
             </tr>
         </table>
 
-        <p>Select all products and their prices that end with ‘ll’ and have any number of character before the ‘ll’.</p>
+        <p>Select all products and their price that end with ‘ll’ and have any number of characters before the ‘ll’.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -735,7 +736,7 @@
             </tr>
         </table>
 
-        <p>Select all products and their prices that have one character before an ‘o’ and any number of character after the ‘o’.</p>
+        <p>Select all products and their price that have one character before an ‘o’ and any number of characters after the ‘o’.</p>
 
         <pre>
  SELECT prod_name, prod_price
@@ -805,8 +806,8 @@
  p1|p2  matches any of the patterns p1 or p2 
 </pre>
         <p>A NULL value is when a value has been left blank when a row or record is added. It is different from a zero value or a field that contains spaces.
-        <p>The IS NULL or IS NOT NULL will find all nulls or all that are not null as well. We only had one null in our table; the product category of the jump rope row.</p>
-        <p>Because NULLs are not values (they have no value), it is not possible to use comparison operators (=, < or >) with NULL.
+        <p>The IS NULL or IS NOT NULL will find all nulls or all values that are not null. We only had one null in our table; the product category of the jump rope row.</p>
+        
         <table class='results'>
             <tr>
                 <th>prod_id </th>
@@ -870,6 +871,9 @@
             </tr>
         </table>
         <pre>
+        
+        <p>Because NULLs are not values (they have no value), it is not possible to use comparison operators (=, < or >) with NULL.</p>
+        
  SELECT prod_name, prod_price
  FROM products
  WHERE prod_category IS NULL
@@ -929,7 +933,7 @@
                 <td> 1.99</td>
             </tr>
         </table>
-        <p>ORDER BY clause will sort your result set. You can specify one or more column names to sort the result set.</p>
+        <p>The ORDER BY clause will sort your result set. You can specify one or more column names to sort the result set.</p>
 
         <h3>The SELECT Statement Syntax with ORDER BY:</h3>
 
@@ -1076,7 +1080,7 @@
         </table>
 
 
-        <p>You can reverse the sort from the default ascending (ASC) to descending using the keyword DESC. The ASC keyword is assumed unless DESC is used. Now the prices are from largest price to smallest price.</p>
+        <p>You can reverse the sort from the default ascending (ASC) to descending using the keyword DESC. The ASC keyword is assumed unless DESC is used. Now the prices are sorted from largest price to smallest price.</p>
         <pre>
  SELECT prod_name, prod_price
  FROM products
@@ -1132,7 +1136,7 @@
             SELECT select_list<br> [FROM table_source]<br> [WHERE search_conditions]<br> [ORDER BY order_by_list]<br> [LIMIT row_limit]<br>
         </h3>
 
-        <p>So in this statement the result set is limited to 4 rows, even though there are 9 products in the table that would have been a part of the result set if there was no LIMIT.</p>
+        <p>In this statement, the result set is limited to 4 rows, even though there are 9 products in the table that would have been a part of the result set if there were no LIMIT clause.</p>
 
         <pre>
  SELECT prod_name, prod_price
@@ -1163,14 +1167,14 @@
             </tr>
         </table>
 
-        <p>Remember we have to type in the clauses in a specific order. SELECT, then FROM, then WHERE, then ORDER BY, and then LIMIT</p>
+        <p>Remember we have to type the clauses in a specific order. SELECT, then FROM, then WHERE, then ORDER BY, and then LIMIT</p>
 
-        <h3>This is the order of how you must write the code.</h3>
+        <h3>This is the order of how you must write a select query.</h3>
         <h3 class='syntax'>
             SELECT <br> FROM <br> WHERE <br> ORDER BY <br> LIMIT <br>
-        </h3>
+        </h3><br>
 
-        <h3>But the order in which the system actually executes the clauses is different. This is referred to as the Order of Execution.</h3>
+        <h3>But the order in which the computer actually executes the clauses is different. This is referred to as the Order of Execution.</h3>
 
         <h3 class='syntax'>
             FROM<br> WHERE
@@ -1179,9 +1183,9 @@
             <br>
         </h3>
 
-        <p>The data from the entire table is retrieved, then that is filtered by the WHERE criteria. The columns, calculations or functions that will show up are determined in SELECT. Then that resulting data is sorted then limited.</p>
+        <p>The data from the entire table is retrieved, then that is filtered by the WHERE criteria. The columns, calculations, or functions that will show up are determined in SELECT. Then that resulting data is sorted and then limited.</p>
 
-        <p>This is why an alias that was set up in the SELECT clause can be used in an ORDER BY but not a WHERE.</p>
+        <p>The order of execution is why an alias that was set up in the SELECT clause can be used in an ORDER BY but not a WHERE.</p>
 
         <pre>
  SELECT prod_name, prod_price + 2.00 AS mark_up
