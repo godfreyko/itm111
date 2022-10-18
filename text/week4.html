@@ -58,6 +58,10 @@
             <li>Natural Key - uniquely identifies a single record or row in a table and is made up of real data (data that has meaning and occurs naturally in the real world)</li>
             <li>Surrogate Key - uniquely identify a single record or row in a table but it doesn't have a natural relationship with the rest of the columns in the table. They can be created with auto_incrementing.</li>
         </ul>
+        <p>There are other keys can can be used when defining columns in a table.  In Workbench they are seen as the PK (Primary Key), NN (Not Null), UQ (Unique), BIN (Binary), UN (Unsigned), ZF (Zero Fill)  and AI (Auto Increment). In this course we will understand and use PK, NN and AI. The UN or Unsigned is a good option to make sure surrogate keys have wide range of positive numbers, but is not necessarily needed in this course due to our relatively small databases, but would be a good idea to use on larger databases. It extents the range of possible positive key values that can be used.</p>
+
+<p>For more information about these keys you can visit: <a href="https://blog.mclaughlinsoftware.com/2022/10/16/mysql-workbench-keys/">MySQL Workbench Keys at blog.McLaughlinSoftware.com</a></p>
+
         <h2>Entity Relationships</h2>
         <p>
             Sometimes the term cardinality is used to describe the different types of relationships that can occur between tables. Cardinality refers to how the occurrences in one table are linked to the number occurrences in another table. There are 3 types of relationships. One-to-one, one-to-many, and many-to-many.
