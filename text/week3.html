@@ -117,7 +117,7 @@
                 <td>Numbers with digits after the decimal point</td>
             </tr>
         </table>
-        <p>A note about ENUM: Only use ENUM when you’re storing distinct, unchanging values sets where you will never need to store additional related info. It should only have more than 2 to 20 items. If there are only 2 choices use tinyint for 1 or 0. Also don’t use numeric values in ENUM they should use a numeric datatype. Using a reference table instead of ENUM is advisable when there may be any changes to the value options in the future.</p>
+        <p>A note about ENUM: ENUM is not part of the SQL-standard and many database systems do not support it. Using a reference table instead of ENUM is advisable. In MySQL, only use ENUM when you’re storing distinct, unchanging values sets where you will never need to store additional related info. It should only have more than 2 to 20 items. If there are only 2 choices use tinyint for 1 or 0. Again, even with MySQL, when there may be any changes to the value options in the future use a reference table instead.</p>
         <h3>Date and Time Data Types</h3>
         <table>
             <tr>
