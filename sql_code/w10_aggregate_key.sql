@@ -24,7 +24,7 @@ WHERE quantity < 1
 GROUP BY product_name
 ORDER BY product_name;
 
--- 3. We want to see how many of each category of bike we have in our "Baldwin Bikes" store, store_id 2. We need to see the name of the category as well as the number of bikes in the category.Sort it by lowest numbers first.
+-- 3. How many bikes for each category of bike do we have in stock at our "Rowlett Bikes" store. Use the store_id, not the store name, in the query. We need to see the name of the category as well as the number of bikes in the category. Sort it by lowest numbers first. 
 
 SELECT category_name, SUM(quantity) AS instock
 FROM category c JOIN product p
