@@ -26,7 +26,7 @@ ORDER BY product_name;
 
 -- 3. We want to see how many of each category of bike we have in our "Baldwin Bikes" store, store_id 2. We need to see the name of the category as well as the number of bikes in the category.Sort it by lowest numbers first.
 
-SELECT category_name, COUNT(p.category_id) AS instock
+SELECT category_name, SUM(quantity) AS instock
 FROM category c JOIN product p
 	ON c.category_id = p.category_id
     JOIN stock s
