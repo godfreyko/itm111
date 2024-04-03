@@ -13,7 +13,7 @@ ORDER BY SurfaceArea DESC;
 SELECT Name, LifeExpectancy
 FROM country
 WHERE LifeExpectancy > 75
-ORDER BY LifeExpectancy;
+ORDER BY LifeExpectancy DESC;
 
 #Write a query to show the unique forms of government in the country table. 
 #Sort the list in alphabetical order. 
