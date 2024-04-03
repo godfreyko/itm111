@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W08 - Functions</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/prove.css">
+</head>
+
+<body>
+<p><b>Purpose</b>: In addition to using functions properly, the purpose
+of this assignment is for you to practice problem solving; analyzing
+what a question asks and breaking the problem into steps that lead to a
+solution.</p>
+
+<p><b>Instructions</b>: Using the magazine and bike schemas, write SQL
+queries in Workbench that will solve all the answers to the following
+scenarios. Write all the queries in one tab in Workbench. Above each of
+your queries, write a comment similar to this:</p>
+
+<code>-- Query 1</code>
+
+<p>Save your SQL script with all five queris as a .sql file and submit
+your saved .sql file.</p>
+
+<h3>Magazine Schema</h3>
+<p>1. List each magazine name and magazine price with 3% off the price
+rounded to 2 decimal places.</p>
+<p><img src="images/prove1.png" width="314" height="193"
+alt="Screen shot of the result set"></p>
+
+<p>2. From the subscription table, show the subscriberKey and using the
+date of 2024-03-15 as if it were today's date, how long in years,
+ROUNDED to the nearest year, has it been since each subscription
+started?</p>
+<p><img src="images/prove2.png" width="204" height="287"
+alt="Screen shot of the result set"></p>
+
+<p>3. Show the subscriptionStartDate and subscriptionLength and add the
+subscriptionLength to the subscriptionStartDate to see the end date of
+each subscription. The numbers in the subscriptionLength column are
+given in months. Format the end date as Month name, day number with
+comma, and a 4 digit year.</p>
+<p><img src="images/prove3.png" width="437" height="270"
+alt="Screen shot of the result set"></p>
+
+<h3>Bike Schema</h3>
+<p>4. We need a list of all the product names without the year at the
+end of the product_name string. Notice that some product_names have two
+years listed. Make sure you take those off as well. Order your results
+by product_id and limit your results to the first 14.</p>
+<p><img src="images/prove4.png" width="272" height="323"
+alt="Screen shot of the result set"></p>
+
+<p>5. List the product name and then take the 2024 model year bikes and
+divide the price into 3 equal payments. Display one of the payments with
+a dollar sign, comma at the thousands place, and two decimal places.</p>
+<p><img src="images/prove5.png" width="452" height="177"
+alt="Screen shot of the result set"></p>
+</body>
+</html>
