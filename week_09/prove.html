@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W09 - Joins</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/prove.css">
+</head>
+
+<body>
+<p><b>Instructions</b>: Using the v_art, magazine, and employee schemas,
+write SQL queries in Workbench that solve each of the following
+scenarios or questions. Write all your queries in one tab in Workbench.
+Please number your queries by writing a comment above each of your
+queries similar to this comment:</p>
+
+<code>-- Query 1</code>
+
+<p>Save your SQL script with all seven queries as a .sql file and submit
+your saved .sql file.</p>
+
+<h3>v_art Schema</h3>
+<p>1. When you visit
+<a href="http://art.byuiwebdev.com/">art.byuiwebdev.com</a> and you
+search by Period/Style and you choose Impressionism, you get two
+resulting images ("Woman in the Garden" and "Irises"). What query could
+be used in the website code that allows the user to see these images? No
+join is needed.</p>
+<p><img src="images/prove1.png" width="122" height="65"
+alt="Screen shot of the result set"></p>
+
+<p>2. When you visit
+<a href="https://art.byuiwebdev.com/">art.byuiwebdev.com</a> and you
+search by Subject and type in the word flower, you get three images.
+What query would have allowed the user to get those results? (Remember
+the keyword might have been 'flowers' but the user typed 'flower'.)</p>
+<p><img src="images/prove2.png" width="122" height="85"
+alt="Screen shot of the result set"></p>
+
+<p>3. List <strong>all</strong> the artists from the artist table but
+only the related artwork from the artwork table. We need the first and
+last name and artwork title.</p>
+<p><img src="images/prove3.png" width="340" height="305"
+alt="Screen shot of the result set"></p>
+
+<h3>Magazine Schema</h3>
+<p>4. List all subscriptions with magazine name and subscriber last and
+first name and sort alphabetically by magazine name.</p>
+<p><img src="images/prove4.png" width="495" height="245"
+alt="Screen shot of the result set"></p>
+
+<p>5. List all the magazines that Samantha Sanders subscribes to.</p>
+<p><img src="images/prove5.png" width="145" height="125"
+alt="Screen shot of the result set"></p>
+
+<h3>Employee Schema</h3>
+<p>6. List the first 5 employees from the 'Customer Service' Department.
+Put them in alphabetical order by last name.</p>
+<p><img src="images/prove6.png" width="163" height="125"
+alt="Screen shot of the result set"></p>
+
+<p>7. Find out the current salary and department of Berni Genin. You can
+use the ORDER BY and LIMIT to get just the most recent salary.</p>
+<p><img src="images/prove7.png" width="407" height="45"
+alt="Screen shot of the result set"></p>
+</body>
+</html>
