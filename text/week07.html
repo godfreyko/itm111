@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang='en-us'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>What is a Relational Database?</title>
+    <link href="css/outline_styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+      <nav>
+        <div class="tab">
+            <a href="../text/week01.html"><button class="tablinks">1 Data</button></a>
+            <a href="../text/week02.html"><button class="tablinks">2 Questions</button></a>
+            <a href="../text/week03.html"><button class="tablinks">3 Queries</button></a>
+            <a href="../text/week04.html"><button class="tablinks">4 Aggregates</button></a>
+            <a href="../text/week05.html"><button class="tablinks">5 Functions</button></a>
+            <a href="../text/week07.html"><button class="active" class="tablinks">6 Relational</button></a>
+            <a href="../text/week08.html"><button class="tablinks">7 Design</button></a>
+            <a href="../text/week09.html"><button class="tablinks">8 Inserting</button></a>
+            <a href="../text/week10.html"><button class="tablinks">9 Joins</button></a>
+            <a href="../text/week11.html"><button class="tablinks">10 More</button></a>
+            </div>
+        </nav> 
+      <div id='text'>
+        <h1>6 What is a Relational Database?</h1>
+            <h2>How Do We Store Data</h2> <p>
+                Businesses depend on data stored in databases. For example, consider Amazon.com. It has a vast amount of data. When you search for a product, your search text becomes part of a question that is asked of the data (a query for their database), and the results are sorted and filtered down to what you are looking for. The Church of Jesus Christ has huge stores of data that it uses for family history or for church organizations and membership records. Social media sites store vast amounts of information on its many users.  The financial world relies on billions of transactions that are stored in databases. Banks, companies, clients, customers, vendors, orders from all sorts of retail transactions all rely on databases. 
+            </p>
+            <p>
+                Companies can also make decisions regarding their next moves by querying their data, seeing trends, patterns, and then plan accordingly. We are surrounded by data, and it is growing every day. There is a need for people who can organize this data in a useful way so it can be used productively. 
+            </p>
+            <h2>Database Models</h2>
+            <p>
+                A database model determines the logical structure of a database and determines in which manner data can be stored, organized, and manipulated. There are different types of database models for structuring a database. 
+            </p>
+            <h3>Older models: network and hierarchical</h3>
+            <p>
+                A hierarchical database organizes data in a tree-like structure with parent and child nodes. Each child node will have only one parent node. Each parent node can have many child nodes. When data needs to be retrieved the whole tree is searched. This model was widely used during the mainframe era in the 1960s. It can still be used for storing file systems and geographic information. It allows for high performance needs, but its structure is very rigid.
+            </p>
+            <br>
+            <img src="images/hierarchical_model.png" alt="hierarchical model diagram" width="50%">
+            <br>
+            <p>
+                The network model is an extension of the hierarchical database model. With the network model, each child node can have more than one parent. This allows more flexibility. The network model was widely used before the relational model was introduced. Unfortunately, it was difficult to implement and maintain.
+            </p>
+            <h3>Relational Model</h3>
+            <p>
+                The relational database model was introduced in the 1970s. A relational database model organizes data in rows and tables, which in turn can be accessed and linked to other rows and tables by sharing a common field. The relational model is by far the most common type of database model, and that is what we will be studying for the rest of this course, but there are other models to be aware of and understand. 
+            </p>
+            <br>
+            <img src="images/relational_model.png" alt="relatinal model diagram" width="50%">
+            <br>
+            <h3>Object-oriented models</h3>
+            <p>
+                The term object-oriented database model was first introduced in the mid 1980s. An object-oriented database (OODB) is a database that represents data as an object with properties and methods. The object-oriented database model is an alternative to the relational model and uses a combination of object-oriented and relational database principles to process data. This model combines database capabilities with object-oriented programming language capabilities.
+            </p>
+            <br>
+            <img src="images/object-oriented_model.png" alt="object-oriented model diagram" width="50%">
+            <br>
+            <h3>Semi-structured or Unstructured data models</h3>
+            <p>
+                With the emergence of ‘Big Data’ in the late 2000s, the unstructured database had its beginning. Some databases have such a large scale that a relational database model begins to have limitations. A very large-scale relational database has to be distributed on multiple servers. Handling tables across different servers can be difficult. Also, the type of data you need to store might not fit into structured relational tables easily or might require a very complex structure to make it work. In these cases, a semi-structured or unstructured database model might be used.  NoSQL is a type of unstructured database model. NoSQL is an abbreviation for ‘Not Only SQL’.  A NoSQL database can store virtually any structure. New columns can be created easily. In fact, a NoSQL database doesn't even need a predefined schema (or data model). 
+            </p>
+            <p>
+                Relational databases just weren’t designed to handle the quantity of data, number of users, and ever-changing data requirements for large systems like Amazon and Facebook.  Even the church has used NoSQL for years to process billions of transactions. The amount of data volume in these types of systems just can’t be managed by a single relational database system. NoSQL databases can provide high performance at an extremely large scale. They can handle billions of queries in a small amount of time. NoSQL databases also have far more relaxed data model restrictions. 
+            </p>
+            <p>
+                There are, however, limitations to NoSQL databases. The data doesn’t always stay consistent across the entire database as it moves around. This affects consistency on multiple servers.  The times that transactions are saved differs from the more consistent saving times with relational systems. There are also many different NoSQL products, some with steep learning curves. Most organizations are not big enough to need an unstructured database like NoSQL. The vast majority of databases are still relational databases using SQL.
+            </p>
+            <p>
+                Popular NoSQL Database management software products include:
+                <ul>
+                    <li>MongoDB – open-source, uses a weakly typed JSON structure, written in C++</li>
+                    <li>Cassandra – developed at Facebook, uses distributed data storage, and is a columner database</li>
+                    <li>Dynamo – Amazon proprietary database, allows documents and graphs as data</li>
+                    <li>CouchDB – open source, high concurrency with strict consistency, uses JSON to store data and JavaScript as its query language</li>
+                </ul>
+            
+            
+        <h2>Database Management Systems</h2>
+        <p>
+            Databases are more then just stores of data. They are highly organized files that allow for data to be input, organized, and retrieved efficiently.  The data is placed into tables where it can be sorted and filtered in flexible ways.  
+        </p>
+        <p>Database management systems can not only search and manipulate tables of data but also help create and organize them so they are super efficient and work properly so the right data can be retrieved to become useful information.</p>
+        <p>With Relational Database Management Systems, we can create, and manipulate our database as well as control the hardware that stores the data with these systems. A RDBMS can let you:</p>
+            <ul>
+                <li>Create the Structure and the Rules for the data</li>
+                <li>Store, Manipulate, and Sort Data</li>
+                <li>Create users with different levels of access to the data or giving them roles</li>
+                <li>Backup and secure the data</li>
+            </ul>
+            
+        <br>
+        <h2>Relational Databases</h2>
+        <p>
+            In relational databases, data is stored in one or more tables. Each table represents a real-world entity or one group of related items. These tables are made of rows and columns. Each column header describes what fields of data will be in the table or the attributes of the entity. So each column has fields and each row is a record or one instance of that entity. 
+        </p>
+        <p>
+            Most tables have a column that uniquely identifies each row in the table. You can define this as the primary key. Each primary key must be unique and never repeated in the table where it is defined as the primary key.  
+        </p>
+        <p>
+            Some tables will combine two columns that together make up the primary key. These are called composite keys.  
+        </p>
+        <p>What makes a relational database, is the relationship between tables. A primary key can relate to a foreign key of another table. These relationships are enforced with referential integrity. This means that any changes to the data in the database won’t create invalid relationships between the tables.</p>
+        <ul>
+            <li>Primary Key - uniquely identifies each row in a table. It can’t be repeated as a primary key.</li>
+            <li>Foreign Key - show a relationship to a primary key of another table. It could possibly be repeated as a foreign key depending on the relationship.</li>
+            <li>Composite Key - when two or more columns are used to uniquely identify a row in a table</li>
+            <li>Natural Key - uniquely identifies a single record or row in a table and is made up of real data (data that has meaning and occurs naturally in the real world)</li>
+            <li>Surrogate Key - uniquely identify a single record or row in a table but it doesn't have a natural relationship with the rest of the columns in the table. They can be created with auto_incrementing.</li>
+        </ul>
+        <p>Other keys can can be used when defining columns in a table.  In Workbench they are seen as the PK (Primary Key), NN (Not Null), UQ (Unique), BIN (Binary), UN (Unsigned), ZF (Zero Fill)  and AI (Auto Increment). In this course we will understand and use PK, NN and AI. The UN or Unsigned is a good option to make sure surrogate keys have a wide range of positive numbers, but is not necessarily needed in this course due to our relatively small databases, but would be a good idea to use on larger databases. It extents the range of possible positive key values that can be used.</p>
+
+<p>For more information about these keys you can visit: <a href="https://medium.com/@jeewanthakasun96/7-keys-in-database-caee92ef265a">7 Keys in Database</a></p>
+
+        <h2>Entity Relationships</h2>
+        <p>
+            Sometimes the term cardinality is used to describe the different types of relationships that can occur between tables. Cardinality refers to how the occurrences in one table are linked to the number occurrences in another table. There are 3 types of relationships. One-to-one, one-to-many, and many-to-many.
+         </p>
+         <p>
+            A one-to-one relationship is not as common as the other two relationships. Consider an employee table that everyone in the company has access to but there are some attributes of the employee you want kept private like their salary, social security number, or home address. For security and privacy reasons you might want that information stored in a separate table of the database. There would be a one-to-one relationship here because each employee would have one and only one private information about them. And the private information about each employee belongs to one and only one employee.
+        </p>
+        <p>
+            A one-to-many relationship is more common. An example of a one-to-many might be two entities such as the departments of a company and the employees who work for that company. Each department has employees and each employee belongs to a department within that company. We would be assuming here that each employee works for only one department. The primary key of each department is related to the foreign key of each employee. A foreign key value can be repeated many times in the table for each employee that belongs to that department. 
+        </p>
+        <p>
+            A many-to-many relationship is also common. An example of a many-to-many might be between two entities such as classes and students. Each class can have one or more students in the class and each student can take one or more classes. Relational database systems don’t allow you to implement a direct many-to-many relationship. A many-to-many relationship always has to be resolved or broken down into 2 one-to-many relationships. This provides a much better data structure for the database. Another table is created in the process. This table that is created is referred to as a linking table, or a joining or a bridge table. For example the table between students and classes would be something like an enrollment table showing which student is enrolled in which class. 
+        </p>
+        
+      </div>
+    </main>
+    <footer>
+        <hr>
+        <p>CIT 111 - Introduction to Databases - BYUI - andersonju</p>
+    </footer>
+    <script type="text/javascript" src="scripts/script.js">
+    </script>
+</body>
+
+</html>

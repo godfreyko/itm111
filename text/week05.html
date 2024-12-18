@@ -11,21 +11,94 @@
     <main>
       <nav>
         <div class="tab">
-            <a href="../text/week1.html"><button class="tablinks">1 Data</button></a>
-            <a href="../text/week2.html"><button class="tablinks">2 Questions</button></a>
-            <a href="../text/week3.html"><button class="tablinks">3 Datatypes</button></a>
-            <a href="../text/week4.html"><button class="tablinks">4 Relational</button></a>
-            <a href="../text/week5.html"><button class="tablinks">5 Design</button></a>
-            <a href="../text/week6.html"><button class="tablinks">6 Inserting</button></a>
-            <a href="../text/week7.html"><button class="tablinks">7 Queries</button></a>
-            <a href="../text/week8.html"><button class="active" class="tablinks">8 Functions</button></a>
-            <a href="../text/week9.html"><button class="tablinks">9 Joins</button></a>
-            <a href="../text/week10.html"><button class="tablinks">10 Aggregates</button></a>
-            <a href="../text/week11.html"><button class="tablinks">11 More</button></a>
+            <a href="../text/week01.html"><button class="tablinks">1 Data</button></a>
+            <a href="../text/week02.html"><button class="tablinks">2 Questions</button></a>
+            <a href="../text/week03.html"><button class="tablinks">3 Queries</button></a>
+            <a href="../text/week04.html"><button class="tablinks">4 Aggregates</button></a>
+            <a href="../text/week05.html"><button class="active" class="tablinks">5 Functions</button></a>
+            <a href="../text/week07.html"><button class="tablinks">6 Relational</button></a>
+            <a href="../text/week08.html"><button class="tablinks">7 Design</button></a>
+            <a href="../text/week09.html"><button class="tablinks">8 Inserting</button></a>
+            <a href="../text/week10.html"><button class="tablinks">9</button></a>
+            <a href="../text/week11.html"><button class="tablinks">10 More</button></a>
             </div>
         </nav> 
       <div id="text">
-        <h1>8 How Do We Use Stored Programs (Functions)?</h1>
+        <h1>5 Datatypes and Functions</h1>
+        <h2>Data Types</h2>
+        <p>
+            In MySQL there are three main data types: string, numeric, and date and time.</p>
+        <h3>String Data types</h3>
+        <table>
+    <tbody><tr>
+    </tr>
+    <tr>
+      <td>CHAR</td>
+      <td>A fixed length string (can contain letters, numbers, and special characters). The
+      (size) parameter specifies the column length in characters - can be 
+      from 0 to 255. Default is 1</td>
+    </tr>
+    <tr>
+      <td>VARCHAR</td>
+      <td>A variable length string (can contain letters, numbers, and special 
+      characters). The (size) parameter specifies the maximum string 
+      length in characters - can be from 0 to 65535</td>
+    </tr>
+    <tr>
+      <td>BLOB</td>
+      <td>For BLOBs (Binary Large Objects) are used to store large, complex files like images, videos, and audio that are too big to fit in regular fields. Holds up to 65,535 bytes of data</td>
+    </tr>
+    <tr>
+      <td>ENUM</td>
+      <td>A string object that can have only one value, chosen from a list of possible values. You can list up to 65535 values in an ENUM list. If a value is inserted that is not in the list, a   blank value will be inserted. 
+      The values are sorted in the order you enter them</td>
+    </tr>
+  <tr>
+      <td>SET</td>
+      <td>A string object that can have 0 or more values, chosen from a list of 
+      possible values. You can list up to 64 values in a SET list</td>
+    </tr>
+</tbody></table>
+<p>A note about ENUM: ENUM is not part of the SQL-standard and many database systems do not support it. Using a reference table instead of ENUM is advisable. In MySQL, only use ENUM when you’re storing distinct, unchanging values sets where you will never need to store additional related info. It should only have more than 2 to 20 items. If there are only 2 choices use tinyint for 1 or 0. Again, even with MySQL, when there may be any changes to the value options in the future use a reference table instead.</p>
+        <h3>Numeric Data Types</h3>
+        <table>
+            <tr>
+                <td>INT</td>
+                <td>Integer (whole number)</td>
+            </tr>
+            <tr>
+                <td>TINYINT</td>
+                <td>Integers at a smaller range -128 to 127 used for Boolean  0 and 1</td>
+            </tr>
+            <tr>
+                <td>DECIMAL</td>
+                <td>Numbers with digits after the decimal point</td>
+            </tr>
+            <tr>
+                <td>BOOL</td>
+                <td>Zero is considered as false, nonzero values are considered as true.</td>
+            </tr>
+        </table>
+        <p>Note: All the numeric data types have an extra option: UNSIGNED. If you add the UNSIGNED option, MySQL disallows negative values for the column.</p>
+        <h3>Date and Time Data Types</h3>
+        <table>
+            <tr>
+                <td>DATE</td>
+                <td>Dates from 1000-01-01 to 9999-12-31 as YYYY-MM-DD</td>
+            </tr>
+            <tr>
+                <td>DATETIME</td>
+                <td>Combines DATE AND TIME</td>
+            </tr>
+            <tr>
+                <td>TIME</td>
+                <td>Time as HH:MM:SS in 24 hour format</td>
+            </tr>
+            <tr>
+                <td>YEAR</td>
+                <td>Years ranging from 1901 to 2155</td>
+            </tr>
+        </table><br><br>
         <h2>Functions</h2>
         
         <p>In MySQL, a function is a stored program, or operation that when performed on data will returns a value or manipulate or covert the data. This allows us to perform manipulations on the data before retrieving or saving it. Functions have a name that you refer to and can also accept one or more parameters that can be passed into the function. </p>

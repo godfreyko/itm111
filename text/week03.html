@@ -11,21 +11,20 @@
     <main>
       <nav>
         <div class="tab">
-            <a href="../text/week1.html"><button class="tablinks">1 Data</button></a>
-            <a href="../text/week2.html"><button class="tablinks">2 Questions</button></a>
-            <a href="../text/week3.html"><button class="tablinks">3 Datatypes</button></a>
-            <a href="../text/week4.html"><button class="tablinks">4 Relational</button></a>
-            <a href="../text/week5.html"><button class="tablinks">5 Design</button></a>
-            <a href="../text/week6.html"><button class="tablinks">6 Inserting</button></a>
-            <a href="../text/week7.html"><button class="active" class="tablinks">7 Queries</button></a>
-            <a href="../text/week8.html"><button class="tablinks">8 Functions</button></a>
-            <a href="../text/week9.html"><button class="tablinks">9 Joins</button></a>
-            <a href="../text/week10.html"><button class="tablinks">10 Aggregates</button></a>
-            <a href="../text/week11.html"><button class="tablinks">11 More</button></a>
+            <a href="../text/week01.html"><button class="tablinks">1 Data</button></a>
+            <a href="../text/week02.html"><button class="tablinks">2 Questions</button></a>
+            <a href="../text/week03.html"><button class="active" class="tablinks">3 Queries</button></a>
+            <a href="../text/week04.html"><button class="tablinks">4 Aggregates</button></a>
+            <a href="../text/week05.html"><button class="tablinks">5 Functions</button></a>
+            <a href="../text/week07.html"><button class="tablinks">6 Relational</button></a>
+            <a href="../text/week08.html"><button class="tablinks">7 Design</button></a>
+            <a href="../text/week09.html"><button class="tablinks">8 Inserting</button></a>
+            <a href="../text/week10.html"><button class="tablinks">9 Joins</button></a>
+            <a href="../text/week11.html"><button class="tablinks">10 More</button></a>
             </div>
         </nav> 
       <div id="text">
-        <h1>7 How Do We Retrieve Information from a Database Table?</h1>
+        <h1>3 How Do We Retrieve Information from a Database Table?</h1>
 
         <h2>5 Clauses of the SELECT Statement</h2>
         
@@ -52,7 +51,7 @@
         </table>
         <h2>SELECT and FROM Statements</h2>
 
-        <p>The SELECT statement is used to retrieve data from a table. The SELECT statement lists the columns you want as part of the resulting data, or result set. The FROM statement tells what table you are getting the data or columns from.</p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-select/">SELECT</a> statement is used to retrieve data from a table. The SELECT statement lists the columns you want as part of the resulting data, or result set. The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-select-from/">FROM</a> statement tells what table you are getting the data or columns from.</p>
 
         <h2>The SELECT Statement Syntax</h2>
 
@@ -334,7 +333,7 @@
 
         <p>The SELECT statement uses the ROUND function with price as the parameter to round the price to the nearest dollar. The alias is the string ‘nearest_dollar’.</p>
 
-        <p>The DISTINCT keyword can be used with SELECT to eliminate duplicate rows in a result set. For example without the DISTINCT keyword this SELECT statement results in all prices of each product listed.</p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-distinct/">DISTINCT</a> keyword can be used with SELECT to eliminate duplicate rows in a result set. For example without the DISTINCT keyword this SELECT statement results in all prices of each product listed.</p>
         <pre>
  SELECT prod_price
  FROM products
@@ -397,7 +396,7 @@
 
         <h2>The WHERE Clause</h2>
 
-        <p>The WHERE clause lets you retrieve just the rows you want. So only part of the table or column data shows up in the result set depending on the criteria in your WHERE clause. The WHERE clause filters the data.</p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-where/">WHERE</a> clause lets you retrieve just the rows you want. So only part of the table or column data shows up in the result set depending on the criteria in your WHERE clause. The WHERE clause filters the data.</p>
 
         <h3>The SELECT Statement Syntax with WHERE:</h3>
 
@@ -507,7 +506,7 @@
             </tr>
         </table>
 
-        <p>You can also use multiple conditions with logical operators. Use AND and OR to combine two or more search conditions and NOT to negate a search condition.</p>
+        <p>You can also use multiple conditions with logical operators. Use <a href="https://www.mysqltutorial.org/mysql-basics/mysql-and/">AND</a> and <a href="https://www.mysqltutorial.org/mysql-basics/mysql-or/">OR</a> to combine two or more search conditions and NOT to negate a search condition.</p>
         
         <pre>
  AND    Both conditions have to be true for it to show up in the result set
@@ -596,7 +595,7 @@
                 <td> 1.99</td>
             </tr>
         </table>
-        <p>The IN operator tests if an expression is in a list. </p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-in/">IN</a> operator tests if an expression is in a list. </p>
 
         <p>Select all products and their prices that have a price of 2.99, 1.99 or 5.99.</p>
         <pre>
@@ -643,7 +642,7 @@
             </tr>
         </table>
 
-        <p>The BETWEEN operator compares an expression with a range of values. Select all products and their prices that have a price ranging between 1.99 and 3.99. It is inclusive and would also include 1.99 and 3.99.</p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-between/">BETWEEN</a> operator compares an expression with a range of values. Select all products and their prices that have a price ranging between 1.99 and 3.99. It is inclusive and would also include 1.99 and 3.99.</p>
         <pre>
  SELECT prod_name, prod_price 
  FROM products 
@@ -684,7 +683,7 @@
             </tr>
         </table>
 
-        <p>The LIKE operator matches a string pattern to an expression. It uses two characters to represent characters. The _ underscore is a wild card to one character and the % percent is a wild card to any number of characters.</p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-like/">LIKE</a> operator matches a string pattern to an expression. It uses two characters to represent characters. The _ underscore is a wild card to one character and the % percent is a wild card to any number of characters.</p>
 
         <p>Select all products and their price that begin with ‘b’ and have any number of character after the ‘b’.</p>
         <pre>
@@ -933,7 +932,7 @@
                 <td> 1.99</td>
             </tr>
         </table>
-        <p>The ORDER BY clause will sort your result set. You can specify one or more column names to sort the result set.</p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-order-by/">ORDER BY</a> clause will sort your result set. You can specify one or more column names to sort the result set.</p>
 
         <h3>The SELECT Statement Syntax with ORDER BY:</h3>
 
@@ -1129,7 +1128,7 @@
             </tr>
         </table>
 
-        <p>The LIMIT clause specifies the maximum number of rows that will be returned.</p>
+        <p>The <a href="https://www.mysqltutorial.org/mysql-basics/mysql-limit/">LIMIT</a> clause specifies the maximum number of rows that will be returned.</p>
 
         <h3>The SELECT Statement Syntax with LIMIT:</h3>
         <h3 class='syntax'>
@@ -1224,11 +1223,19 @@
                 <td> 7.99</td>
             </tr>
         </table>
+    <h2>Additional Reasources</h2>
+    <ul>
+        <li><a href="https://www.mysqltutorial.org/mysql-basics/mysql-select-from/">MySQL Tutorial</a></li>
+        <li><a href="https://www.w3schools.com/sql/sql_select.asp">W3Schools</a></li>
+    </ul>
+          
         <br><br>
+
       </div>
     </main>
     <footer>
         <hr>
+        
         <p>CIT 111 - Introduction to Databases - BYUI - andersonju</p>
     </footer>
 </body>
