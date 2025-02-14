@@ -410,6 +410,28 @@
             <p>Normalization can slow performance and sometimes data is denormalized to improve this performance. Denormalizing can ignore some normal forms if the organization see this as a benefit to the system.</p>
             <br><br>
             <h2>Create Statements</h2>
+            <p>The <code>CREATE TABLE</code> statement allows you to create a new table in a database.</p>
+            <p>The basic syntax of a <code>CREATE TABLE</code> statement is as follows</p>
+            <pre><code>CREATE TABLE table_name (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    column3 datatype constraints,
+    ...
+    columnN datatype constraints
+);</code></pre>
+                <ul>
+                    <li><strong>table_name</strong>: is the name for the table you create</li>
+                    <li><strong>column1, column2, column3, ... columnN</strong>: are the names of the columns in the table</li>
+                    <li><strong>datatype</strong>: is the data type of the column, such as VARCHAR, INT, and DATE</li>
+                    <li><strong>constraints</strong>: are the constraints for the column, such as NOT NULL, UNIQUE, and PRIMARY KEY</li>
+                </ul>
+                <p>Here is an example of a <code>CREATE TABLE</code> statement that creates a table called <code>students</code> with three columns: <code>id</code>, <code>name</code>, and <code>age</code>.</p>
+                <pre><code>CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    age INT NOT NULL
+);</code></pre>
+                <p>This statement creates a table called <code>students</code> with three columns: <code>id</code>, <code>name</code>, and <code>age</code>. The <code>id</code> column is the primary key for the table, and it is of type INT. The <code>name</code> column is of type VARCHAR(50), and it cannot be NULL. The <code>age</code> column is of type INT, and it cannot be NULL.</p>
         </ul>
         </div>
     </main>
