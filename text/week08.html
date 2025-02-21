@@ -432,6 +432,34 @@
     age INT NOT NULL
 );</code></pre>
                 <p>This statement creates a table called <code>students</code> with three columns: <code>id</code>, <code>name</code>, and <code>age</code>. The <code>id</code> column is the primary key for the table, and it is of type INT. The <code>name</code> column is of type VARCHAR(50), and it cannot be NULL. The <code>age</code> column is of type INT, and it cannot be NULL.</p>
+                <h1>MySQL DROP Statement</h1>
+    <p>The <strong>DROP</strong> statement in MySQL is used to permanently delete a database, table, or column. Be cautious when using this command, as it cannot be undone.</p>
+
+    <h2>Dropping a Database</h2>
+    <p>To delete an entire database, use the following command:</p>
+    <pre><code>DROP DATABASE database_name;</code></pre>
+
+    <h2>Dropping a Table</h2>
+    <p>To remove a table along with all its data:</p>
+    <pre><code>DROP TABLE table_name;</code></pre>
+
+    <h2>Dropping a Column</h2>
+    <p>To delete a column from a table, use:</p>
+    <pre><code>ALTER TABLE table_name DROP COLUMN column_name;</code></pre>
+    
+    <h2>Example</h2>
+    <p>Suppose we have a database named <strong>college_db</strong> and a table named <strong>students</strong>. Here’s how you can drop them:</p>
+    
+    <h3>Deleting the Database</h3>
+    <pre><code>DROP DATABASE college_db;</code></pre>
+    
+    <h3>Deleting the Table</h3>
+    <pre><code>DROP TABLE students;</code></pre>
+    
+    <h3>Deleting a Column from the Table</h3>
+    <pre><code>ALTER TABLE students DROP COLUMN age;</code></pre>
+    
+    <p><strong>Note:</strong> Always double-check before using the DROP statement, as it permanently removes data.</p>
         </ul>
         </div>
     </main>
