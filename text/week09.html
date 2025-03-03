@@ -114,6 +114,37 @@
             You can also enter data into your tables in the table view in Workbench without using the SQL INSERT command. When you apply the data you’ve entered, it will create an INSERT statement for you to run. When entering a string or string literal this way, you don’t have to put quotes around the string value.
         </p>
 
+        <h2>Importing Data from a CSV File</h2>
+
+<p>MySQL Workbench provides a convenient way to import data from a CSV file directly into a table. Here’s how you can do it:</p>
+
+<ol>
+  <li><b>Right-click on the table:</b> In the Navigator pane, locate the table you want to import data into. Right-click on the table name.</li>
+  <li><b>Select "Table Data Import Wizard":</b> From the context menu, choose "Table Data Import Wizard."</li>
+  <li><b>Select the CSV file:</b> In the import wizard, browse to and select the CSV file you want to import.</li>
+  <li><b>Configure Import Settings:</b>
+    <ul>
+      <li><b>Data Format:</b> Make sure "CSV" is selected as the data format.</li>
+      <li><b>Field Separator:</b> Specify the character used to separate fields in your CSV file (e.g., comma, tab).</li>
+      <li><b>Text Delimiter:</b> Specify the character used to enclose text fields (e.g., single quote, double quote).</li>
+      <li><b>Skip Lines:</b> If your CSV file has a header row, specify '1' to skip the first line.</li>
+      <li><b>Target Table:</b> Confirm that the correct target table is selected.</li>
+      <li><b>Character Set:</b> Choose the appropriate character set for your data.</li>
+    </ul>
+  </li>
+  <li><b>Map Columns:</b> The wizard will display the columns in your CSV file and the columns in your table. Map the columns from the CSV file to the corresponding columns in your table. You can also choose to skip importing certain columns.</li>
+  <li><b>Review and Import:</b> Review your settings and click "Import" to start the data import process.</li>
+  <li><b>Check Results:</b> Once the import is complete, the wizard will display a summary of the import process, including the number of rows imported and any errors encountered.</li>
+</ol>
+
+<p><b>Tips for Importing CSV Data:</b></p>
+<ul>
+  <li><b>Data Types:</b> Ensure that the data types in your CSV file are compatible with the data types of the corresponding columns in your MySQL table.</li>
+  <li><b>CSV Formatting:</b> Make sure your CSV file is properly formatted, with consistent field separators and text delimiters.</li>
+  <li><b>File Size:</b> For very large CSV files, consider using the command-line <code>mysqlimport</code> utility for better performance.</li>
+  <li><b>Error Handling:</b> If you encounter errors during the import process, carefully review the error messages and check your CSV file for inconsistencies or data type mismatches.</li>
+</ul>
+
         <h1>UPDATE Statement</h1>
         <h3>The UPDATE Statement Syntax:</h3>
         <h3 class="syntax">UPDATE table_name <br>SET column_name = expresson <br>WHERE search_condition</h3>
