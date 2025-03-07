@@ -93,6 +93,36 @@
         </pre>
     <h2 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/SQL%20Views.pdf" target="_blank">SQL Views</button></a></h2>
 
+    <h2>CASE Statements</h2>
+          <p>CASE statements in MySQL are powerful tools for implementing conditional logic within SQL queries. They allow you to evaluate conditions and return specific values based on those conditions, similar to IF-THEN-ELSE statements in programming languages.</p>
+          
+          <h3>Basic Syntax</h3>
+<pre><code>CASE
+WHEN condition1 THEN result1
+WHEN condition2 THEN result2
+...
+ELSE result
+END</code></pre>
+          </pre>
+
+text
+<h2>Types of CASE Statements</h2>
+<p>There are two main types of CASE statements in MySQL:</p>
+<ol>
+    <li><strong>Simple CASE</strong>: Compares an expression to a set of simple expressions to determine the result.</li>
+    <li><strong>Searched CASE</strong>: Evaluates a set of Boolean expressions to determine the result.</li>
+</ol>
+
+<h3>Example 1: Simple Classification</h3>
+<pre><code>
+    ## This example categorizes products based on their stock quantity:
+    SELECT product_name,
+CASE
+    WHEN stock_quantity > 0 THEN 'In Stock'
+    ELSE 'Out of Stock'
+END AS stock_status
+FROM products;</code></pre>
+
     </main>
          </div>
     <footer>
