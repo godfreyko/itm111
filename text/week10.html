@@ -56,7 +56,7 @@
  WHERE product_id = 20;
         </pre>
         <p>The subquery runs returning all quantities added up of the product with product_id of 20 from all the order items. Then the main query runs using that result as it&rsquo;s 3<sup>rd</sup> column of the result set. It returns one row with the product name, the price and then the total quantity of how many of the product have been sold.</p>
-        <h2 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/Working%20with%20Subqueries.pdf" target="_blank">Working with Subqueries</button></a></h2>
+        <h2 id="dikd"><a href="../files/Working%20with%20Subqueries.pdf" target="_blank">Working with Subqueries</button></a></h2>
         
         <h2>INDEX</h2>
         <p>An index provides a way to retrieve data more quickly from a table based on values in specific columns. The database management system can go directly to a specific row with an index rather than having to go row by row until it is found without an index. Indexes do use extra resources and time when updating or deleting rows with indexes, so don&rsquo;t create an index for a column unless you know you will be searching on that column often. Indexes are automatically created for primary keys and unique keys.</p>
@@ -69,7 +69,7 @@
  CREATE INDEX bike ON product(product_name);
         </pre>
         <p>This would create an index called bike on product_name.</p>
-        <h2 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/SQL%20Indexes%20Explained.pdf" target="_blank">SQL Indexes Explained</button></a></h2>
+        <h2 id="dikd"><a href="../files/SQL%20Indexes%20Explained.pdf" target="_blank">SQL Indexes Explained</button></a></h2>
 
         <h2>VIEW</h2>
         <p>A view is a virtual table based on the results from a query from one or more base tables. The view table will always refer back to the base table(s) for the most current data, so it&rsquo;s not a point in time copy and doesn&rsquo;t store any data itself. So it always shows up-to-date data. The data is recreated every time the view is referenced; or in other words, the query used to define it is rerun.</p>
@@ -91,7 +91,7 @@
  FROM employees_limited
  WHERE last_name = "Simmel";
         </pre>
-    <h2 id="dikd"><a href="https://content.byui.edu/file/c2693726-a64c-4151-ad97-247b6a35d89b/1/SQL%20Views.pdf" target="_blank">SQL Views</button></a></h2>
+    <h2 id="dikd"><a href="../files/SQL%20Views.pdf" target="_blank">SQL Views</button></a></h2>
 
     <h2>CASE Statements</h2>
           <p>CASE statements in MySQL are powerful tools for implementing conditional logic within SQL queries. They allow you to evaluate conditions and return specific values based on those conditions, similar to IF-THEN-ELSE statements in programming languages.</p>
@@ -125,7 +125,37 @@ FROM products;</code></pre>
 
     <p>This query will return 'In Stock' for products with a positive stock quantity and 'Out of Stock' for those with zero or negative stock.</p>
 
-     <h2 id="dikd"><a href="https://byui.instructure.com/files/145531282/download?download_frd=1" target="_blank">More on MySQL Case Statements</button></a></h2>
+     <h2 id="dikd"><a href="../files/MySQL%20CASE%20Statements.pdf" target="_blank">More on MySQL Case Statements</button></a></h2>
+
+    <h2>REGEX</h2>
+        <p>A regular expression, or REGEX, is a pattern used to search text. In MySQL, REGEX is useful when you want to find values that match more flexible patterns than the LIKE operator can handle. MySQL supports REGEX matching with REGEXP_LIKE(), and the REGEXP and RLIKE operators are also used for pattern matching.</p>
+        <h3>Basic Syntax</h3>
+        <pre>
+ SELECT column_name
+ FROM table_name
+ WHERE REGEXP_LIKE(column_name, 'pattern');
+        </pre>
+        <p>This query checks whether the value in column_name matches the regular expression pattern. REGEX patterns can use special symbols such as a period for any single character, square brackets for a set of characters, and number ranges such as [0-9] for any digit.</p>
+        <h3>Example 1: Find names that start with A</h3>
+        <pre>
+ SELECT first_name
+ FROM customer
+ WHERE REGEXP_LIKE(first_name, '^A');
+        </pre>
+        <p>The ^A pattern means starts with the letter A. This query returns only the customers whose first name begins with A.</p>
+        <h3>Example 2: Find phone numbers with only digits</h3>
+        <pre>
+ SELECT phone
+ FROM customer
+ WHERE REGEXP_LIKE(phone, '^[0-9]+$');
+        </pre>
+        <p>In this pattern, the ^ symbol means the start of the string, the $ symbol means the end of the string, and [0-9]+ means one or more digits. This query finds phone values made up of digits only.</p>
+        <h3>Example 3: Replace matching text</h3>
+        <pre>
+ SELECT REGEXP_REPLACE('abc-123', '[0-9]+', '###') AS result;
+        </pre>
+        <p>This example replaces the digits in the string with ###. REGEX is helpful when searching for names that follow a pattern, values that begin or end with certain characters, strings containing only digits or letters, and text that needs to be extracted or replaced based on a pattern.</p>
+        <h2 id="dikd"><a href="../files/MySQL%20REGEX%20guide.pdf" target="_blank">More on MySQL REGEX</a></h2>
 
     </main>
          </div>
